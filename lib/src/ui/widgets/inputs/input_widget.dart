@@ -4,7 +4,7 @@ import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/text_styles.dart';
 import 'package:utils/src/data/data_functions.dart';
 
-class InputLabelWidget extends StatelessWidget {
+class InputWidget extends StatelessWidget {
   final String hintText;
   final bool enabled;
   final int maxLength;
@@ -21,7 +21,7 @@ class InputLabelWidget extends StatelessWidget {
   final IconData? iconOverlay;
   final EdgeInsetsGeometry padding;
 
-  InputLabelWidget({
+  InputWidget({
     required this.hintText,
     this.iconOverlay,
     this.onPressedIconOverlay,

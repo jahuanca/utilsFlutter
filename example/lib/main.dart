@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:utils/utils.dart';
 
-void main() async{
+void main() async {
   loadConfig(
-    DataConfig(
-      primaryColor: Colors.blue,
-      secondaryColor: Colors.black
-    )
-  );
+      DataConfig(primaryColor: Colors.blue, secondaryColor: Colors.black));
   runApp(const MyApp());
 }
 
@@ -34,8 +30,12 @@ class ExamplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: InputLabelWidget(
-        hintText: ''),
+      body: Column(
+        children: [
+          InputWidget(hintText: ''),
+          ButtonWidget(text: 'Texto', icon: Icons.abc_rounded,),
+        ],
+      ),
     );
   }
 }

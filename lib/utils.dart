@@ -3,8 +3,8 @@ library;
 import 'package:global_configuration/global_configuration.dart';
 import 'package:utils/src/data/data_config.dart';
 export 'src/data/data_config.dart';
-export 'src/ui/widgets/input_label_widget.dart';
-export 'src/ui/widgets//input_login_widget.dart';
+export 'src/ui/widgets/inputs/input_widget.dart';
+export 'src/ui/widgets/buttons/button_widget.dart';
 export 'src/data/data_config.dart' show DataConfig;
 export 'src/data/data_functions.dart';
 
