@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const primaryColorBase = Color(0xff067f79);
+const backgroundPageColorBase = Color.fromARGB(255, 244, 244, 244);
 const secondColorBase = Color(0xffe0f2f1);
 const secondColorDarkBase = Color(0xff080928);
 const starColorBase = Color(0xffBD7523);

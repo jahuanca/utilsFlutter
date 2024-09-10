@@ -5,5 +5,8 @@ This library has been created in order to group components that I reuse a lot in
 Global_Configuration:
     *Use of the global_configuration library to pass variables such as colors that will be used in the components.
 
-InputLabelWidget:
+InputWidget:
     *Base component: TextFormField, allows adding a label and icon.
+
+ButtonWidget:
+    *Base component: GestureDetector, allow adding title and icon.

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/colors.dart';
 import 'package:utils/src/core/dimens.dart';
+import 'package:utils/src/core/text_styles.dart';
 
 class DataConfig {
   Color primaryColor;
@@ -8,9 +9,12 @@ class DataConfig {
   Color cardColor;
   Color infoColor;
   Color primaryTextColor;
+  Color backgroundPageColor;
 
   double borderRadius;
   double dimensionInput;
+
+  TextStyle? titleTextAppBarStyle;
   
 
   DataConfig({
@@ -19,9 +23,17 @@ class DataConfig {
     this.cardColor = cardColorBase,
     this.infoColor = infoColorBase,
     this.primaryTextColor = primaryTextColorBase,
+    this.backgroundPageColor = backgroundPageColorBase,
+
     this.borderRadius = borderRadiusBase,
-    this.dimensionInput = dimensionInputBase
-  });
+    this.dimensionInput = dimensionInputBase,
+
+    this.titleTextAppBarStyle
+  }){
+
+    titleTextAppBarStyle ??= titleTextAppBarStyleBase();
+
+  }
 
   factory DataConfig.fromJson(Map<String, dynamic> json) => DataConfig(
         primaryColor: json["primaryColor"],
@@ -29,9 +41,12 @@ class DataConfig {
         cardColor: json["cardColor"],
         infoColor: json["infoColor"],
         primaryTextColor: json["primaryTextColor"],
+        backgroundPageColor: json["backgroundPageColor"],
 
         borderRadius: json["borderRadius"],
         dimensionInput: json["dimensionInput"],
+
+        titleTextAppBarStyle: json["titleTextAppBarStyle"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -40,8 +55,11 @@ class DataConfig {
         "cardColor": cardColor,
         "infoColor": infoColor,
         "primaryTextColor": primaryTextColor,
+        "backgroundPageColor": backgroundPageColor,
 
         "dimensionInput": dimensionInput,
         "borderRadius": borderRadius,
+
+        "titleTextAppBarStyle": titleTextAppBarStyle,
       };
 }

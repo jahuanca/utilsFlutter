@@ -17,3 +17,11 @@ TextStyle hintLoginStyle() {
 TextStyle botonStyle() {
   return TextStyle(color: cardColor(), fontSize: 20, fontWeight: FontWeight.bold);
 }
+
+TextStyle titleTextAppBarStyleBase(){
+  return TextStyle(
+    color: primaryTextColor(),
+    fontSize: 16,
+    fontWeight: FontWeight.w500
+  );
+}

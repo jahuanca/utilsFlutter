@@ -29,7 +29,7 @@ class ExamplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: appBarWidget(text: 'Example'),
       body: Column(
         children: [
           InputWidget(hintText: ''),
