@@ -3,7 +3,7 @@ import 'package:utils/utils.dart';
 
 void main() async{
   loadConfig(
-    ColorsData(
+    DataConfig(
       primaryColor: Colors.blue,
       secondaryColor: Colors.black
     )
@@ -34,7 +34,8 @@ class ExamplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: InputLabelWidget(hintText: ''),
+      body: InputLabelWidget(
+        hintText: ''),
     );
   }
 }

@@ -5,3 +5,6 @@ const String cardColorString = 'cardColor';
 const String infoColorString = 'infoColor';
 const String dangerColorString = 'dangerColor';
 const String primaryTextColorString = 'primaryTextColor';
+
+const String borderRadiusString = 'borderRadius';
+const String dimensionInputString = 'dimensionInput';

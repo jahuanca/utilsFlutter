@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/text_styles.dart';
-import 'package:utils/src/data/data.dart';
+import 'package:utils/src/data/data_functions.dart';
 
 class InputLabelWidget extends StatelessWidget {
   final String hintText;
@@ -49,7 +49,7 @@ class InputLabelWidget extends StatelessWidget {
           if (label != null)
             Container(
               alignment: Alignment.centerLeft,
-              height: size.height * inputDimension,
+              height: size.height * dimensionInput(),
               child: Text(
                 label ?? '',
               ),
@@ -58,8 +58,8 @@ class InputLabelWidget extends StatelessWidget {
             onTap: onTap,
             child: Container(
                 height: isTextArea
-                    ? size.height * inputDimension * 1.5
-                    : size.height * inputDimension,
+                    ? size.height * dimensionInput() * 1.5
+                    : size.height * dimensionInput(),
                 width: size.width,
                 decoration: BoxDecoration(),
                 child: Stack(
