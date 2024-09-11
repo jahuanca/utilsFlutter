@@ -1,19 +1,24 @@
 
+import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:utils/src/core/colors.dart';
+import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/strings.dart';
 
 //colors
-primaryColor() => GlobalConfiguration().get(primaryColorString);
-secondaryColor() => GlobalConfiguration().get(secondaryColorString);
-cardColor() => GlobalConfiguration().get(cardColorString);
-infoColor() => GlobalConfiguration().get(infoColorString);
-dangerColor() => GlobalConfiguration().get(dangerColorString);
-primaryTextColor() => GlobalConfiguration().get(primaryTextColorString);
-backgroundPageColor() => GlobalConfiguration().get(backgroundPageColorString);
+Color primaryColor() => GlobalConfiguration().get(primaryColorString) ?? primaryColorBase;
+Color secondaryColor() => GlobalConfiguration().get(secondaryColorString) ?? secondColorBase;
+Color cardColor() => GlobalConfiguration().get(cardColorString) ?? cardColorBase;
+Color successColor() => GlobalConfiguration().get(successColorString) ?? successColorBase;
+Color infoColor() => GlobalConfiguration().get(infoColorString) ?? infoColorBase;
+Color alertColor() => GlobalConfiguration().get(alertColorString) ?? alertColorBase;
+Color dangerColor() => GlobalConfiguration().get(dangerColorString) ?? dangerColorBase;
+Color primaryTextColor() => GlobalConfiguration().get(primaryTextColorString) ?? primaryTextColorBase;
+Color backgroundPageColor() => GlobalConfiguration().get(backgroundPageColorString) ?? backgroundPageColorBase;
 
 //dimens
-borderRadius() => GlobalConfiguration().get(borderRadiusString);
-dimensionInput() => GlobalConfiguration().get(dimensionInputString);
+double borderRadius() => GlobalConfiguration().get(borderRadiusString) ?? borderRadiusBase;
+double dimensionInput() => GlobalConfiguration().get(dimensionInputString) ?? dimensionInputBase;
 
 //styles
-titleTextAppBarStyle() => GlobalConfiguration().get(titleTextAppBarStyleString);
+TextStyle titleTextAppBarStyle() => GlobalConfiguration().get(titleTextAppBarStyleString) ?? TextStyle();

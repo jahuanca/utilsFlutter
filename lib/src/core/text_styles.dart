@@ -14,8 +14,8 @@ TextStyle hintLoginStyle() {
       color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400);
 }
 
-TextStyle botonStyle() {
-  return TextStyle(color: cardColor(), fontSize: 20, fontWeight: FontWeight.bold);
+TextStyle botonStyle({Color? textColor}) {
+  return TextStyle(color: textColor ?? cardColor(), fontSize: 20, fontWeight: FontWeight.bold);
 }
 
 TextStyle titleTextAppBarStyleBase(){
