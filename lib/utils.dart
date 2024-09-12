@@ -5,6 +5,7 @@ export 'src/core/button_type.dart';
 
 export 'src/ui/widgets/inputs/input_widget.dart';
 export 'src/ui/widgets/buttons/button_widget.dart';
+export 'src/ui/widgets/buttons/icon_button_widget.dart';
 export 'src/ui/widgets/app_bar/app_bar_widget.dart';
 export 'src/ui/widgets/images/image_action_widget.dart';
 

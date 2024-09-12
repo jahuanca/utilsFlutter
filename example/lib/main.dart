@@ -5,7 +5,6 @@ void main() async {
   loadConfig(
       DataConfig(
         primaryColor: Colors.greenAccent, 
-        secondaryColor: Colors.black,
       )
   );
   runApp(const MyApp());
@@ -67,6 +66,7 @@ class ExamplePage extends StatelessWidget {
               buttonType: ButtonType.base,
               buttonStyle: ButtonStyle.danger,
               padding: const EdgeInsets.all(8),),
+            const IconButtonWidget(iconData: Icons.access_alarm,),
             const ImageActionWidget(
                 padding: EdgeInsets.symmetric(vertical: 25),
                 height: 150,
