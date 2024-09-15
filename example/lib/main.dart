@@ -31,11 +31,24 @@ class ExamplePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: appBarWidget(text: 'Example'),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            ItemListImageDataWidget(
+              width: size.width,
+              height: size.height * 0.2,
+              path: 'assets/images/icon_avatar.png',
+              storageType: StorageType.localStorage,
+              title: 'Jose Antonio Huanca Ancajima',
+              subtitle: 'Enace IV Etapa Mz H2 Lt 11',
+              detail: '989743471',
+              //shape: BoxShape.rectangle,
+              //path: 'https://imgs.search.brave.com/TOSM-yLTsegMoH6QyZRJre73TnPam6v5YAUht-y_37Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni84MzIzLzgzMjMz/MTcucG5nP3NlbXQ9/YWlzX2h5YnJpZA',
+            ),
             InputWidget(hintText: 'Hint de texto', padding: const EdgeInsets.all(8),),
             ButtonWidget(text: 'Texto', icon: Icons.abc_rounded, padding: const EdgeInsets.all(8)),
             ButtonWidget(

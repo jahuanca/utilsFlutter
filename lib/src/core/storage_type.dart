@@ -1,0 +1,5 @@
+
+enum StorageType{
+  localStorage,
+  remoteStorage,
+}

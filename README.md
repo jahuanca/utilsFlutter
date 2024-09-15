@@ -9,4 +9,8 @@ InputWidget:
     *Base component: TextFormField, allows adding a label and icon.
 
 ButtonWidget:
-    *Base component: GestureDetector, allow adding title and icon.
+    *Base component: GestureDetector and container, allow adding title and icon.
+
+IconButtonWidget:
+    *Base component: IconButton.
+
