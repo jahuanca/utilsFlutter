@@ -21,9 +21,11 @@ class InputWidget extends StatelessWidget {
   final IconData? iconOverlay;
   final EdgeInsetsGeometry padding;
   final InputBorder? inputBorderCurrent;
+  final Icon? icon;
 
   InputWidget({
     required this.hintText,
+    this.icon,
     this.inputBorderCurrent,
     this.iconOverlay,
     this.onPressedIconOverlay,
@@ -78,6 +80,7 @@ class InputWidget extends StatelessWidget {
                       obscureText: isObscure,
                       maxLines: isTextArea ? 5 : 1,
                       decoration: InputDecoration(
+                        prefix: icon,
                         border:
                             error == null ? inputBorderSelected : inputBorderError(),
                         enabledBorder:
