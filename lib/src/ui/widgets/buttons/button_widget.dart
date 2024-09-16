@@ -34,6 +34,7 @@ class ButtonWidget extends StatelessWidget {
     return Padding(
       padding: padding,
       child: Material(
+        borderRadius: BorderRadius.circular(borderRadius()),
         elevation: elevation,
         shadowColor: shadowColor,
         child: GestureDetector(
