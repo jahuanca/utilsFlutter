@@ -42,7 +42,7 @@ class InputWidget extends StatelessWidget {
     this.error,
     this.onTap,
     this.padding = const EdgeInsets.all(0),
-    this.isDense = false,
+    this.isDense = true,
   });
 
   @override
