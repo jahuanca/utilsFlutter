@@ -5,6 +5,7 @@ import 'package:utils/src/core/colors.dart';
 import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/strings.dart';
+import 'package:utils/src/core/text_styles.dart';
 
 //colors
 Color primaryColor() => GlobalConfiguration().get(primaryColorString) ?? primaryColorBase;
@@ -25,7 +26,7 @@ double dimensionInput() => GlobalConfiguration().get(dimensionInputString) ?? di
 
 //styles
 TextStyle titleTextAppBarStyle() => GlobalConfiguration().get(titleTextAppBarStyleString) ?? TextStyle();
-TextStyle hintStyle() => GlobalConfiguration().get(hintStyleString) ?? TextStyle();
+TextStyle hintStyle() => GlobalConfiguration().get(hintStyleString) ?? hintStyleBase();
 
 //inputBorders
 InputBorder inputBorder() => GlobalConfiguration().get(inputBorderString) ?? inputBorderBase();
