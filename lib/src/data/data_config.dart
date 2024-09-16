@@ -55,6 +55,7 @@ class DataConfig {
         cardColor: json["cardColor"],
         infoColor: json["infoColor"],
         dangerColor: json["dangerColor"],
+        hintColor: json["hintColor"],
         primaryTextColor: json["primaryTextColor"],
         backgroundPageColor: json["backgroundPageColor"],
 
@@ -71,6 +72,7 @@ class DataConfig {
         "secondaryColor": secondaryColor,
         "cardColor": cardColor,
         "dangerColor": dangerColor,
+        "hintColor": hintColor,
         "infoColor": infoColor,
         "successColor": successColor,
         "primaryTextColor": primaryTextColor,
