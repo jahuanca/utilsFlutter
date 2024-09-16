@@ -11,14 +11,18 @@ class ButtonWidget extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final ButtonType buttonType;
   final ButtonStyle buttonStyle;
+  final double elevation;
+  final Color? shadowColor;
 
   ButtonWidget({
     required this.text,
     this.icon,
     this.onTap,
+    this.shadowColor,
     this.padding = const EdgeInsets.all(0),
     this.buttonType = ButtonType.base,
     this.buttonStyle = ButtonStyle.base,
+    this.elevation = 0,
   });
 
   @override
@@ -29,38 +33,42 @@ class ButtonWidget extends StatelessWidget {
 
     return Padding(
       padding: padding,
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          height: size.height * dimensionInput(),
-          width: size.width,
-          decoration: selectedTypeButton.decoration,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              if (icon != null)
+      child: Material(
+        elevation: elevation,
+        shadowColor: shadowColor,
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            height: size.height * dimensionInput(),
+            width: size.width,
+            decoration: selectedTypeButton.decoration,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                if (icon != null)
+                  Expanded(
+                      child: Container(
+                        child: Icon(
+                          icon,
+                          color: selectedTypeButton.textAndIconColor,
+                        ),
+                      ),
+                      flex: 1),
                 Expanded(
                     child: Container(
-                      child: Icon(
-                        icon,
-                        color: selectedTypeButton.textAndIconColor,
-                      ),
+                      alignment: Alignment.center,
+                      child: Text(text,
+                          style: botonStyle(
+                              textColor: selectedTypeButton.textAndIconColor)),
                     ),
-                    flex: 1),
-              Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text(text,
-                        style: botonStyle(
-                            textColor: selectedTypeButton.textAndIconColor)),
+                    flex: 2),
+                if (icon != null)
+                  Expanded(
+                    child: Container(),
+                    flex: 1,
                   ),
-                  flex: 2),
-              if (icon != null)
-                Expanded(
-                  child: Container(),
-                  flex: 1,
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

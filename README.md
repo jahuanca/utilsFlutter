@@ -13,4 +13,3 @@ ButtonWidget:
 
 IconButtonWidget:
     *Base component: IconButton.
-
