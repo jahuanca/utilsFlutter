@@ -13,6 +13,7 @@ enum ButtonStyle{
   danger,
   info,
   alert,
+  dark,
   outline,
 
 }

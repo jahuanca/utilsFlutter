@@ -14,6 +14,7 @@ Color successColor() => GlobalConfiguration().get(successColorString) ?? success
 Color infoColor() => GlobalConfiguration().get(infoColorString) ?? infoColorBase;
 Color alertColor() => GlobalConfiguration().get(alertColorString) ?? alertColorBase;
 Color dangerColor() => GlobalConfiguration().get(dangerColorString) ?? dangerColorBase;
+Color darkColor() => GlobalConfiguration().get(darkColorString) ?? darkColorBase;
 Color primaryTextColor() => GlobalConfiguration().get(primaryTextColorString) ?? primaryTextColorBase;
 Color hintColor() => GlobalConfiguration().get(hintColorString) ?? hintColorBase;
 Color backgroundPageColor() => GlobalConfiguration().get(backgroundPageColorString) ?? backgroundPageColorBase;

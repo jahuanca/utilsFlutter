@@ -18,6 +18,7 @@ const Color blackBase = Colors.black;
 
 const Color alertColorBase = Color(0xFFF5CC31);
 const Color dangerColorBase = Color(0xFFFF3939);
+const Color darkColorBase = Colors.black;
 const Color successColorBase = Color(0xFF1E9E2E);
 const Color infoColorBase = Color(0xFF009EE0);
 

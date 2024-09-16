@@ -46,6 +46,12 @@ ButtonStyleData getButtonStyleData(ButtonStyle style){
         colorForTextAndIcon: Colors.white,
         colorForBorder: dangerColor(),
         );
+    case ButtonStyle.dark:
+      return ButtonStyleData(
+        style: style, 
+        backgroundColor: darkColor(), 
+        colorForTextAndIcon: Colors.white, 
+        colorForBorder: darkColor());
     default:
       return ButtonStyleData(
         style: style, 

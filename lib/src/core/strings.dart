@@ -6,6 +6,7 @@ const String successColorString = 'successColor';
 const String infoColorString = 'infoColor';
 const String alertColorString = 'alertColor';
 const String dangerColorString = 'dangerColor';
+const String darkColorString = 'darkColor';
 const String primaryTextColorString = 'primaryTextColor';
 const String hintColorString = 'hintColor';
 const String backgroundPageColorString = 'backgroundPageColor';
