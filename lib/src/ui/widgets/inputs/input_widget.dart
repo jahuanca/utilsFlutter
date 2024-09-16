@@ -100,7 +100,7 @@ class InputWidget extends StatelessWidget {
                         counterText: '',
                         counterStyle: TextStyle(fontSize: 0),
                         hintText: hintText,
-                        hintStyle: primaryHintStyleBase(),
+                        hintStyle: hintStyle(),
                       ),
                       controller: textEditingController,
                       onChanged: onChanged,

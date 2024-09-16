@@ -20,6 +20,7 @@ class DataConfig {
   double dimensionInput;
 
   TextStyle? titleTextAppBarStyle;
+  TextStyle? hintStyle;
   InputBorder? inputBorder;
   
 
@@ -39,10 +40,12 @@ class DataConfig {
 
     this.titleTextAppBarStyle,
     this.inputBorder,
+    this.hintStyle,
   }){
 
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
     inputBorder ??= inputBorderBase();
+    hintStyle ??= hintStyleBase();
 
   }
 
@@ -59,6 +62,7 @@ class DataConfig {
         dimensionInput: json["dimensionInput"],
 
         titleTextAppBarStyle: json["titleTextAppBarStyle"],
+        hintStyle: json["hintStyle"],
         inputBorder: json["inputBorder"],
       );
 
@@ -76,6 +80,7 @@ class DataConfig {
         "borderRadius": borderRadius,
 
         "titleTextAppBarStyle": titleTextAppBarStyle,
+        "hintStyle": hintStyle,
         "inputBorder": inputBorder,
       };
 }

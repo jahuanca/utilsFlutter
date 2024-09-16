@@ -10,7 +10,7 @@ TextStyle primaryTextStyleBase(){
   );
 }
 
-TextStyle primaryHintStyleBase() {
+TextStyle hintStyleBase() {
   return TextStyle(
       color: hintColor(),
       fontSize: 15,

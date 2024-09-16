@@ -15,4 +15,5 @@ const String borderRadiusString = 'borderRadius';
 const String dimensionInputString = 'dimensionInput';
 
 const String titleTextAppBarStyleString = 'titleTextAppBarStyle';
+const String hintStyleString = 'hintStyleBase';
 const String inputBorderString = 'inputBorder';
