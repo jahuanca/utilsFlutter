@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/colors.dart';
 import 'package:utils/src/core/dimens.dart';
+import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/text_styles.dart';
 
 class DataConfig {
@@ -18,6 +19,7 @@ class DataConfig {
   double dimensionInput;
 
   TextStyle? titleTextAppBarStyle;
+  InputBorder? inputBorder;
   
 
   DataConfig({
@@ -37,6 +39,7 @@ class DataConfig {
   }){
 
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
+    inputBorder ??= inputBorderBase();
 
   }
 

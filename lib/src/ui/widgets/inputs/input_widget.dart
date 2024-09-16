@@ -20,9 +20,11 @@ class InputWidget extends StatelessWidget {
   final void Function()? onPressedIconOverlay;
   final IconData? iconOverlay;
   final EdgeInsetsGeometry padding;
+  final InputBorder? inputBorderCurrent;
 
   InputWidget({
     required this.hintText,
+    this.inputBorderCurrent,
     this.iconOverlay,
     this.onPressedIconOverlay,
     this.enabled = true,
@@ -41,6 +43,9 @@ class InputWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final inputBorderSelected = inputBorderCurrent ?? inputBorder();
+
     final Size size = MediaQuery.of(context).size;
     return Padding(
       padding: padding,
@@ -73,13 +78,13 @@ class InputWidget extends StatelessWidget {
                       maxLines: isTextArea ? 5 : 1,
                       decoration: InputDecoration(
                         border:
-                            error == null ? inputBorder() : inputBorderError(),
+                            error == null ? inputBorderSelected : inputBorderError(),
                         enabledBorder:
-                            error == null ? inputBorder() : inputBorderError(),
+                            error == null ? inputBorderSelected : inputBorderError(),
                         disabledBorder:
-                            error == null ? inputBorder() : inputBorderError(),
+                            error == null ? inputBorderSelected : inputBorderError(),
                         focusedBorder:
-                            error == null ? inputBorder() : inputBorderError(),
+                            error == null ? inputBorderSelected : inputBorderError(),
                         filled: true,
                         fillColor: cardColor(),
                         contentPadding: isTextArea

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:utils/src/core/colors.dart';
 import 'package:utils/src/core/dimens.dart';
+import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/strings.dart';
 
 //colors
@@ -22,3 +23,6 @@ double dimensionInput() => GlobalConfiguration().get(dimensionInputString) ?? di
 
 //styles
 TextStyle titleTextAppBarStyle() => GlobalConfiguration().get(titleTextAppBarStyleString) ?? TextStyle();
+
+//inputBorders
+InputBorder inputBorder() => GlobalConfiguration().get(inputBorderString) ?? inputBorderBase();

@@ -49,7 +49,13 @@ class ExamplePage extends StatelessWidget {
               //shape: BoxShape.rectangle,
               //path: 'https://imgs.search.brave.com/TOSM-yLTsegMoH6QyZRJre73TnPam6v5YAUht-y_37Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni84MzIzLzgzMjMz/MTcucG5nP3NlbXQ9/YWlzX2h5YnJpZA',
             ),
-            InputWidget(hintText: 'Hint de texto', padding: const EdgeInsets.all(8),),
+            InputWidget(
+              inputBorderCurrent: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius()),
+                borderSide: BorderSide(width: 1, color: cardColor())
+              ),
+              hintText: 'Hint de texto', 
+              padding: const EdgeInsets.all(8),),
             ButtonWidget(text: 'Texto', icon: Icons.abc_rounded, padding: const EdgeInsets.all(8)),
             ButtonWidget(
               elevation: 10,
