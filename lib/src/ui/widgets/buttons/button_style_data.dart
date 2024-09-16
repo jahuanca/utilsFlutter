@@ -6,12 +6,14 @@ class ButtonStyleData {
   ButtonStyleData({
     required this.style,
     required this.backgroundColor,
-    required this.colorForTextIconAndBorder,
+    required this.colorForTextAndIcon,
+    required this.colorForBorder,
   });
 
   ButtonStyle style;
   Color backgroundColor;
-  Color colorForTextIconAndBorder;
+  Color colorForTextAndIcon;
+  Color colorForBorder;
 }
 
 ButtonStyleData getButtonStyleData(ButtonStyle style){
@@ -20,27 +22,37 @@ ButtonStyleData getButtonStyleData(ButtonStyle style){
       return ButtonStyleData(
         style: style, 
         backgroundColor: successColor(), 
-        colorForTextIconAndBorder: Colors.white);
+        colorForTextAndIcon: Colors.white,
+        colorForBorder: successColor(),
+      );
     case ButtonStyle.info:
       return ButtonStyleData(
         style: style, 
         backgroundColor: infoColor(),
-        colorForTextIconAndBorder: Colors.white);
+        colorForTextAndIcon: Colors.white,
+        colorForBorder: infoColor(),
+        );
     case ButtonStyle.alert:
       return ButtonStyleData(
         style: style, 
         backgroundColor: alertColor(),
-        colorForTextIconAndBorder: Colors.white);
+        colorForTextAndIcon: Colors.white,
+        colorForBorder: successColor(),
+        );
     case ButtonStyle.danger:
       return ButtonStyleData(
         style: style, 
         backgroundColor: dangerColor(),
-        colorForTextIconAndBorder: Colors.white);
+        colorForTextAndIcon: Colors.white,
+        colorForBorder: dangerColor(),
+        );
     default:
       return ButtonStyleData(
         style: style, 
         backgroundColor: primaryColor(),
-        colorForTextIconAndBorder: Colors.white);
+        colorForTextAndIcon: Colors.white,
+        colorForBorder: primaryColor(),
+        );
   }
 }
 

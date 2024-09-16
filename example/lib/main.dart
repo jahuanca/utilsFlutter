@@ -52,6 +52,7 @@ class ExamplePage extends StatelessWidget {
             InputWidget(hintText: 'Hint de texto', padding: const EdgeInsets.all(8),),
             ButtonWidget(text: 'Texto', icon: Icons.abc_rounded, padding: const EdgeInsets.all(8)),
             ButtonWidget(
+              elevation: 10,
               text: 'Base', 
               padding: const EdgeInsets.all(8),),
             ButtonWidget(

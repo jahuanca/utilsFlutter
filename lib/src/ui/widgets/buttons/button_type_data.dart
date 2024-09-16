@@ -47,10 +47,10 @@ ButtonTypeData getTypeData(
         decoration: BoxDecoration(
             color: styleData.backgroundColor,
             border: Border.all(
-              color: styleData.colorForTextIconAndBorder,
+              color: styleData.colorForBorder,
             ),
             borderRadius: BorderRadius.circular(borderRadius())),
-        textAndIconColor: styleData.colorForTextIconAndBorder,
+        textAndIconColor: styleData.colorForTextAndIcon,
       );
   }
 }
