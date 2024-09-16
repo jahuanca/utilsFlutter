@@ -22,6 +22,7 @@ class InputWidget extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final InputBorder? inputBorderCurrent;
   final Icon? icon;
+  final bool isDense;
 
   InputWidget({
     required this.hintText,
@@ -40,7 +41,8 @@ class InputWidget extends StatelessWidget {
     this.onChanged,
     this.error,
     this.onTap,
-    this.padding = const EdgeInsets.all(0)
+    this.padding = const EdgeInsets.all(0),
+    this.isDense = false,
   });
 
   @override
@@ -80,7 +82,8 @@ class InputWidget extends StatelessWidget {
                       obscureText: isObscure,
                       maxLines: isTextArea ? 5 : 1,
                       decoration: InputDecoration(
-                        prefix: icon,
+                        isDense: isDense,
+                        prefixIcon: icon,
                         border:
                             error == null ? inputBorderSelected : inputBorderError(),
                         enabledBorder:
