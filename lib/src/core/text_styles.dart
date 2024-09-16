@@ -2,11 +2,19 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/data/data_functions.dart';
 
-TextStyle primaryHintStyle() {
+TextStyle primaryTextStyleBase(){
   return TextStyle(
-      color: primaryTextColor(),
-      fontSize: 14,
-      fontWeight: FontWeight.w300);
+    color: primaryTextColor(),
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+  );
+}
+
+TextStyle primaryHintStyleBase() {
+  return TextStyle(
+      color: hintColor(),
+      fontSize: 15,
+      fontWeight: FontWeight.w400);
 }
 
 TextStyle hintLoginStyle() {

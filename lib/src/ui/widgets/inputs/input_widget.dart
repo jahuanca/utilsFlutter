@@ -70,6 +70,7 @@ class InputWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     TextFormField(
+                      style: primaryTextStyleBase(),
                       enabled: enabled,
                       initialValue: initialValue,
                       maxLength: maxLength,
@@ -93,7 +94,7 @@ class InputWidget extends StatelessWidget {
                         counterText: '',
                         counterStyle: TextStyle(fontSize: 0),
                         hintText: hintText,
-                        hintStyle: primaryHintStyle(),
+                        hintStyle: primaryHintStyleBase(),
                       ),
                       controller: textEditingController,
                       onChanged: onChanged,

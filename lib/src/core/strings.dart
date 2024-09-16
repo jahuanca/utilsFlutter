@@ -7,6 +7,7 @@ const String infoColorString = 'infoColor';
 const String alertColorString = 'alertColor';
 const String dangerColorString = 'dangerColor';
 const String primaryTextColorString = 'primaryTextColor';
+const String hintColorString = 'hintColor';
 const String backgroundPageColorString = 'backgroundPageColor';
 
 const String borderRadiusString = 'borderRadius';

@@ -9,6 +9,7 @@ class DataConfig {
   Color secondaryColor;
   Color cardColor;
   Color primaryTextColor;
+  Color hintColor;
   Color backgroundPageColor;
 
   Color infoColor;
@@ -30,12 +31,14 @@ class DataConfig {
     this.successColor = successColorBase,
     this.dangerColor = dangerColorBase,
     this.primaryTextColor = primaryTextColorBase,
+    this.hintColor = hintColorBase,
     this.backgroundPageColor = backgroundPageColorBase,
 
     this.borderRadius = borderRadiusBase,
     this.dimensionInput = dimensionInputBase,
 
-    this.titleTextAppBarStyle
+    this.titleTextAppBarStyle,
+    this.inputBorder,
   }){
 
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
@@ -56,6 +59,7 @@ class DataConfig {
         dimensionInput: json["dimensionInput"],
 
         titleTextAppBarStyle: json["titleTextAppBarStyle"],
+        inputBorder: json["inputBorder"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -72,5 +76,6 @@ class DataConfig {
         "borderRadius": borderRadius,
 
         "titleTextAppBarStyle": titleTextAppBarStyle,
+        "inputBorder": inputBorder,
       };
 }

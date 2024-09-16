@@ -21,6 +21,7 @@ const Color dangerColorBase = Color(0xFFFF3939);
 const Color successColorBase = Color(0xFF1E9E2E);
 const Color infoColorBase = Color(0xFF009EE0);
 
-const Color primaryTextColorBase = Color(0xFF414141);
+const Color primaryTextColorBase = Color.fromARGB(255, 65, 65, 65);
+const Color hintColorBase = Color.fromARGB(255, 50, 50, 50);
 const Color primaryTextDarkColorBase = Color(0xFFf8f8f8);
 const Color separadorTextColorBase = Color(0xFF000000);
