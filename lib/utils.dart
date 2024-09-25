@@ -11,6 +11,9 @@ export 'src/ui/widgets/app_bar/app_bar_widget.dart';
 export 'src/ui/widgets/images/image_action_widget.dart';
 export 'src/ui/widgets/items_list/item_list_image_data_widget.dart';
 
+export 'src/ui/widgets/bottom_navigation/bottom_navigation_bar_widget.dart' ;
+export 'src/ui/widgets/bottom_navigation/bottom_navigation_item_widget.dart';
+
 
 import 'package:global_configuration/global_configuration.dart';
 import 'package:utils/src/data/data_config.dart';
