@@ -76,6 +76,17 @@ class ExamplePage extends StatelessWidget {
               hintText: 'Hint de texto',
               padding: const EdgeInsets.all(8),
             ),
+            InputWidget(
+              icon: const Icon(
+                Icons.map,
+                color: Colors.black,
+              ),
+              inputBorderCurrent: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(borderRadius()),
+                  borderSide: BorderSide(width: 1, color: cardColor())),
+              hintText: 'Hint de texto',
+              padding: const EdgeInsets.all(8),
+            ),
             ButtonWidget(
                 text: 'Texto',
                 icon: Icons.abc_rounded,

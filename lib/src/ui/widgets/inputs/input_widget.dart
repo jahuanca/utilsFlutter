@@ -47,7 +47,6 @@ class InputWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final inputBorderSelected = inputBorderCurrent ?? inputBorder();
 
     final Size size = MediaQuery.of(context).size;
@@ -74,24 +73,30 @@ class InputWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     TextFormField(
+                      expands: true,
                       style: primaryTextStyleBase(),
                       enabled: enabled,
                       initialValue: initialValue,
                       maxLength: maxLength,
                       keyboardType: textInputType,
                       obscureText: isObscure,
-                      maxLines: isTextArea ? 5 : 1,
+                      minLines: null,
+                      maxLines: null,
                       decoration: InputDecoration(
                         isDense: isDense,
                         prefixIcon: icon,
-                        border:
-                            error == null ? inputBorderSelected : inputBorderError(),
-                        enabledBorder:
-                            error == null ? inputBorderSelected : inputBorderError(),
-                        disabledBorder:
-                            error == null ? inputBorderSelected : inputBorderError(),
-                        focusedBorder:
-                            error == null ? inputBorderSelected : inputBorderError(),
+                        border: error == null
+                            ? inputBorderSelected
+                            : inputBorderError(),
+                        enabledBorder: error == null
+                            ? inputBorderSelected
+                            : inputBorderError(),
+                        disabledBorder: error == null
+                            ? inputBorderSelected
+                            : inputBorderError(),
+                        focusedBorder: error == null
+                            ? inputBorderSelected
+                            : inputBorderError(),
                         filled: true,
                         fillColor: cardColor(),
                         contentPadding: isTextArea
