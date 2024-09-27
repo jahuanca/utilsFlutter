@@ -49,6 +49,11 @@ class ExamplePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            TagWidget(
+              title: 'Este es un tag', 
+              icon: Icons.abc,
+              padding: const EdgeInsets.only(left: 10, top: 4),
+              ),
             ItemListImageDataWidget(
               width: size.width,
               height: size.height * 0.2,

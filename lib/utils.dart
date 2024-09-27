@@ -10,6 +10,7 @@ export 'src/ui/widgets/buttons/icon_button_widget.dart';
 export 'src/ui/widgets/app_bar/app_bar_widget.dart';
 export 'src/ui/widgets/images/image_action_widget.dart';
 export 'src/ui/widgets/items_list/item_list_image_data_widget.dart';
+export 'src/ui/widgets/tags/tag_widget.dart';
 
 export 'src/ui/widgets/bottom_navigation/bottom_navigation_bar_widget.dart' ;
 export 'src/ui/widgets/bottom_navigation/bottom_navigation_item_widget.dart';
