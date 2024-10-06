@@ -3,6 +3,7 @@ export 'src/data/data_config.dart';
 export 'src/data/data_functions.dart';
 export 'src/core/button_type.dart';
 export 'src/core/storage_type.dart';
+export 'src/core/validators.dart';
 
 export 'src/ui/widgets/inputs/input_widget.dart';
 export 'src/ui/widgets/buttons/button_widget.dart';
