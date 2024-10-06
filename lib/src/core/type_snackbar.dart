@@ -28,10 +28,12 @@ enum TypeSnackbar {
     required this.title,
     required this.backgroundColor,
     required this.colorText,
+    this.duration = const Duration(milliseconds: 1000),
   });
 
   final String title;
   final Color? backgroundColor;
   final Color colorText;
+  final Duration duration;
 
 }
