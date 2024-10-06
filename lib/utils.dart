@@ -4,6 +4,7 @@ export 'src/data/data_functions.dart';
 export 'src/core/button_type.dart';
 export 'src/core/storage_type.dart';
 export 'src/core/validators.dart';
+export 'src/core/type_snackbar.dart';
 
 export 'src/ui/widgets/inputs/input_widget.dart';
 export 'src/ui/widgets/buttons/button_widget.dart';
@@ -17,6 +18,7 @@ export 'src/ui/widgets/bottom_navigation/bottom_navigation_bar_widget.dart' ;
 export 'src/ui/widgets/bottom_navigation/bottom_navigation_item_widget.dart';
 
 export 'src/ui/widgets/dialogs/show_dialog_widget.dart';
+export 'src/ui/widgets/snackbar/show_snackbar_widget.dart';
 
 
 import 'package:global_configuration/global_configuration.dart';
