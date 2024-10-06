@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/type_snackbar.dart';
-import 'package:utils/src/ui/widgets/snackbar/snackbar_widget.dart';
 
 Future<void> showSnackbarWidget(
     {required BuildContext context,
@@ -8,8 +7,11 @@ Future<void> showSnackbarWidget(
     String? title,
     required String message,
     int? duration}) async {
-  ScaffoldMessenger.of(context).showSnackBar(SnackbarWidget(
-    message: message,
-    typeSnackbar: typeSnackbar,
-  ) as SnackBar);
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text(message),
+    backgroundColor: typeSnackbar.backgroundColor,
+    elevation: 10,
+    behavior: SnackBarBehavior.floating,
+    margin: EdgeInsets.all(5),
+  ));
 }
