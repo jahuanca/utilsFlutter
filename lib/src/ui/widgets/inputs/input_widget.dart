@@ -73,7 +73,7 @@ class InputWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     TextFormField(
-                      expands: true,
+                      expands: isObscure ? false : true,
                       style: primaryTextStyleBase(),
                       enabled: enabled,
                       initialValue: initialValue,
@@ -81,7 +81,7 @@ class InputWidget extends StatelessWidget {
                       keyboardType: textInputType,
                       obscureText: isObscure,
                       minLines: null,
-                      maxLines: null,
+                      maxLines: isObscure ? 1 : null,
                       decoration: InputDecoration(
                         isDense: isDense,
                         prefixIcon: icon,
