@@ -15,6 +15,8 @@ export 'src/ui/widgets/tags/tag_widget.dart';
 export 'src/ui/widgets/bottom_navigation/bottom_navigation_bar_widget.dart' ;
 export 'src/ui/widgets/bottom_navigation/bottom_navigation_item_widget.dart';
 
+export 'src/ui/widgets/dialogs/show_dialog_widget.dart';
+
 
 import 'package:global_configuration/global_configuration.dart';
 import 'package:utils/src/data/data_config.dart';

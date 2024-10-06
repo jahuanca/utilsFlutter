@@ -32,28 +32,29 @@ class ExamplePage extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: appBarWidget(text: 'Example'),
+      appBar: appBarWidget(text: 'Utils'),
       bottomNavigationBar: BottomNavigationBarWidget(
-        indexSelectedItem: 3,
-        onTapItem: print,
-        showTitles: false,
-        icons: [
-        BottomNavigationItemWidget(icon: Icons.home_outlined, title: 'Inicio'),
-        BottomNavigationItemWidget(
-            icon: Icons.people_alt_outlined, title: 'Clientes'),
-        BottomNavigationItemWidget(
-            icon: Icons.shopping_bag_outlined, title: 'Productos'),
-        BottomNavigationItemWidget(
-            icon: Icons.settings_outlined, title: 'Perfil'),
-      ]),
+          indexSelectedItem: 3,
+          onTapItem: print,
+          showTitles: false,
+          icons: [
+            BottomNavigationItemWidget(
+                icon: Icons.home_outlined, title: 'Inicio'),
+            BottomNavigationItemWidget(
+                icon: Icons.people_alt_outlined, title: 'Clientes'),
+            BottomNavigationItemWidget(
+                icon: Icons.shopping_bag_outlined, title: 'Productos'),
+            BottomNavigationItemWidget(
+                icon: Icons.settings_outlined, title: 'Perfil'),
+          ]),
       body: SingleChildScrollView(
         child: Column(
           children: [
             TagWidget(
-              title: 'Este es un tag', 
+              title: 'Este es un tag',
               icon: Icons.abc,
               padding: const EdgeInsets.only(left: 10, top: 4),
-              ),
+            ),
             ItemListImageDataWidget(
               width: size.width,
               height: size.height * 0.2,
@@ -88,6 +89,10 @@ class ExamplePage extends StatelessWidget {
               padding: const EdgeInsets.all(8),
             ),
             ButtonWidget(
+                onTap: () => 
+                showDialogWidget(
+                  message: 'Este es un mensaje 3',
+                  context: context),
                 text: 'Texto',
                 icon: Icons.abc_rounded,
                 padding: const EdgeInsets.all(8)),
@@ -130,13 +135,14 @@ class ExamplePage extends StatelessWidget {
               iconData: Icons.access_alarm,
             ),
             const ImageActionWidget(
-                padding: EdgeInsets.symmetric(vertical: 25),
-                height: 150,
-                width: 150,
-                iconData: Icons.abc_outlined,
-                borderColor: Colors.black,
-                urlImage:
-                    'https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png'),
+              padding: EdgeInsets.symmetric(vertical: 25),
+              height: 150,
+              width: 150,
+              iconData: Icons.abc_outlined,
+              borderColor: Colors.black,
+              urlImage:
+                  'https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg',
+            ),
           ],
         ),
       ),
