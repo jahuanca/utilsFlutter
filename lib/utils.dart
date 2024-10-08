@@ -7,6 +7,7 @@ export 'src/core/validators.dart';
 export 'src/core/type_snackbar.dart';
 
 export 'src/ui/widgets/inputs/input_widget.dart';
+export 'src/ui/widgets/inputs/password_input_widget.dart';
 export 'src/ui/widgets/buttons/button_widget.dart';
 export 'src/ui/widgets/buttons/icon_button_widget.dart';
 export 'src/ui/widgets/app_bar/app_bar_widget.dart';

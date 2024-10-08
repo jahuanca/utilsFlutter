@@ -4,11 +4,14 @@ import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/text_styles.dart';
 import 'package:utils/src/data/data_functions.dart';
 
-class InputWidget extends StatelessWidget {
+// ignore: must_be_immutable
+class PasswordInputWidget extends StatelessWidget {
+  
   final String hintText;
   final bool enabled;
   final int maxLength;
   final TextInputType textInputType;
+  final bool isObscure;
   final String? initialValue;
   final String? label;
   final String? error;
@@ -21,9 +24,9 @@ class InputWidget extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final InputBorder? inputBorderCurrent;
   final Icon? icon;
-  final bool isDense;
+  bool isDense;
 
-  InputWidget({
+  PasswordInputWidget({
     required this.hintText,
     this.icon,
     this.inputBorderCurrent,
@@ -31,7 +34,8 @@ class InputWidget extends StatelessWidget {
     this.onPressedIconOverlay,
     this.enabled = true,
     this.maxLength = 20,
-    this.textInputType = TextInputType.name,
+    this.textInputType = TextInputType.visiblePassword,
+    this.isObscure = false,
     this.initialValue,
     this.textEditingController,
     this.isTextArea = false,
@@ -41,7 +45,11 @@ class InputWidget extends StatelessWidget {
     this.onTap,
     this.padding = const EdgeInsets.all(0),
     this.isDense = true,
-  });
+  }){
+    if(isObscure){
+      isDense = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,16 +79,16 @@ class InputWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     TextFormField(
-                      expands: true,
                       style: primaryTextStyleBase(),
                       enabled: enabled,
                       initialValue: initialValue,
                       maxLength: maxLength,
                       keyboardType: textInputType,
-                      minLines: null,
-                      maxLines: null,
+                      obscureText: true,
+                      minLines: 1,
+                      maxLines: 1,
                       decoration: InputDecoration(
-                        isDense: isDense,
+                        isDense: false,
                         prefixIcon: icon,
                         border: error == null
                             ? inputBorderSelected

@@ -50,6 +50,12 @@ class ExamplePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            PasswordInputWidget(
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              hintText: 'Contraseña',
+              iconOverlay: Icons.remove_red_eye,
+              isObscure: true,
+            ),
             TagWidget(
               title: 'Este es un tag',
               icon: Icons.abc,
