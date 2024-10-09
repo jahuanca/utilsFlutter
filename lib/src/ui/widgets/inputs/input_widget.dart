@@ -22,6 +22,8 @@ class InputWidget extends StatelessWidget {
   final InputBorder? inputBorderCurrent;
   final Icon? icon;
   final bool isDense;
+  final int minLines;
+  final int maxLines;
 
   InputWidget({
     required this.hintText,
@@ -41,6 +43,8 @@ class InputWidget extends StatelessWidget {
     this.onTap,
     this.padding = const EdgeInsets.all(0),
     this.isDense = true,
+    this.minLines = 1,
+    this.maxLines = 1,
   });
 
   @override
@@ -48,6 +52,11 @@ class InputWidget extends StatelessWidget {
     final inputBorderSelected = inputBorderCurrent ?? inputBorder();
 
     final Size size = MediaQuery.of(context).size;
+    final double heightInput = isTextArea
+        ? size.height * dimensionInput() * 1.5
+        : size.height * dimensionInput();
+    final double heigthPadding = heightInput * 0.1;
+
     return Padding(
       padding: padding,
       child: Column(
@@ -62,63 +71,57 @@ class InputWidget extends StatelessWidget {
             ),
           GestureDetector(
             onTap: onTap,
-            child: Container(
-                height: isTextArea
-                    ? size.height * dimensionInput() * 1.5
-                    : size.height * dimensionInput(),
-                width: size.width,
-                decoration: BoxDecoration(),
-                child: Stack(
-                  children: [
-                    TextFormField(
-                      expands: true,
-                      style: primaryTextStyleBase(),
-                      enabled: enabled,
-                      initialValue: initialValue,
-                      maxLength: maxLength,
-                      keyboardType: textInputType,
-                      minLines: null,
-                      maxLines: null,
-                      decoration: InputDecoration(
-                        isDense: isDense,
-                        prefixIcon: icon,
-                        border: error == null
-                            ? inputBorderSelected
-                            : inputBorderError(),
-                        enabledBorder: error == null
-                            ? inputBorderSelected
-                            : inputBorderError(),
-                        disabledBorder: error == null
-                            ? inputBorderSelected
-                            : inputBorderError(),
-                        focusedBorder: error == null
-                            ? inputBorderSelected
-                            : inputBorderError(),
-                        filled: true,
-                        fillColor: cardColor(),
-                        contentPadding: isTextArea
-                            ? contentPaddingTextArea
-                            : contentPaddingInputs,
-                        counterText: '',
-                        counterStyle: TextStyle(fontSize: 0),
-                        hintText: hintText,
-                        hintStyle: hintStyle(),
-                      ),
-                      controller: textEditingController,
-                      onChanged: onChanged,
-                      textAlign: TextAlign.left,
-                    ),
-                    if (iconOverlay != null)
-                      Container(
-                          alignment: Alignment.centerRight,
-                          child: IconButton(
-                              onPressed: onPressedIconOverlay,
-                              icon: Icon(
-                                iconOverlay,
-                                color: infoColor(),
-                              )))
-                  ],
-                )),
+            child: Stack(
+              children: [
+                TextFormField(
+                  style: primaryTextStyleBase(),
+                  enabled: enabled,
+                  initialValue: initialValue,
+                  maxLength: maxLength,
+                  keyboardType: textInputType,
+                  minLines: minLines,
+                  maxLines: maxLines,
+                  decoration: InputDecoration(
+                    isDense: isDense,
+                    prefixIcon: icon,
+                    border: error == null
+                        ? inputBorderSelected
+                        : inputBorderError(),
+                    enabledBorder: error == null
+                        ? inputBorderSelected
+                        : inputBorderError(),
+                    disabledBorder: error == null
+                        ? inputBorderSelected
+                        : inputBorderError(),
+                    focusedBorder: error == null
+                        ? inputBorderSelected
+                        : inputBorderError(),
+                    filled: true,
+                    fillColor: cardColor(),
+                    contentPadding: isTextArea
+                        ? contentPaddingTextArea
+                        : EdgeInsets.symmetric(
+                            vertical: heigthPadding, horizontal: 25),
+                    counterText: '',
+                    counterStyle: TextStyle(fontSize: 0),
+                    hintText: hintText,
+                    hintStyle: hintStyle(),
+                  ),
+                  controller: textEditingController,
+                  onChanged: onChanged,
+                  textAlign: TextAlign.left,
+                ),
+                if (iconOverlay != null)
+                  Container(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                          onPressed: onPressedIconOverlay,
+                          icon: Icon(
+                            iconOverlay,
+                            color: infoColor(),
+                          )))
+              ],
+            ),
           ),
         ],
       ),

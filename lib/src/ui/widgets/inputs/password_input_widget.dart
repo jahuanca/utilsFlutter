@@ -24,7 +24,6 @@ class PasswordInputWidget extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final InputBorder? inputBorderCurrent;
   final Icon? icon;
-  bool isDense;
 
   PasswordInputWidget({
     required this.hintText,
@@ -44,18 +43,16 @@ class PasswordInputWidget extends StatelessWidget {
     this.error,
     this.onTap,
     this.padding = const EdgeInsets.all(0),
-    this.isDense = true,
-  }){
-    if(isObscure){
-      isDense = false;
-    }
-  }
+  });
 
   @override
   Widget build(BuildContext context) {
     final inputBorderSelected = inputBorderCurrent ?? inputBorder();
 
     final Size size = MediaQuery.of(context).size;
+    final double heightInput = isTextArea ? size.height * dimensionInput()  * 1.5 : size.height * dimensionInput();
+    final double heigthPadding = heightInput * 0.1;
+
     return Padding(
       padding: padding,
       child: Column(
@@ -70,13 +67,7 @@ class PasswordInputWidget extends StatelessWidget {
             ),
           GestureDetector(
             onTap: onTap,
-            child: Container(
-                height: isTextArea
-                    ? size.height * dimensionInput() * 1.5
-                    : size.height * dimensionInput(),
-                width: size.width,
-                decoration: BoxDecoration(),
-                child: Stack(
+            child: Stack(
                   children: [
                     TextFormField(
                       style: primaryTextStyleBase(),
@@ -106,7 +97,7 @@ class PasswordInputWidget extends StatelessWidget {
                         fillColor: cardColor(),
                         contentPadding: isTextArea
                             ? contentPaddingTextArea
-                            : contentPaddingInputs,
+                            : EdgeInsets.symmetric(vertical: heigthPadding, horizontal: 25),
                         counterText: '',
                         counterStyle: TextStyle(fontSize: 0),
                         hintText: hintText,
@@ -118,15 +109,17 @@ class PasswordInputWidget extends StatelessWidget {
                     ),
                     if (iconOverlay != null)
                       Container(
-                          alignment: Alignment.centerRight,
-                          child: IconButton(
-                              onPressed: onPressedIconOverlay,
-                              icon: Icon(
-                                iconOverlay,
-                                color: infoColor(),
-                              )))
+                        alignment: Alignment.centerRight,
+                        child: IconButton(
+                          onPressed: onPressedIconOverlay,
+                          icon: Icon(
+                            iconOverlay,
+                            color: infoColor(),
+                          )
+                        )
+                      )
                   ],
-                )),
+                )
           ),
         ],
       ),

@@ -5,6 +5,7 @@ const double dimensionInputBase = 0.07;
 
 final EdgeInsetsGeometry contentPaddingInputs =
     EdgeInsets.symmetric(vertical: 5, horizontal: 25);
+
 final EdgeInsetsGeometry contentPaddingInputsSimple =
     EdgeInsets.symmetric(vertical: 1, horizontal: 5);
 final EdgeInsetsGeometry contentPaddingTextArea =

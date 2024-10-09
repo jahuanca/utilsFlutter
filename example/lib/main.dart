@@ -4,6 +4,7 @@ import 'package:utils/utils.dart';
 void main() async {
   loadConfig(DataConfig(
     primaryColor: Colors.greenAccent,
+    dimensionInput: 0.2
   ));
   runApp(const MyApp());
 }
@@ -50,6 +51,12 @@ class ExamplePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            InputWidget(
+              icon: const Icon(Icons.abc),
+              iconOverlay: Icons.abc_outlined,
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              hintText: 'Usuario',
+            ),
             PasswordInputWidget(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               hintText: 'Contraseña',
