@@ -24,6 +24,7 @@ class InputWidget extends StatelessWidget {
   final bool isDense;
   final int minLines;
   final int maxLines;
+  final FocusNode? focusNode;
 
   InputWidget({
     required this.hintText,
@@ -45,6 +46,7 @@ class InputWidget extends StatelessWidget {
     this.isDense = true,
     this.minLines = 1,
     this.maxLines = 1,
+    this.focusNode
   });
 
   @override
@@ -74,6 +76,7 @@ class InputWidget extends StatelessWidget {
             child: Stack(
               children: [
                 TextFormField(
+                  focusNode: focusNode,
                   style: primaryTextStyleBase(),
                   enabled: enabled,
                   initialValue: initialValue,
