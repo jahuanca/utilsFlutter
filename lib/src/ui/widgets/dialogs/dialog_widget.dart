@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class DialogWidget extends StatelessWidget {
-
   final String title;
   final String message;
   final String okText;
@@ -13,7 +12,7 @@ class DialogWidget extends StatelessWidget {
     required this.message,
     required this.okText,
     required this.cancelText,
-    });
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +21,12 @@ class DialogWidget extends StatelessWidget {
       content: Text(message),
       actions: [
         TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(cancelText)),
+        TextButton(
             onPressed: () => Navigator.of(context).pop(true),
             child: Text(okText)),
-        TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: Text(cancelText))
       ],
-      
     );
   }
 }
