@@ -28,13 +28,13 @@ String? validatorText(
       case RuleValidator.isRequired:
         if (text is String && value == true) {
           if ([null, '', 'null'].contains(text)) {
-            return '$label es un valor necesario';
+            return '$label es necesario';
           }
         }
 
         if (text is num) {
           if ([null, 0].contains(text) && value == true) {
-            return '$label es un valor necesario';
+            return '$label es necesario';
           }
         }
         break;
@@ -42,25 +42,25 @@ String? validatorText(
       case RuleValidator.minLength:
         if ([null].contains(text)) break;
         if ((text as String).length < (value as int)) {
-          return 'Dimensión minima $value';
+          return 'Dimensión mínima: $value';
         }
         break;
 
       case RuleValidator.maxLength:
         if ((text as String).length > (value as int)) {
-          return 'Dimensión máxima $value';
+          return 'Dimensión máxima: $value';
         }
         break;
 
       case RuleValidator.isInt:
         if(int.tryParse(text) == null && value == true ){
-          return '$label debe ser un entero';
+          return '$label debe ser entero';
         }
         break;
 
       case RuleValidator.isDouble:
         if(double.tryParse(text) == null && value == true ){
-          return '$label debe ser un decimal';
+          return '$label debe ser decimal';
         }
         break;
 
@@ -75,6 +75,7 @@ String? validatorText(
           return '$label no debe ser mayor a $value';
         }
         break;
+        
       default:
         break;
     }
