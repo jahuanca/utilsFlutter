@@ -1,9 +1,11 @@
 enum RuleValidator {
-  required,
-  minLength,
-  maxLength,
+  isRequired,
   isInt,
   isDouble,
+  minLength,
+  maxLength,
+  minValue,
+  maxValue,
 }
 
 String? validatorText(
@@ -23,15 +25,15 @@ String? validatorText(
     dynamic value = rules.values.elementAt(i);
     switch (rule) {
 
-      case RuleValidator.required:
-        if (text is String) {
+      case RuleValidator.isRequired:
+        if (text is String && value == true) {
           if ([null, '', 'null'].contains(text)) {
             return '$label es un valor necesario';
           }
         }
 
         if (text is num) {
-          if ([null, 0].contains(text)) {
+          if ([null, 0].contains(text) && value == true) {
             return '$label es un valor necesario';
           }
         }
@@ -62,6 +64,17 @@ String? validatorText(
         }
         break;
 
+      case RuleValidator.minValue:
+        if(num.tryParse(text) != null && num.tryParse(text)! < value ){
+          return '$label no debe ser menor a $value';
+        }
+        break;
+
+      case RuleValidator.maxValue:
+        if(num.tryParse(text) != null && num.tryParse(text)! > value ){
+          return '$label no debe ser mayor a $value';
+        }
+        break;
       default:
         break;
     }
