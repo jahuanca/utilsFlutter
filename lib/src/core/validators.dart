@@ -2,6 +2,8 @@ enum RuleValidator {
   required,
   minLength,
   maxLength,
+  isInt,
+  isDouble,
 }
 
 String? validatorText(
@@ -45,6 +47,18 @@ String? validatorText(
       case RuleValidator.maxLength:
         if ((text as String).length > (value as int)) {
           return 'Dimensión máxima $value';
+        }
+        break;
+
+      case RuleValidator.isInt:
+        if(int.tryParse(text) == null && value == true ){
+          return '$label debe ser un entero';
+        }
+        break;
+
+      case RuleValidator.isDouble:
+        if(double.tryParse(text) == null && value == true ){
+          return '$label debe ser un decimal';
         }
         break;
 
