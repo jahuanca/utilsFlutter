@@ -52,6 +52,7 @@ class ExamplePage extends StatelessWidget {
         child: Column(
           children: [
             InputWidget(
+              error: 'Es requerido',
               icon: const Icon(Icons.abc),
               iconOverlay: Icons.abc_outlined,
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),

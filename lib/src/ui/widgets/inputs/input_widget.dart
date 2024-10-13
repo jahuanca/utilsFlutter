@@ -25,29 +25,31 @@ class InputWidget extends StatelessWidget {
   final int minLines;
   final int maxLines;
   final FocusNode? focusNode;
+  final bool showError;
 
-  InputWidget({
-    required this.hintText,
-    this.icon,
-    this.inputBorderCurrent,
-    this.iconOverlay,
-    this.onPressedIconOverlay,
-    this.enabled = true,
-    this.maxLength = 20,
-    this.textInputType = TextInputType.name,
-    this.initialValue,
-    this.textEditingController,
-    this.isTextArea = false,
-    this.label,
-    this.onChanged,
-    this.error,
-    this.onTap,
-    this.padding = const EdgeInsets.all(0),
-    this.isDense = true,
-    this.minLines = 1,
-    this.maxLines = 1,
-    this.focusNode
-  });
+  InputWidget(
+      {required this.hintText,
+      this.icon,
+      this.inputBorderCurrent,
+      this.iconOverlay,
+      this.onPressedIconOverlay,
+      this.enabled = true,
+      this.maxLength = 20,
+      this.textInputType = TextInputType.name,
+      this.initialValue,
+      this.textEditingController,
+      this.isTextArea = false,
+      this.label,
+      this.onChanged,
+      this.error,
+      this.onTap,
+      this.padding = const EdgeInsets.all(0),
+      this.isDense = true,
+      this.minLines = 1,
+      this.maxLines = 1,
+      this.focusNode,
+      this.showError = true,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -124,6 +126,14 @@ class InputWidget extends StatelessWidget {
                             color: infoColor(),
                           )))
               ],
+            ),
+          ),
+          if(showError)
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              error ?? '',
+              style: TextStyle(color: dangerColor()),
             ),
           ),
         ],
