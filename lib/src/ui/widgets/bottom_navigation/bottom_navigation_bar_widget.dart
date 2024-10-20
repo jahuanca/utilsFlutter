@@ -27,7 +27,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
   }) {
     backgroundColor ??= cardColor();
     colorSelected ??= primaryColor();
-    colorUnselected ??= Colors.black12;
+    colorUnselected ??= Colors.black26;
   }
 
   @override
