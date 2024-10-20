@@ -52,7 +52,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                   color: isSelected ? colorSelected : colorUnselected,
                   size: isSelected ? sizeSelected : sizeUnselected,
                 ),
-                if (showTitles) Text(e.title)
+                if (showTitles) Center(child: Text(e.title))
               ],
             ),
           ),
