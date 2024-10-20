@@ -35,7 +35,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
     final List<Widget> widgets = [];
 
     final TextStyle textStyleSelected = TextStyle(
-      color: colorSelected, fontSize: 14
+      color: colorSelected, fontSize: 12
     );
 
     final TextStyle textStyleUnSelected = TextStyle(
