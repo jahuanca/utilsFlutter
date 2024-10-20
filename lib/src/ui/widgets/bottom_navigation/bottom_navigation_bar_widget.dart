@@ -34,9 +34,19 @@ class BottomNavigationBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> widgets = [];
 
+    final TextStyle textStyleSelected = TextStyle(
+      color: colorSelected, fontSize: 14
+    );
+
+    final TextStyle textStyleUnSelected = TextStyle(
+      color: colorUnselected, fontSize: 12
+    );
+
+
     for (int i = 0; i < icons.length; i++) {
       final isSelected = i == indexSelectedItem;
       final BottomNavigationItemWidget e = icons[i];
+
       widgets.add(
         Expanded(
             child: GestureDetector(
@@ -52,7 +62,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
                   color: isSelected ? colorSelected : colorUnselected,
                   size: isSelected ? sizeSelected : sizeUnselected,
                 ),
-                if (showTitles) Center(child: Text(e.title))
+                if (showTitles) Center(child: Text(e.title,
+                  style: isSelected ? textStyleSelected : textStyleUnSelected
+                ))
               ],
             ),
           ),
