@@ -24,7 +24,7 @@ class DataConfig {
   TextStyle? hintStyle;
   InputBorder? inputBorder;
   bool showLog;
-  String urlServer;
+  String? urlServer;
   String basicAuthUsername;
   String basicAuthPassword;
 
@@ -42,7 +42,7 @@ class DataConfig {
     this.borderRadius = borderRadiusBase,
     this.dimensionInput = dimensionInputBase,
     this.showLog = true,
-    this.urlServer = emptyString,
+    this.urlServer,
     this.basicAuthUsername = emptyString,
     this.basicAuthPassword = emptyString,
 
@@ -54,7 +54,6 @@ class DataConfig {
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
     inputBorder ??= inputBorderBase();
     hintStyle ??= hintStyleBase();
-
   }
 
   factory DataConfig.fromJson(Map<String, dynamic> json) => DataConfig(
