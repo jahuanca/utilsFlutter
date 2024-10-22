@@ -19,6 +19,6 @@ const String hintStyleString = 'hintStyle';
 const String inputBorderString = 'inputBorder';
 
 const String showLogString = 'showLog';
-const String urlServerString = 'urlServerString';
+const String urlServerString = 'urlServer';
 const String basicAuthUsernameString = 'basicAuthUsername';
 const String basicAuthPasswordString = 'basicAuthPassword';
