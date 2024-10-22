@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:utils/src/core/colors.dart';
 import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/input_borders.dart';
+import 'package:utils/src/core/strings.dart';
 import 'package:utils/src/core/text_styles.dart';
 
 class DataConfig {
@@ -22,7 +23,10 @@ class DataConfig {
   TextStyle? titleTextAppBarStyle;
   TextStyle? hintStyle;
   InputBorder? inputBorder;
-  
+  bool showLog;
+  String urlServer;
+  String basicAuthUsername;
+  String basicAuthPassword;
 
   DataConfig({
     this.primaryColor =  primaryColorBase,
@@ -37,6 +41,10 @@ class DataConfig {
 
     this.borderRadius = borderRadiusBase,
     this.dimensionInput = dimensionInputBase,
+    this.showLog = true,
+    this.urlServer = emptyString,
+    this.basicAuthUsername = emptyString,
+    this.basicAuthPassword = emptyString,
 
     this.titleTextAppBarStyle,
     this.inputBorder,
@@ -65,6 +73,10 @@ class DataConfig {
         titleTextAppBarStyle: json["titleTextAppBarStyle"],
         hintStyle: json["hintStyle"],
         inputBorder: json["inputBorder"],
+        showLog: json["showLog"],
+        urlServer: json["urlServer"],
+        basicAuthUsername: json["basicAuthUsername"],
+        basicAuthPassword: json["basicAuthPassword"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -84,5 +96,9 @@ class DataConfig {
         "titleTextAppBarStyle": titleTextAppBarStyle,
         "hintStyle": hintStyle,
         "inputBorder": inputBorder,
+        "showLog": showLog,
+        "urlServer": urlServer,
+        "basicAuthUsername": basicAuthUsername,
+        "basicAuthPassword": basicAuthPassword,
       };
 }

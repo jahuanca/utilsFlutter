@@ -30,3 +30,10 @@ TextStyle hintStyle() => GlobalConfiguration().get(hintStyleString) ?? hintStyle
 
 //inputBorders
 InputBorder inputBorder() => GlobalConfiguration().get(inputBorderString) ?? inputBorderBase();
+
+//bools
+bool showLog()=> GlobalConfiguration().get(showLogString) ?? true;
+
+String urlServer() => GlobalConfiguration().get(urlServerString) ?? emptyString;
+String basicAuthUsername() => GlobalConfiguration().get(basicAuthUsernameString) ?? emptyString;
+String basicAuthPassword() => GlobalConfiguration().get(basicAuthPasswordString) ?? emptyString;
