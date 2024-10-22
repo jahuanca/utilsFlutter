@@ -9,6 +9,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   global_configuration: ^2.0.0
+  shared_preferences: ^2.3.2
   flutter:
     sdk: flutter
   # path: ^1.8.0
