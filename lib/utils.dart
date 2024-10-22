@@ -22,7 +22,9 @@ export 'src/ui/widgets/dialogs/show_dialog_widget.dart';
 export 'src/ui/widgets/snackbar/show_snackbar_widget.dart';
 //sharedPreferences
 export 'src/data/user_preferences.dart';
+//http
 export 'src/data/app_http_manager.dart';
+export 'src/data/app_response_http.dart';
 
 
 import 'package:global_configuration/global_configuration.dart';
