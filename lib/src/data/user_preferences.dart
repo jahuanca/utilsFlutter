@@ -14,11 +14,14 @@ class UserPreferences {
     _prefs = await SharedPreferences.getInstance();
   }
 
+  int? getInt(String key) => _prefs?.getInt(key);
+  Future<void> setInt(String key, int value) async => await _prefs?.setInt(key, value);
+
   bool getBool(String key) => _prefs?.getBool(key) ?? false;
-  Future<void> setBool(String key, value) async => await _prefs?.setBool(key, value);
+  Future<void> setBool(String key, bool value) async => await _prefs?.setBool(key, value);
 
   String? getString(String key) => _prefs?.getString(key);
-  Future<void> setString(String key, value) async => await _prefs?.setString(key, value);
+  Future<void> setString(String key, String value) async => await _prefs?.setString(key, value);
 
   String? getObjectString(String key) => _prefs?.getString(key);
 
