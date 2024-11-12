@@ -8,6 +8,7 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
+  collection: ^1.18.0
   global_configuration: ^2.0.0
   shared_preferences: ^2.3.2
   http: ^1.2.2
