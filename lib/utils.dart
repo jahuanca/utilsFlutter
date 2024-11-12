@@ -5,6 +5,7 @@ export 'src/core/button_type.dart';
 export 'src/core/storage_type.dart';
 export 'src/core/validators.dart';
 export 'src/core/type_snackbar.dart';
+export 'src/core/ids_get.dart';
 
 export 'src/ui/widgets/inputs/input_widget.dart';
 export 'src/ui/widgets/inputs/password_input_widget.dart';
