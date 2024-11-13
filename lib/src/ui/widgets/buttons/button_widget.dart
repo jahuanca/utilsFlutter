@@ -13,6 +13,7 @@ class ButtonWidget extends StatelessWidget {
   final ButtonStyle buttonStyle;
   final double elevation;
   final Color? shadowColor;
+  final double fontSize;
 
   ButtonWidget({
     required this.text,
@@ -23,6 +24,7 @@ class ButtonWidget extends StatelessWidget {
     this.buttonType = ButtonType.base,
     this.buttonStyle = ButtonStyle.base,
     this.elevation = 0,
+    this.fontSize = 20,
   });
 
   @override
@@ -60,6 +62,7 @@ class ButtonWidget extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(text,
                           style: botonStyle(
+                              fontSize: fontSize,
                               textColor: selectedTypeButton.textAndIconColor)),
                     ),
                     flex: 2),
