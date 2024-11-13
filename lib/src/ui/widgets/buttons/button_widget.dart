@@ -14,6 +14,7 @@ class ButtonWidget extends StatelessWidget {
   final double elevation;
   final Color? shadowColor;
   final double fontSize;
+  final double? height;
 
   ButtonWidget({
     required this.text,
@@ -25,6 +26,7 @@ class ButtonWidget extends StatelessWidget {
     this.buttonStyle = ButtonStyle.base,
     this.elevation = 0,
     this.fontSize = 20,
+    this.height,
   });
 
   @override
@@ -42,7 +44,7 @@ class ButtonWidget extends StatelessWidget {
         child: GestureDetector(
           onTap: onTap,
           child: Container(
-            height: size.height * dimensionInput(),
+            height: height ?? (size.height * dimensionInput()),
             width: size.width,
             decoration: selectedTypeButton.decoration,
             child: Row(
