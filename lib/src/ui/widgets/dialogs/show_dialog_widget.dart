@@ -1,23 +1,27 @@
-
 import 'package:flutter/material.dart';
-import 'package:utils/src/ui/widgets/dialogs/dialog_widget.dart';
+import 'package:utils/src/core/extensions.dart';
 
-Future<dynamic> showDialogWidget({
+Future<bool?> showDialogWidget({
   required BuildContext context,
   required String message,
-  String? title,
-  String? okText,
-  String? cancelText,
+  String? title = 'Alerta',
+  String? okText = 'Aceptar',
+  String? cancelText = 'Cancelar',
   bool isDismissible = false,
-}){
-  return showDialog(
-    context: context, 
-    barrierDismissible: isDismissible,
-    builder: (context) => DialogWidget(
-      title: title ?? 'Alerta',
-      message: message,
-      okText: okText ?? 'Aceptar',
-      cancelText: cancelText ?? 'Cancelar',
-      
-    ),);
+}) {
+  return showDialog<bool>(
+      context: context,
+      barrierDismissible: isDismissible,
+      builder: (context) => AlertDialog(
+            title: Text(title.orEmpty()),
+            content: Text(message),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: Text(cancelText.orEmpty())),
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: Text(okText.orEmpty())),
+            ],
+          ));
 }
