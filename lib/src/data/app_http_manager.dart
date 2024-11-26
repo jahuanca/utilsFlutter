@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:http/http.dart' as https;
 import 'package:utils/src/core/constants.dart';
 import 'package:utils/src/data/app_exceptions.dart';
-import 'package:utils/src/data/app_response_http.dart';
 import 'package:utils/src/domain/http_manager.dart';
 import 'package:utils/utils.dart';
 
