@@ -16,6 +16,6 @@ class IconWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Icon(iconData, color: color,)
-      );
+    );
   }
 }

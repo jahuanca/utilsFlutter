@@ -27,6 +27,7 @@ class InputWidget extends StatelessWidget {
   final FocusNode? focusNode;
   final bool showError;
   final Color? backgroundColor;
+  final double? height;
 
   InputWidget(
       {required this.hintText,
@@ -51,6 +52,7 @@ class InputWidget extends StatelessWidget {
       this.focusNode,
       this.showError = true,
       this.backgroundColor,
+      this.height,
       });
 
   @override
@@ -61,7 +63,7 @@ class InputWidget extends StatelessWidget {
     final double heightInput = isTextArea
         ? size.height * dimensionInput() * 1.5
         : size.height * dimensionInput();
-    final double heigthPadding = heightInput * 0.1;
+    final double heightPadding = height ?? (heightInput * 0.1);
 
     return Padding(
       padding: padding,
@@ -108,7 +110,7 @@ class InputWidget extends StatelessWidget {
                     contentPadding: isTextArea
                         ? contentPaddingTextArea
                         : EdgeInsets.symmetric(
-                            vertical: heigthPadding, horizontal: 25),
+                            vertical: heightPadding, horizontal: 25),
                     counterText: '',
                     counterStyle: TextStyle(fontSize: 0),
                     hintText: hintText,
