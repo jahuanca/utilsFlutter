@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/text_styles.dart';
@@ -27,7 +28,7 @@ class InputWidget extends StatelessWidget {
   final FocusNode? focusNode;
   final bool showError;
   final Color? backgroundColor;
-  final double? height;
+  final MaxLengthEnforcement? maxLengthEnforcement;
 
   InputWidget(
       {required this.hintText,
@@ -52,7 +53,7 @@ class InputWidget extends StatelessWidget {
       this.focusNode,
       this.showError = true,
       this.backgroundColor,
-      this.height,
+      this.maxLengthEnforcement,
       });
 
   @override
@@ -63,7 +64,7 @@ class InputWidget extends StatelessWidget {
     final double heightInput = isTextArea
         ? size.height * dimensionInput() * 1.5
         : size.height * dimensionInput();
-    final double heightPadding = height ?? (heightInput * 0.1);
+    final double heigthPadding = heightInput * 0.1;
 
     return Padding(
       padding: padding,
@@ -90,6 +91,7 @@ class InputWidget extends StatelessWidget {
                   keyboardType: textInputType,
                   minLines: minLines,
                   maxLines: maxLines,
+                  maxLengthEnforcement: maxLengthEnforcement,
                   decoration: InputDecoration(
                     isDense: isDense,
                     prefixIcon: icon,
@@ -110,7 +112,7 @@ class InputWidget extends StatelessWidget {
                     contentPadding: isTextArea
                         ? contentPaddingTextArea
                         : EdgeInsets.symmetric(
-                            vertical: heightPadding, horizontal: 25),
+                            vertical: heigthPadding, horizontal: 25),
                     counterText: '',
                     counterStyle: TextStyle(fontSize: 0),
                     hintText: hintText,
