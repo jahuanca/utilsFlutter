@@ -26,6 +26,7 @@ class InputWidget extends StatelessWidget {
   final int maxLines;
   final FocusNode? focusNode;
   final bool showError;
+  final Color? backgroundColor;
 
   InputWidget(
       {required this.hintText,
@@ -49,6 +50,7 @@ class InputWidget extends StatelessWidget {
       this.maxLines = 1,
       this.focusNode,
       this.showError = true,
+      this.backgroundColor,
       });
 
   @override
@@ -102,7 +104,7 @@ class InputWidget extends StatelessWidget {
                         ? inputBorderSelected
                         : inputBorderError(),
                     filled: true,
-                    fillColor: cardColor(),
+                    fillColor: backgroundColor ?? cardColor(),
                     contentPadding: isTextArea
                         ? contentPaddingTextArea
                         : EdgeInsets.symmetric(
