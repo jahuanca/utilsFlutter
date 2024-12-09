@@ -51,7 +51,7 @@ class InputWidget extends StatelessWidget {
       this.minLines = 1,
       this.maxLines = 1,
       this.focusNode,
-      this.showError = true,
+      this.showError = false,
       this.backgroundColor,
       this.maxLengthEnforcement,
       });
