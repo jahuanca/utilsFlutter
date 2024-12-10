@@ -24,6 +24,7 @@ export 'src/ui/widgets/bottom_navigation/bottom_navigation_bar_widget.dart' ;
 export 'src/ui/widgets/bottom_navigation/bottom_navigation_item_widget.dart';
 
 export 'src/ui/widgets/dialogs/show_dialog_widget.dart';
+export 'src/ui/widgets/dialogs/show_alert_widget.dart';
 export 'src/ui/widgets/snackbar/show_snackbar_widget.dart';
 //sharedPreferences
 export 'src/data/user_preferences.dart';
