@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:utils/src/core/constants.dart';
 import 'package:utils/src/core/dimens.dart';
+import 'package:utils/src/core/extensions.dart';
 import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/text_styles.dart';
 import 'package:utils/src/data/data_functions.dart';
@@ -28,7 +30,6 @@ class InputWidget extends StatelessWidget {
   final FocusNode? focusNode;
   final bool showError;
   final Color? backgroundColor;
-  final MaxLengthEnforcement? maxLengthEnforcement;
 
   InputWidget(
       {required this.hintText,
@@ -53,7 +54,6 @@ class InputWidget extends StatelessWidget {
       this.focusNode,
       this.showError = false,
       this.backgroundColor,
-      this.maxLengthEnforcement,
       });
 
   @override
@@ -75,7 +75,7 @@ class InputWidget extends StatelessWidget {
               alignment: Alignment.centerLeft,
               height: size.height * dimensionInput(),
               child: Text(
-                label ?? '',
+                label.orEmpty(),
               ),
             ),
           GestureDetector(
@@ -91,7 +91,6 @@ class InputWidget extends StatelessWidget {
                   keyboardType: textInputType,
                   minLines: minLines,
                   maxLines: maxLines,
-                  maxLengthEnforcement: maxLengthEnforcement,
                   decoration: InputDecoration(
                     isDense: isDense,
                     prefixIcon: icon,
@@ -113,7 +112,7 @@ class InputWidget extends StatelessWidget {
                         ? contentPaddingTextArea
                         : EdgeInsets.symmetric(
                             vertical: heigthPadding, horizontal: 25),
-                    counterText: '',
+                    counterText: emptyString,
                     counterStyle: TextStyle(fontSize: 0),
                     hintText: hintText,
                     hintStyle: hintStyle(),
@@ -138,7 +137,7 @@ class InputWidget extends StatelessWidget {
           Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              error ?? '',
+              error.orEmpty(),
               style: TextStyle(color: dangerColor()),
             ),
           ),
