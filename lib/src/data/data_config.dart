@@ -50,9 +50,8 @@ class DataConfig {
     this.inputBorder,
     this.hintStyle,
   }){
-
+    
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
-    inputBorder ??= inputBorderBase();
     hintStyle ??= hintStyleBase();
   }
 
