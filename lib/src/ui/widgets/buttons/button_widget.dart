@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart' hide ButtonStyle;
-import 'package:utils/src/core/button_type.dart';
 import 'package:utils/src/core/text_styles.dart';
-import 'package:utils/src/data/data_functions.dart';
 import 'package:utils/src/ui/widgets/buttons/button_type_data.dart';
+import 'package:utils/utils.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String text;
@@ -20,10 +19,10 @@ class ButtonWidget extends StatelessWidget {
     this.icon,
     this.onTap,
     this.shadowColor,
-    this.padding = const EdgeInsets.all(0),
+    this.padding = noPadding,
     this.buttonType = ButtonType.base,
     this.buttonStyle = ButtonStyle.base,
-    this.elevation = 0,
+    this.elevation = defaultDouble,
     this.fontSize = 20,
   });
 

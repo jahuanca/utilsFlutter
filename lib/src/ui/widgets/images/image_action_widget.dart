@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utils/src/data/data_functions.dart';
+import 'package:utils/utils.dart';
 
 class ImageActionWidget extends StatelessWidget {
   final double height;
@@ -17,7 +17,7 @@ class ImageActionWidget extends StatelessWidget {
     super.key,
     required this.height,
     required this.width,
-    this.padding = const EdgeInsets.all(0),
+    this.padding = noPadding,
     this.shape = BoxShape.circle,
     this.urlImage,
     this.iconData,

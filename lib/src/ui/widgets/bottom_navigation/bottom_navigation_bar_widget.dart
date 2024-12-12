@@ -43,7 +43,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
     );
 
 
-    for (int i = 0; i < icons.length; i++) {
+    for (int i = defaultInt; i < icons.length; i++) {
       final isSelected = i == indexSelectedItem;
       final BottomNavigationItemWidget e = icons[i];
 

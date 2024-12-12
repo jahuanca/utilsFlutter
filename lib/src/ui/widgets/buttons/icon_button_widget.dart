@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utils/src/data/data_functions.dart';
+import 'package:utils/utils.dart';
 
 class IconButtonWidget extends StatelessWidget {
   final IconData iconData;
@@ -21,7 +21,7 @@ class IconButtonWidget extends StatelessWidget {
     this.iconColor,
     this.borderColor,
     this.onPressed,
-    this.padding = const EdgeInsets.all(0),
+    this.padding = noPadding,
     this.borderRadius,
     this.shape = BoxShape.circle,
   });

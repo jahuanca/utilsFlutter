@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/dimens.dart';
-import 'package:utils/src/core/extensions.dart';
 import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/text_styles.dart';
-import 'package:utils/src/data/data_functions.dart';
+import 'package:utils/utils.dart';
+
+const int _minLinesDefault = 1; 
+const int _maxLinesDefault = 1; 
 
 class InputWidget extends StatelessWidget {
   final String hintText;
@@ -45,10 +47,10 @@ class InputWidget extends StatelessWidget {
       this.onChanged,
       this.error,
       this.onTap,
-      this.padding = const EdgeInsets.all(0),
+      this.padding = noPadding,
       this.isDense = true,
-      this.minLines = 1,
-      this.maxLines = 1,
+      this.minLines = _minLinesDefault,
+      this.maxLines = _maxLinesDefault,
       this.focusNode,
       this.showError = false,
       this.backgroundColor,
@@ -111,7 +113,7 @@ class InputWidget extends StatelessWidget {
                         : EdgeInsets.symmetric(
                             vertical: heigthPadding, horizontal: 25),
                     counterText: emptyString,
-                    counterStyle: TextStyle(fontSize: 0),
+                    counterStyle: TextStyle(fontSize: defaultDouble),
                     hintText: hintText,
                     hintStyle: hintStyle(),
                   ),

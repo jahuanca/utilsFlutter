@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/text_styles.dart';
-import 'package:utils/src/data/data_functions.dart';
+import 'package:utils/utils.dart';
 
-// ignore: must_be_immutable
+const _defaultMaxLength = 20;
 class PasswordInputWidget extends StatelessWidget {
   
   final String hintText;
@@ -32,7 +32,7 @@ class PasswordInputWidget extends StatelessWidget {
     this.iconOverlay,
     this.onPressedIconOverlay,
     this.enabled = true,
-    this.maxLength = 20,
+    this.maxLength = _defaultMaxLength,
     this.textInputType = TextInputType.visiblePassword,
     this.isObscure = false,
     this.initialValue,
@@ -42,7 +42,7 @@ class PasswordInputWidget extends StatelessWidget {
     this.onChanged,
     this.error,
     this.onTap,
-    this.padding = const EdgeInsets.all(0),
+    this.padding = noPadding,
   });
 
   @override
@@ -62,7 +62,7 @@ class PasswordInputWidget extends StatelessWidget {
               alignment: Alignment.centerLeft,
               height: size.height * dimensionInput(),
               child: Text(
-                label ?? '',
+                label.orEmpty(),
               ),
             ),
           GestureDetector(
@@ -98,8 +98,8 @@ class PasswordInputWidget extends StatelessWidget {
                         contentPadding: isTextArea
                             ? contentPaddingTextArea
                             : EdgeInsets.symmetric(vertical: heigthPadding, horizontal: 25),
-                        counterText: '',
-                        counterStyle: TextStyle(fontSize: 0),
+                        counterText: emptyString,
+                        counterStyle: TextStyle(fontSize: defaultDouble),
                         hintText: hintText,
                         hintStyle: hintStyle(),
                       ),

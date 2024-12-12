@@ -4,7 +4,7 @@ import 'package:utils/src/core/storage_type.dart';
 import 'package:utils/src/data/data_functions.dart';
 import 'package:utils/src/ui/utils/paddings.dart';
 
-const EdgeInsets defaultPaddingContent = EdgeInsets.all(20);
+const EdgeInsets _defaultPaddingContent = EdgeInsets.all(20);
 
 class ItemListImageDataWidget extends StatelessWidget {
   final EdgeInsetsGeometry paddingImage;
@@ -26,7 +26,7 @@ class ItemListImageDataWidget extends StatelessWidget {
     this.decorationAll,
     this.paddingAll,
     this.paddingImage = defaultPadding,
-    this.paddingContent = defaultPaddingContent,
+    this.paddingContent = _defaultPaddingContent,
     this.shape = BoxShape.circle,
     this.fitImage = BoxFit.contain,
     required this.width,

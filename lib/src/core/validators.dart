@@ -79,7 +79,6 @@ String? validatorText(
       default:
         break;
     }
-    if (error != null) return error;
   }
   return error;
 }
