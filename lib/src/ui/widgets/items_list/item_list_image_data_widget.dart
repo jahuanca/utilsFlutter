@@ -21,6 +21,7 @@ class ItemListImageDataWidget extends StatelessWidget {
   final EdgeInsetsGeometry? paddingAll;
   final Decoration? decorationAll;
   final double cardElevation;
+  final void Function()? onTap;
 
   const ItemListImageDataWidget({
     this.decorationAll,
@@ -37,6 +38,7 @@ class ItemListImageDataWidget extends StatelessWidget {
     this.subtitle,
     this.detail,
     this.cardElevation = defaultDouble,
+    this.onTap,
   });
 
   @override
@@ -54,39 +56,42 @@ class ItemListImageDataWidget extends StatelessWidget {
       child: Material(
         elevation: cardElevation,
         borderRadius: cardElevation != defaultDouble ? BorderRadius.circular(borderRadius()) : null,
-        child: Container(
-          decoration: decorationAll,
-          width: width,
-          height: height,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: paddingImage,
-                  child: FittedBox(
-                    fit: fitImage,
-                    child: isCircle
-                        ? CircleAvatar(backgroundImage: imageProvider)
-                        : Image(image: imageProvider),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            decoration: decorationAll,
+            width: width,
+            height: height,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: paddingImage,
+                    child: FittedBox(
+                      fit: fitImage,
+                      child: isCircle
+                          ? CircleAvatar(backgroundImage: imageProvider)
+                          : Image(image: imageProvider),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                  flex: 3,
-                  child: Container(
-                    padding: paddingContent,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(title),
-                        if (subtitle != null) Text(subtitle.orEmpty()),
-                        if (detail != null) Text(detail.orEmpty())
-                      ],
-                    ),
-                  )),
-            ],
+                Expanded(
+                    flex: 3,
+                    child: Container(
+                      padding: paddingContent,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(title),
+                          if (subtitle != null) Text(subtitle.orEmpty()),
+                          if (detail != null) Text(detail.orEmpty())
+                        ],
+                      ),
+                    )),
+              ],
+            ),
           ),
         ),
       ),
