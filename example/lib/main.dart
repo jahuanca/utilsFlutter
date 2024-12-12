@@ -4,7 +4,6 @@ import 'package:utils/utils.dart';
 void main() async {
   loadConfig(DataConfig(
     primaryColor: Colors.greenAccent,
-    dimensionInput: 0.2
   ));
   runApp(const MyApp());
 }
@@ -55,9 +54,13 @@ class ExamplePage extends StatelessWidget {
               error: 'Es requerido',
               icon: const Icon(Icons.abc),
               iconOverlay: Icons.abc_outlined,
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               hintText: 'Usuario',
             ),
+            ButtonWidget(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                text: 'Ingresar'),
             PasswordInputWidget(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               hintText: 'Contraseña',
@@ -103,10 +106,8 @@ class ExamplePage extends StatelessWidget {
               padding: const EdgeInsets.all(8),
             ),
             ButtonWidget(
-                onTap: () => 
-                showDialogWidget(
-                  message: 'Este es un mensaje 3',
-                  context: context),
+                onTap: () => showDialogWidget(
+                    message: 'Este es un mensaje 3', context: context),
                 text: 'Texto',
                 icon: Icons.abc_rounded,
                 padding: const EdgeInsets.all(8)),

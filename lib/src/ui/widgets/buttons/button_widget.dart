@@ -42,7 +42,7 @@ class ButtonWidget extends StatelessWidget {
         child: GestureDetector(
           onTap: onTap,
           child: Container(
-            height: size.height * dimensionInput(),
+            height: size.height * dimensionButton(),
             width: size.width,
             decoration: selectedTypeButton.decoration,
             child: Row(

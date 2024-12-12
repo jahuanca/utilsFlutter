@@ -23,8 +23,9 @@ Color backgroundPageColor() => GlobalConfiguration().get(backgroundPageColorStri
 //dimens
 double borderRadius() => GlobalConfiguration().get(borderRadiusString) ?? borderRadiusBase;
 double dimensionInput() => GlobalConfiguration().get(dimensionInputString) ?? dimensionInputBase;
+double dimensionButton() => GlobalConfiguration().get(dimensionButtonString) ?? dimensionButtonBase;
 
-//styles
+//styl0es
 TextStyle titleTextAppBarStyle() => GlobalConfiguration().get(titleTextAppBarStyleString) ?? TextStyle();
 TextStyle hintStyle() => GlobalConfiguration().get(hintStyleString) ?? hintStyleBase();
 

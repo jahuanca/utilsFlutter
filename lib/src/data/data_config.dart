@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/colors.dart';
 import 'package:utils/src/core/dimens.dart';
-import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/strings.dart';
 import 'package:utils/src/core/text_styles.dart';
 
@@ -19,6 +18,7 @@ class DataConfig {
 
   double borderRadius;
   double dimensionInput;
+  double dimensionButton;
 
   TextStyle? titleTextAppBarStyle;
   TextStyle? hintStyle;
@@ -41,6 +41,7 @@ class DataConfig {
 
     this.borderRadius = borderRadiusBase,
     this.dimensionInput = dimensionInputBase,
+    this.dimensionButton = dimensionButtonBase,
     this.showLog = true,
     this.urlServer,
     this.basicAuthUsername = emptyString,
@@ -67,6 +68,7 @@ class DataConfig {
 
         borderRadius: json["borderRadius"],
         dimensionInput: json["dimensionInput"],
+        dimensionButton: json["dimensionButton"],
 
         titleTextAppBarStyle: json["titleTextAppBarStyle"],
         hintStyle: json["hintStyle"],
@@ -89,6 +91,7 @@ class DataConfig {
         "backgroundPageColor": backgroundPageColor,
 
         "dimensionInput": dimensionInput,
+        "dimensionButton": dimensionButton,
         "borderRadius": borderRadius,
 
         "titleTextAppBarStyle": titleTextAppBarStyle,

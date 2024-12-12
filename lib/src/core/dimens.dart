@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 const double borderRadiusBase = 8;
-const double dimensionInputBase = 0.07;
+const double dimensionInputBase = 0.1;
+const double dimensionButtonBase = 0.07;
 
 final EdgeInsetsGeometry contentPaddingInputs =
     EdgeInsets.symmetric(vertical: 5, horizontal: 25);

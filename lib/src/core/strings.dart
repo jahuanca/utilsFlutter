@@ -13,6 +13,7 @@ const String backgroundPageColorString = 'backgroundPageColor';
 
 const String borderRadiusString = 'borderRadius';
 const String dimensionInputString = 'dimensionInput';
+const String dimensionButtonString = 'dimensionButton';
 
 const String titleTextAppBarStyleString = 'titleTextAppBarStyle';
 const String hintStyleString = 'hintStyle';
