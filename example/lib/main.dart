@@ -80,6 +80,12 @@ class ExamplePage extends StatelessWidget {
               title: 'Jose Antonio Huanca Ancajima',
               subtitle: 'Enace IV Etapa Mz H2 Lt 11',
               detail: '989743471',
+              cardElevation: 14,
+              paddingAll:
+                  const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              decorationAll: BoxDecoration(
+                  border: Border.all(color: primaryColor()),
+                  borderRadius: BorderRadius.circular(borderRadius())),
               //shape: BoxShape.rectangle,
               //path: 'https://imgs.search.brave.com/TOSM-yLTsegMoH6QyZRJre73TnPam6v5YAUht-y_37Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni84MzIzLzgzMjMz/MTcucG5nP3NlbXQ9/YWlzX2h5YnJpZA',
             ),

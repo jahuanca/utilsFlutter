@@ -13,3 +13,9 @@ extension EmptyList on List<dynamic>? {
 extension NullBool on bool?{
   bool orFalse() => this ?? false;
 }
+
+const String emptyString = '';
+const int notFoundPosition = -1;
+const int firstElementPosition = 0;
+const int defaultInt = 0;
+const double defaultDouble = 0.0;

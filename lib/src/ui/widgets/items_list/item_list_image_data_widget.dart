@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:utils/src/core/extensions.dart';
 import 'package:utils/src/core/storage_type.dart';
+import 'package:utils/src/data/data_functions.dart';
+import 'package:utils/src/ui/utils/paddings.dart';
+
+const EdgeInsets defaultPaddingContent = EdgeInsets.all(20);
 
 class ItemListImageDataWidget extends StatelessWidget {
   final EdgeInsetsGeometry paddingImage;
@@ -20,8 +25,8 @@ class ItemListImageDataWidget extends StatelessWidget {
   const ItemListImageDataWidget({
     this.decorationAll,
     this.paddingAll,
-    this.paddingImage = const EdgeInsets.all(8.0),
-    this.paddingContent = const EdgeInsets.all(20),
+    this.paddingImage = defaultPadding,
+    this.paddingContent = defaultPaddingContent,
     this.shape = BoxShape.circle,
     this.fitImage = BoxFit.contain,
     required this.width,
@@ -31,7 +36,7 @@ class ItemListImageDataWidget extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.detail,
-    this.cardElevation = 0.0,
+    this.cardElevation = defaultDouble,
   });
 
   @override
@@ -44,10 +49,11 @@ class ItemListImageDataWidget extends StatelessWidget {
           )
         : AssetImage(path) as ImageProvider;
 
-    return Material(
-      elevation: cardElevation,
-      child: Container(
-        padding: paddingAll,
+    return Container(
+      padding: paddingAll,
+      child: Material(
+        elevation: cardElevation,
+        borderRadius: cardElevation != defaultDouble ? BorderRadius.circular(borderRadius()) : null,
         child: Container(
           decoration: decorationAll,
           width: width,
@@ -61,8 +67,7 @@ class ItemListImageDataWidget extends StatelessWidget {
                   child: FittedBox(
                     fit: fitImage,
                     child: isCircle
-                        ? CircleAvatar(
-                            backgroundImage: imageProvider)
+                        ? CircleAvatar(backgroundImage: imageProvider)
                         : Image(image: imageProvider),
                   ),
                 ),
@@ -76,10 +81,8 @@ class ItemListImageDataWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(title),
-                        if(subtitle != null)
-                        Text(subtitle ?? ''),
-                        if(detail != null)
-                        Text(detail ?? '')
+                        if (subtitle != null) Text(subtitle.orEmpty()),
+                        if (detail != null) Text(detail.orEmpty())
                       ],
                     ),
                   )),
