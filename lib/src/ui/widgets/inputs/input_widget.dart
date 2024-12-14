@@ -30,6 +30,7 @@ class InputWidget extends StatelessWidget {
   final FocusNode? focusNode;
   final bool showError;
   final Color? backgroundColor;
+  final TextStyle? styleLabel;
 
   InputWidget(
       {required this.hintText,
@@ -54,6 +55,7 @@ class InputWidget extends StatelessWidget {
       this.focusNode,
       this.showError = false,
       this.backgroundColor,
+      this.styleLabel,
       });
 
   @override
@@ -73,9 +75,10 @@ class InputWidget extends StatelessWidget {
           if (label != null)
             Container(
               alignment: Alignment.centerLeft,
-              height: size.height * dimensionInput(),
+              height: size.height * dimensionInput() * 0.6,
               child: Text(
                 label.orEmpty(),
+                style: styleLabel ?? labelStyle(),
               ),
             ),
           GestureDetector(

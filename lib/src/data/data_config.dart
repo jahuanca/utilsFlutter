@@ -21,6 +21,7 @@ class DataConfig {
   double dimensionButton;
 
   TextStyle? titleTextAppBarStyle;
+  TextStyle? labelStyle;
   TextStyle? hintStyle;
   InputBorder? inputBorder;
   bool showLog;
@@ -50,6 +51,7 @@ class DataConfig {
     this.titleTextAppBarStyle,
     this.inputBorder,
     this.hintStyle,
+    this.labelStyle,
   }){
     
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
@@ -77,6 +79,7 @@ class DataConfig {
         urlServer: json["urlServer"],
         basicAuthUsername: json["basicAuthUsername"],
         basicAuthPassword: json["basicAuthPassword"],
+        labelStyle: json["labelStyle"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -101,5 +104,6 @@ class DataConfig {
         "urlServer": urlServer,
         "basicAuthUsername": basicAuthUsername,
         "basicAuthPassword": basicAuthPassword,
+        "labelStyle": labelStyle,
       };
 }

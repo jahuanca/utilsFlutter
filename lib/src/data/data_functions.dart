@@ -25,9 +25,10 @@ double borderRadius() => GlobalConfiguration().get(borderRadiusString) ?? border
 double dimensionInput() => GlobalConfiguration().get(dimensionInputString) ?? dimensionInputBase;
 double dimensionButton() => GlobalConfiguration().get(dimensionButtonString) ?? dimensionButtonBase;
 
-//styl0es
+//styles
 TextStyle titleTextAppBarStyle() => GlobalConfiguration().get(titleTextAppBarStyleString) ?? TextStyle();
 TextStyle hintStyle() => GlobalConfiguration().get(hintStyleString) ?? hintStyleBase();
+TextStyle? labelStyle() => GlobalConfiguration().get(labelStyleString);
 
 //inputBorders
 InputBorder inputBorder() => GlobalConfiguration().get(inputBorderString) ?? inputBorderBase();

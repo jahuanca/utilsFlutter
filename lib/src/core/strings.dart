@@ -17,6 +17,7 @@ const String dimensionButtonString = 'dimensionButton';
 
 const String titleTextAppBarStyleString = 'titleTextAppBarStyle';
 const String hintStyleString = 'hintStyle';
+const String labelStyleString = 'labelStyle';
 const String inputBorderString = 'inputBorder';
 
 const String showLogString = 'showLog';

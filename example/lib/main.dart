@@ -34,7 +34,7 @@ class ExamplePage extends StatelessWidget {
     return Scaffold(
       appBar: appBarWidget(
         text: 'Utils',
-        hasArrowBack: true,
+        leading: const Icon(Icons.people),
         actions: [
           const IconWidget(
             padding: EdgeInsets.only(right: 12),
@@ -59,6 +59,7 @@ class ExamplePage extends StatelessWidget {
         child: Column(
           children: [
             InputWidget(
+              label: 'Usuario:',
               error: 'Es requerido',
               icon: const Icon(Icons.abc),
               iconOverlay: Icons.abc_outlined,
