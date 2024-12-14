@@ -32,7 +32,15 @@ class ExamplePage extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: appBarWidget(text: 'Utils'),
+      appBar: appBarWidget(
+        text: 'Utils',
+        hasArrowBack: true,
+        actions: [
+          const IconWidget(
+            padding: EdgeInsets.only(right: 12),
+            iconData: Icons.search),
+        ]
+      ),
       bottomNavigationBar: BottomNavigationBarWidget(
           indexSelectedItem: 3,
           onTapItem: print,

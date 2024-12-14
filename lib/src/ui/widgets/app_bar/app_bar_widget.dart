@@ -9,12 +9,15 @@ AppBar appBarWidget({
   bool centerTitle = true,
   double? elevation = 1,
   TextStyle? titleTextStyle,
-  List<Widget>? actions = const []}){
+  List<Widget>? actions = const [],
+  Widget? leading,
+  }){
   return AppBar(
     shadowColor: cardColor(),
     elevation: elevation,
     backgroundColor: cardColor(),
     automaticallyImplyLeading: hasArrowBack,
+    leading: leading,
     iconTheme: const IconThemeData(
       color: Colors.black,
     ),
