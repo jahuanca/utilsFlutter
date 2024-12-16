@@ -58,6 +58,12 @@ class ExamplePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const CheckBoxWidget(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              title: 'Presione checkbox',
+              isChecked: true,
+              
+            ),
             InputWidget(
               label: 'Usuario:',
               error: 'Es requerido',
