@@ -34,7 +34,7 @@ class CheckBoxWidget extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     final double labelHeight = size.height * dimensionInput() * 0.6;
-    final double checkHeight = size.height * dimensionInput() * 0.6;
+    final double checkHeight = size.height * dimensionInput() * 0.59;
 
     return Container(
       padding: padding,
