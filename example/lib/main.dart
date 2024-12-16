@@ -59,10 +59,11 @@ class ExamplePage extends StatelessWidget {
         child: Column(
           children: [
             const CheckBoxWidget(
+              label: 'Etiqueta de prueba:',
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               title: 'Presione checkbox',
               isChecked: true,
-              
+              error: 'Este es un error',
             ),
             InputWidget(
               label: 'Usuario:',
