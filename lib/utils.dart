@@ -38,7 +38,6 @@ export 'src/data/app_response_http.dart';
 export 'src/data/result_type.dart';
 export 'src/data/entities/error_entity.dart';
 
-
 import 'package:global_configuration/global_configuration.dart';
 import 'package:utils/src/data/data_config.dart';
 
