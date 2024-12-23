@@ -8,7 +8,7 @@ class LoadingWidget extends StatelessWidget {
   const LoadingWidget({
     super.key,
     required this.show,
-    required this.color,
+    this.color = Colors.black38,
     });
 
   @override
