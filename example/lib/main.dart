@@ -177,8 +177,6 @@ class ExamplePage extends StatelessWidget {
               width: 150,
               iconData: Icons.abc_outlined,
               borderColor: Colors.black,
-              urlImage:
-                  'https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg',
             ),
           ],
         ),

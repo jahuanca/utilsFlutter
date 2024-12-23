@@ -76,7 +76,7 @@ class ImageActionWidget extends StatelessWidget {
               ? NetworkImage(
                   urlImage!,
                 ) as ImageProvider
-              : const AssetImage('assets/images/image_not_found.jpg'),
+              : const AssetImage('assets/images/image_not_found.png', package: 'utils'),
         ),
       ),
     );
@@ -92,7 +92,7 @@ class ImageActionWidget extends StatelessWidget {
               ? NetworkImage(
                   urlImage!,
                 ) as ImageProvider
-              : const AssetImage('assets/images/image_not_found.jpg')),
+              : const AssetImage('assets/images/image_not_found.png', package: 'utils')),
     );
   }
 }

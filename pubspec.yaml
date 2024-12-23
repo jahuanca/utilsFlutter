@@ -15,7 +15,6 @@ dependencies:
   intl: ^0.19.0
   flutter:
     sdk: flutter
-  # path: ^1.8.0
 
 dev_dependencies:
   lints: ^2.0.0
@@ -24,4 +23,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-   - assets/images/image_not_found.jpg
+   - lib/assets/images/
