@@ -12,6 +12,7 @@ export 'src/core/format_dates.dart';
 export 'src/core/internationalizations.dart';
 
 export 'src/ui/widgets/inputs/input_widget.dart';
+export 'src/ui/widgets/dropwdown/dropdown_widget.dart';
 export 'src/ui/widgets/inputs/password_input_widget.dart';
 export 'src/ui/widgets/check_box/check_box_widget.dart';
 export 'src/ui/widgets/buttons/button_widget.dart';

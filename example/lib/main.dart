@@ -58,6 +58,10 @@ class ExamplePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const DropdownWidget(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              label: 'Opciones:',
+            ),
             const CheckBoxWidget(
               label: 'Etiqueta de prueba:',
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
