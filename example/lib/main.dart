@@ -58,6 +58,13 @@ class ExamplePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            InputWidget(
+              maxLength: 250,
+              maxLines: 4,
+              isDense: true,
+              hintText: 'Text area',
+              isTextArea: true,
+            ),
             const DropdownWidget(
               items: [
                 '1 opcion',

@@ -38,7 +38,7 @@ class InputWidget extends StatelessWidget {
     this.iconOverlay,
     this.onPressedIconOverlay,
     this.enabled = true,
-    this.maxLength = 20,
+    this.maxLength = maxLengthDefault,
     this.textInputType = TextInputType.name,
     this.initialValue,
     this.textEditingController,
@@ -63,7 +63,7 @@ class InputWidget extends StatelessWidget {
 
     final Size size = MediaQuery.of(context).size;
     final double heightInput = isTextArea
-        ? size.height * dimensionInput() * 1.5
+        ? size.height * dimensionInput() * 5
         : size.height * dimensionInput();
     final double heigthPadding = heightInput * 0.1;
 
