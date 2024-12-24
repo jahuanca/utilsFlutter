@@ -33,7 +33,6 @@ class CheckBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final double checkHeight = size.height * dimensionInput() * 0.59;
 
     return Container(
       padding: padding,
@@ -41,7 +40,7 @@ class CheckBoxWidget extends StatelessWidget {
         children: [
           labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
           Container(
-            height: checkHeight,
+            height: heightWidget(size: size),
             decoration: boxDecorationWidget(error: error, backgroundColor: backgroundColor),
             child: Row(
               children: [

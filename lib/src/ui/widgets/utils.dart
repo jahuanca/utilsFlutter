@@ -67,3 +67,8 @@ InputDecoration inputDecorationWidget({
       hintText: hintText,
       hintStyle: hintStyle(),
     );
+
+double heightWidget({
+  required Size size,
+}) =>
+    size.height * dimensionInput() * 0.59;

@@ -65,22 +65,6 @@ class ExamplePage extends StatelessWidget {
               hintText: 'Text area',
               isTextArea: true,
             ),
-            const DropdownWidget(
-              items: [
-                '1 opcion',
-                '2 opcion'
-              ],
-              onChanged: print,
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-              label: 'Opciones:',
-            ),
-            const CheckBoxWidget(
-              label: 'Etiqueta de prueba:',
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-              title: 'Presione checkbox',
-              isChecked: true,
-              error: 'Este es un error',
-            ),
             InputWidget(
               label: 'Usuario:',
               error: 'Es requerido',
@@ -88,6 +72,22 @@ class ExamplePage extends StatelessWidget {
               iconOverlay: Icons.abc_outlined,
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               hintText: 'Usuario',
+            ),
+            const DropdownWidget(
+              items: [
+                '1 opcion',
+                '2 opcion'
+              ],
+              onChanged: print,
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              label: 'Opciones:',
+            ),
+            const CheckBoxWidget(
+              label: 'Etiqueta de prueba:',
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              title: 'Presione checkbox',
+              isChecked: true,
+              error: 'Este es un error',
             ),
             ButtonWidget(
                 padding:

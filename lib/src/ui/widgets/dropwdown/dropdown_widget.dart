@@ -49,6 +49,7 @@ class DropdownWidget extends StatelessWidget {
         children: [
           labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
           Container(
+            height: heightWidget(size: size),
             child: DropdownButtonFormField<dynamic>(
               icon: iconData == null ? null : Icon(iconData),
               iconEnabledColor: iconEnabledColor,
