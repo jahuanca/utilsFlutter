@@ -49,8 +49,6 @@ class DropdownWidget extends StatelessWidget {
         children: [
           labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
           Container(
-            decoration: boxDecorationWidget(
-                error: error, backgroundColor: backgroundColor),
             child: DropdownButtonFormField<dynamic>(
               icon: iconData == null ? null : Icon(iconData),
               iconEnabledColor: iconEnabledColor,
@@ -62,7 +60,7 @@ class DropdownWidget extends StatelessWidget {
               ),
               hint: Text(hintText),
               isExpanded: true,
-              borderRadius: BorderRadius.circular(borderRadius()),
+              
               items: items == null
                   ? []
                   : items
