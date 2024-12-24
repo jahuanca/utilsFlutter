@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:utils/src/core/extensions.dart';
 import 'package:utils/src/core/storage_type.dart';
 import 'package:utils/src/data/data_functions.dart';
-import 'package:utils/src/ui/utils/paddings.dart';
+import 'package:utils/src/ui/utils/constants_ui.dart';
 
 const EdgeInsets _defaultPaddingContent = EdgeInsets.all(20);
 

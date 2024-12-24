@@ -59,6 +59,11 @@ class ExamplePage extends StatelessWidget {
         child: Column(
           children: [
             const DropdownWidget(
+              items: [
+                '1 opcion',
+                '2 opcion'
+              ],
+              onChanged: print,
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               label: 'Opciones:',
             ),

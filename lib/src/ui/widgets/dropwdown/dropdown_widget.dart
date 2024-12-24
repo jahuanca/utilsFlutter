@@ -1,24 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:utils/src/core/input_borders.dart';
+import 'package:utils/src/ui/utils/strings.dart';
+import 'package:utils/src/ui/widgets/utils.dart';
 import 'package:utils/utils.dart';
 
 class DropdownWidget extends StatelessWidget {
   final String? label;
-  final TextStyle? styleLabel;
+  final TextStyle? textStyleLabel;
   final EdgeInsetsGeometry? padding;
   final String? error;
   final Color? backgroundColor;
   final InputBorder? inputBorderCurrent;
   final bool showError;
+  final void Function(dynamic)? onChanged;
+  final dynamic value;
+  final List<dynamic>? items;
+  final String hintText;
+  final IconData? iconData;
+  final Color? iconEnabledColor;
+  final Color? iconDisabledColor;
 
   const DropdownWidget({
+    this.hintText = dropdownHintString,
     this.padding,
     this.label,
-    this.styleLabel,
+    this.textStyleLabel,
     this.error,
     this.backgroundColor,
     this.inputBorderCurrent,
     this.showError = false,
+    this.onChanged,
+    this.value,
+    this.items,
+    this.iconData,
+    this.iconEnabledColor,
+    this.iconDisabledColor,
   });
 
   @override
@@ -32,56 +47,37 @@ class DropdownWidget extends StatelessWidget {
       padding: padding,
       child: Column(
         children: [
-          if (label != null)
-            Container(
-              alignment: Alignment.centerLeft,
-              height: size.height * dimensionInput() * 0.6,
-              child: Text(
-                label.orEmpty(),
-                style: styleLabel ?? labelStyle(),
-              ),
-            ),
+          labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
           Container(
-            decoration: BoxDecoration(
-                color: backgroundColor ?? cardColor(),
-                border: Border.all(
-                    color: error == null ? primaryColor() : dangerColor()),
-                borderRadius: BorderRadius.circular(borderRadius())),
-            child: DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(
-                    vertical: heigthPadding, horizontal: 25),
-                border:
-                    error == null ? inputBorderSelected : inputBorderError(),
-                enabledBorder:
-                    error == null ? inputBorderSelected : inputBorderError(),
-                disabledBorder:
-                    error == null ? inputBorderSelected : inputBorderError(),
-                focusedBorder:
-                    error == null ? inputBorderSelected : inputBorderError(),
+            decoration: boxDecorationWidget(
+                error: error, backgroundColor: backgroundColor),
+            child: DropdownButtonFormField<dynamic>(
+              icon: iconData == null ? null : Icon(iconData),
+              iconEnabledColor: iconEnabledColor,
+              iconDisabledColor: iconDisabledColor,
+              decoration: inputDecorationWidget(
+                error: error,
+                inputBorderSelected: inputBorderSelected,
+                heigthPadding: heigthPadding,
               ),
+              hint: Text(hintText),
               isExpanded: true,
               borderRadius: BorderRadius.circular(borderRadius()),
-              items: const [
-                DropdownMenuItem(
-                    value: "10 centimos", child: Text("10 centimos")),
-                DropdownMenuItem(
-                    value: "20 centimos", child: Text("20 centimos")),
-                DropdownMenuItem(
-                    value: "50 centimos", child: Text("50 centimos")),
-              ],
-              value: "10 centimos",
-              onChanged: print,
+              items: items == null
+                  ? []
+                  : items
+                      ?.map(
+                        (e) => DropdownMenuItem(
+                          value: e,
+                          child: Text(e),
+                        ),
+                      )
+                      .toList(),
+              value: value,
+              onChanged: onChanged,
             ),
           ),
-          if (showError)
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                error.orEmpty(),
-                style: TextStyle(color: dangerColor()),
-              ),
-            ),
+          if (showError) errorContainerWidget(error: error),
         ],
       ),
     );

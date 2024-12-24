@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:utils/src/core/dimens.dart';
-import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/text_styles.dart';
+import 'package:utils/src/ui/widgets/utils.dart';
 import 'package:utils/utils.dart';
 
 const _defaultMaxLength = 20;
@@ -24,6 +23,8 @@ class PasswordInputWidget extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final InputBorder? inputBorderCurrent;
   final Icon? icon;
+  final TextStyle? textStyleLabel;
+  final bool showError;
 
   PasswordInputWidget({
     required this.hintText,
@@ -43,6 +44,8 @@ class PasswordInputWidget extends StatelessWidget {
     this.error,
     this.onTap,
     this.padding = noPadding,
+    this.textStyleLabel,
+    this.showError = false,
   });
 
   @override
@@ -57,14 +60,7 @@ class PasswordInputWidget extends StatelessWidget {
       padding: padding,
       child: Column(
         children: [
-          if (label != null)
-            Container(
-              alignment: Alignment.centerLeft,
-              height: size.height * dimensionInput(),
-              child: Text(
-                label.orEmpty(),
-              ),
-            ),
+          labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
           GestureDetector(
             onTap: onTap,
             child: Stack(
@@ -78,31 +74,12 @@ class PasswordInputWidget extends StatelessWidget {
                       obscureText: true,
                       minLines: 1,
                       maxLines: 1,
-                      decoration: InputDecoration(
-                        isDense: false,
+                      decoration: inputDecorationWidget(
                         prefixIcon: icon,
-                        border: error == null
-                            ? inputBorderSelected
-                            : inputBorderError(),
-                        enabledBorder: error == null
-                            ? inputBorderSelected
-                            : inputBorderError(),
-                        disabledBorder: error == null
-                            ? inputBorderSelected
-                            : inputBorderError(),
-                        focusedBorder: error == null
-                            ? inputBorderSelected
-                            : inputBorderError(),
-                        filled: true,
-                        fillColor: cardColor(),
-                        contentPadding: isTextArea
-                            ? contentPaddingTextArea
-                            : EdgeInsets.symmetric(vertical: heigthPadding, horizontal: 25),
-                        counterText: emptyString,
-                        counterStyle: TextStyle(fontSize: defaultDouble),
                         hintText: hintText,
-                        hintStyle: hintStyle(),
-                      ),
+                        heigthPadding: heigthPadding,
+                        error: error, 
+                        inputBorderSelected: inputBorderSelected),
                       controller: textEditingController,
                       onChanged: onChanged,
                       textAlign: TextAlign.left,
@@ -121,6 +98,7 @@ class PasswordInputWidget extends StatelessWidget {
                   ],
                 )
           ),
+          if(showError) errorContainerWidget(error: error),
         ],
       ),
     );
