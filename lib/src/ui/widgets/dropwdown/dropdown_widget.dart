@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utils/src/core/text_styles.dart';
 import 'package:utils/src/ui/utils/strings.dart';
 import 'package:utils/src/ui/widgets/utils.dart';
 import 'package:utils/utils.dart';
@@ -61,7 +62,7 @@ class DropdownWidget extends StatelessWidget {
               ),
               hint: Text(hintText),
               isExpanded: true,
-              
+              style: primaryTextStyleBase(),
               items: items == null
                   ? []
                   : items
