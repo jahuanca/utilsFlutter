@@ -86,6 +86,7 @@ class InputWidget extends StatelessWidget {
                   minLines: minLines,
                   maxLines: maxLines,
                   decoration: inputDecorationWidget(
+                    hintText: hintText,
                     isDense: isDense,
                     prefixIcon: icon,
                     error: error,
