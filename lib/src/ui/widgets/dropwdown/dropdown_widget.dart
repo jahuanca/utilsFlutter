@@ -69,24 +69,22 @@ class DropdownWidget extends StatelessWidget {
               style: primaryTextStyleBase(),
               items: items == null
                   ? []
-                  : items
-                      ?.map(
-                        (e) {
-                          switch (e.runtimeType) {
-                            case String:
-                               return DropdownMenuItem(
-                          value: e,
-                          child: Text(e),
-                        );
-                            default:
-                               return DropdownMenuItem(
-                          value: e.toJson()[idValue],
-                          child: Text(e.toJson()[idLabel]),
-                        );
-                          }
-                        },
-                      )
-                      .toList(),
+                  : items?.map(
+                      (e) {
+                        switch (e.runtimeType) {
+                          case String:
+                            return DropdownMenuItem(
+                              value: e,
+                              child: Text(e),
+                            );
+                          default:
+                            return DropdownMenuItem(
+                              value: e.toJson()[idValue],
+                              child: Text(e.toJson()[idLabel]),
+                            );
+                        }
+                      },
+                    ).toList(),
               value: value,
               onChanged: onChanged,
             ),
