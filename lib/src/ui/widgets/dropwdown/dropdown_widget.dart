@@ -19,6 +19,8 @@ class DropdownWidget extends StatelessWidget {
   final IconData? iconData;
   final Color? iconEnabledColor;
   final Color? iconDisabledColor;
+  final String idLabel;
+  final String idValue;
 
   const DropdownWidget({
     this.hintText = dropdownHintString,
@@ -35,6 +37,8 @@ class DropdownWidget extends StatelessWidget {
     this.iconData,
     this.iconEnabledColor,
     this.iconDisabledColor,
+    this.idLabel = 'id',
+    this.idValue = 'name',
   });
 
   @override
@@ -67,10 +71,20 @@ class DropdownWidget extends StatelessWidget {
                   ? []
                   : items
                       ?.map(
-                        (e) => DropdownMenuItem(
+                        (e) {
+                          switch (e.runtimeType) {
+                            case String:
+                               return DropdownMenuItem(
                           value: e,
                           child: Text(e),
-                        ),
+                        );
+                            default:
+                               return DropdownMenuItem(
+                          value: e.toJson()[idLabel],
+                          child: Text(e.toJson()[idValue]),
+                        );
+                          }
+                        },
                       )
                       .toList(),
               value: value,
