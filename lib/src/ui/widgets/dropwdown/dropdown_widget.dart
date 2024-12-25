@@ -80,8 +80,8 @@ class DropdownWidget extends StatelessWidget {
                         );
                             default:
                                return DropdownMenuItem(
-                          value: e.toJson()[idLabel],
-                          child: Text(e.toJson()[idValue]),
+                          value: e.toJson()[idValue],
+                          child: Text(e.toJson()[idLabel]),
                         );
                           }
                         },
