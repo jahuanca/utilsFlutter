@@ -3,7 +3,11 @@ extension EmptyString on String? {
 }
 
 extension EmptyInt on int? {
-  int orZero() => this ?? 0;
+  int orZero() => this ?? defaultInt;
+}
+
+extension EmptyDouble on double? {
+  double orZero() => this ?? defaultDouble;
 }
 
 extension EmptyList on List<dynamic>? {
