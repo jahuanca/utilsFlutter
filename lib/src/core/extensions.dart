@@ -1,6 +1,8 @@
+import 'package:utils/utils.dart';
+
 extension Double on double {
   String formatDecimals([int numberDecimals = numberDecimalsDefault]) =>
-      toString().contains('.') ? toStringAsFixed(numberDecimals) : toString();
+      (this - truncate() != 0) ? toStringAsFixed(numberDecimals) : toStringAsFixed(defaultInt);
 }
 
 const int numberDecimalsDefault = 2;
