@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utils/src/core/extensions.dart';
+import 'package:utils/src/core/default_extensions.dart';
 
 Future<bool?> showAlertWidget({
   required BuildContext context,

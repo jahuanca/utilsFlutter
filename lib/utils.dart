@@ -6,6 +6,7 @@ export 'src/core/storage_type.dart';
 export 'src/core/validators.dart';
 export 'src/core/type_snackbar.dart';
 export 'src/core/ids_get.dart';
+export 'src/core/default_extensions.dart';
 export 'src/core/extensions.dart';
 export 'src/core/functions.dart';
 export 'src/core/format_dates.dart';

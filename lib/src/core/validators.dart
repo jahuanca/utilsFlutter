@@ -1,4 +1,4 @@
-import 'package:utils/src/core/extensions.dart';
+import 'package:utils/src/core/default_extensions.dart';
 
 class ValidateResult {
   String? error;
