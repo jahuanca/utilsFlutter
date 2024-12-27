@@ -1,6 +1,6 @@
 extension Double on double {
   String formatDecimals([int numberDecimals = numberDecimalsDefault]) =>
-      toStringAsFixed(numberDecimals);
+      toString().contains('.') ? toStringAsFixed(numberDecimals) : toString();
 }
 
 const int numberDecimalsDefault = 2;
