@@ -6,12 +6,14 @@ class IconWidget extends StatelessWidget {
   final void Function()? onTap;
   final Color? color;
   final EdgeInsetsGeometry? padding;
+  final double? size;
 
   const IconWidget({ 
     required this.iconData,
     this.onTap,
     this.color,
     this.padding,
+    this.size,
   });
 
   @override
@@ -20,7 +22,7 @@ class IconWidget extends StatelessWidget {
       padding: padding,
       child: GestureDetector(
         onTap: onTap,
-        child: Icon(iconData, color: color,)
+        child: Icon(iconData, color: color, size: size,)
       ),
     );
   }
