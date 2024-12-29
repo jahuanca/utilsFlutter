@@ -16,7 +16,7 @@ Future<void> showSnackbarWidget(
     backgroundColor: typeSnackbar.backgroundColor,
     elevation: _defaultElevation,
     duration: duration ?? const Duration(milliseconds: 1000),
-    behavior: SnackBarBehavior.floating,
+    behavior: SnackBarBehavior.fixed,
     margin: EdgeInsets.all(5),
   ));
 }
