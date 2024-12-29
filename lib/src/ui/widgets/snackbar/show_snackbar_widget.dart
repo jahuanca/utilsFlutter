@@ -17,6 +17,6 @@ Future<void> showSnackbarWidget(
     elevation: _defaultElevation,
     duration: duration ?? const Duration(milliseconds: 1000),
     behavior: SnackBarBehavior.fixed,
-    margin: EdgeInsets.all(5),
+    // margin: EdgeInsets.all(5),
   ));
 }
