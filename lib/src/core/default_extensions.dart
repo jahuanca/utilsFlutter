@@ -14,6 +14,10 @@ extension EmptyList on List<dynamic>? {
   List<dynamic> orEmpty() => this ?? [];
 }
 
+extension EmptyDate on DateTime? {
+  DateTime orNow() => this ?? DateTime.now();
+}
+
 extension NullBool on bool?{
   bool orFalse() => this ?? false;
 }
