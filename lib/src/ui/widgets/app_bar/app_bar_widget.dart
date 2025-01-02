@@ -11,11 +11,13 @@ AppBar appBarWidget({
   TextStyle? titleTextStyle,
   List<Widget>? actions = const [],
   Widget? leading,
+  Color? backgroundColor,
+  Color? shadowColor,
   }){
   return AppBar(
-    shadowColor: cardColor(),
+    shadowColor: shadowColor ?? cardColor(),
     elevation: elevation,
-    backgroundColor: cardColor(),
+    backgroundColor: backgroundColor ?? cardColor(),
     automaticallyImplyLeading: hasArrowBack,
     leading: leading,
     iconTheme: const IconThemeData(
