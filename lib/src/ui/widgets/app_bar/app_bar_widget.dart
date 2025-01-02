@@ -13,6 +13,7 @@ AppBar appBarWidget({
   Widget? leading,
   Color? backgroundColor,
   Color? shadowColor,
+  Color? colorIconTheme,
   }){
   return AppBar(
     shadowColor: shadowColor ?? cardColor(),
@@ -20,8 +21,8 @@ AppBar appBarWidget({
     backgroundColor: backgroundColor ?? cardColor(),
     automaticallyImplyLeading: hasArrowBack,
     leading: leading,
-    iconTheme: const IconThemeData(
-      color: Colors.black,
+    iconTheme: IconThemeData(
+      color: colorIconTheme  ?? Colors.black,
     ),
     centerTitle: true,
     title: Text(text),
