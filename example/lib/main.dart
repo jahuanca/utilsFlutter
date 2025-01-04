@@ -67,13 +67,12 @@ class ExamplePage extends StatelessWidget {
             ),
             InputWidget(
               label: 'Usuario:',
-              error: 'Es requerido',
               icon: const Icon(Icons.abc),
               iconOverlay: Icons.abc_outlined,
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               hintText: 'Usuario',
             ),
-            const DropdownWidget(
+            const DropdownMenuWidget(
               items: [
                 '1 opcion',
                 '2 opcion'
@@ -122,6 +121,9 @@ class ExamplePage extends StatelessWidget {
               //path: 'https://imgs.search.brave.com/TOSM-yLTsegMoH6QyZRJre73TnPam6v5YAUht-y_37Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni84MzIzLzgzMjMz/MTcucG5nP3NlbXQ9/YWlzX2h5YnJpZA',
             ),
             InputWidget(
+              inputFormatters: [
+                inputFormatterPhoneNumber
+              ],
               icon: const Icon(
                 Icons.map,
                 color: Colors.black,

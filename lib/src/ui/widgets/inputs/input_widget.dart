@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:utils/src/core/text_styles.dart';
 import 'package:utils/src/ui/widgets/utils.dart';
 import 'package:utils/utils.dart';
@@ -30,6 +31,8 @@ class InputWidget extends StatelessWidget {
   final bool showError;
   final Color? backgroundColor;
   final TextStyle? textStyleLabel;
+  final List<TextInputFormatter>? inputFormatters;
+
 
   InputWidget({
     required this.hintText,
@@ -55,6 +58,7 @@ class InputWidget extends StatelessWidget {
     this.showError = false,
     this.backgroundColor,
     this.textStyleLabel,
+    this.inputFormatters,
   });
 
   @override
@@ -77,6 +81,7 @@ class InputWidget extends StatelessWidget {
             child: Stack(
               children: [
                 TextFormField(
+                  inputFormatters: inputFormatters,
                   focusNode: focusNode,
                   style: primaryTextStyleBase(),
                   enabled: enabled,

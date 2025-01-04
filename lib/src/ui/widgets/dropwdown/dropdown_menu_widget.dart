@@ -4,7 +4,7 @@ import 'package:utils/src/ui/utils/strings.dart';
 import 'package:utils/src/ui/widgets/utils.dart';
 import 'package:utils/utils.dart';
 
-class DropdownWidget extends StatelessWidget {
+class DropdownMenuWidget extends StatelessWidget {
   final String? label;
   final TextStyle? textStyleLabel;
   final EdgeInsetsGeometry? padding;
@@ -22,7 +22,7 @@ class DropdownWidget extends StatelessWidget {
   final String idLabel;
   final String idValue;
 
-  const DropdownWidget({
+  const DropdownMenuWidget({
     this.hintText = dropdownHintString,
     this.padding,
     this.label,

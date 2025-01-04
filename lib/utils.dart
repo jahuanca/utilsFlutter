@@ -13,7 +13,8 @@ export 'src/core/format_dates.dart';
 export 'src/core/internationalizations.dart';
 
 export 'src/ui/widgets/inputs/input_widget.dart';
-export 'src/ui/widgets/dropwdown/dropdown_widget.dart';
+export 'src/ui/widgets/dropwdown/dropdown_menu_widget.dart';
+export 'src/ui/widgets/dropwdown/dropdown_icon_widget.dart';
 export 'src/ui/widgets/inputs/password_input_widget.dart';
 export 'src/ui/widgets/check_box/check_box_widget.dart';
 export 'src/ui/widgets/buttons/button_widget.dart';
@@ -25,6 +26,7 @@ export 'src/ui/widgets/items_list/item_list_image_data_widget.dart';
 export 'src/ui/widgets/tags/tag_widget.dart';
 export 'src/ui/widgets/loading/loading_widget.dart';
 export 'src/ui/utils/constants_ui.dart';
+export 'src/ui/utils/input_formatters.dart';
 
 export 'src/ui/widgets/bottom_navigation/bottom_navigation_bar_widget.dart' ;
 export 'src/ui/widgets/bottom_navigation/bottom_navigation_item_widget.dart';
