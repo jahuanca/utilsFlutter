@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/text_styles.dart';
-import 'package:utils/src/ui/utils/strings.dart';
 import 'package:utils/src/ui/widgets/utils.dart';
 import 'package:utils/utils.dart';
 
@@ -15,7 +14,6 @@ class DropdownIconWidget extends StatelessWidget {
   final void Function(dynamic)? onChanged;
   final dynamic value;
   final List<dynamic>? items;
-  final String hintText;
   final IconData? iconData;
   final Color? iconEnabledColor;
   final Color? iconDisabledColor;
@@ -23,7 +21,6 @@ class DropdownIconWidget extends StatelessWidget {
   final String idValue;
 
   const DropdownIconWidget({
-    this.hintText = dropdownHintString,
     this.padding,
     this.label,
     this.textStyleLabel,
@@ -61,7 +58,6 @@ class DropdownIconWidget extends StatelessWidget {
             inputBorderSelected: inputBorderSelected,
             heigthPadding: heigthPadding,
           ),
-          hint: Text(hintText),
           isExpanded: true,
           style: primaryTextStyleBase(),
           items: items == null
