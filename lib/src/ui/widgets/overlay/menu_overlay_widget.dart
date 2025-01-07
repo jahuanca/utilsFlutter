@@ -58,7 +58,7 @@ class MenuOverlayWidget extends StatelessWidget {
                       switch (e.runtimeType) {
                         case String: content = Text(e);
                           break;
-                        default: content = Text(e.toJson[label]);
+                        default: content = Text(e.toJson()[label]);
                       }
 
                       return GestureDetector(
