@@ -9,8 +9,8 @@ class MenuOverlayWidget extends StatelessWidget {
   final void Function(dynamic e) onTapItem;
   final bool isExpand;
   final double? width;
-  final String? label;
-  final String? value;
+  final String? idLabel;
+  final String? idValue;
 
   MenuOverlayWidget({
     super.key,
@@ -18,8 +18,8 @@ class MenuOverlayWidget extends StatelessWidget {
     required this.onTapItem,
     this.isExpand = false,
     this.width,
-    this.label = 'label',
-    this.value = 'id',
+    this.idLabel = 'label',
+    this.idValue = 'id',
   });
 
   @override
@@ -58,7 +58,7 @@ class MenuOverlayWidget extends StatelessWidget {
                       switch (e.runtimeType) {
                         case String: content = Text(e);
                           break;
-                        default: content = Text(e.toJson()[label]);
+                        default: content = Text('${e.toJson()[idLabel]}');
                       }
 
                       return GestureDetector(
