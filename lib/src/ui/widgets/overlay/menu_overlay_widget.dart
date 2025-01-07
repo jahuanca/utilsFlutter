@@ -26,7 +26,8 @@ class MenuOverlayWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TapRegion(
         onTapInside: (event) => showOverlay(context, event),
-        onTapOutside: (event) => dismiss(),
+        onTapOutside: (event) =>
+            Future.delayed(Duration(milliseconds: 100), () => {dismiss()}),
         child: Icon(Icons.arrow_drop_down));
   }
 
@@ -40,6 +41,23 @@ class MenuOverlayWidget extends StatelessWidget {
         (minWidth + event.position.dx > size.width) ? defaultDouble : null;
 
     if (overlayEntry != null) return;
+
+    final List<Widget> children = items
+        .map(
+          (e) => GestureDetector(
+            onTap: () => onTapItem(e),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Container(
+                child: (e.runtimeType) == String
+                    ? Text(e)
+                    : Text('${e.toJson()[idLabel]}'),
+              ),
+            ),
+          ),
+        )
+        .toList();
+
     overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
         left: left,
@@ -51,27 +69,7 @@ class MenuOverlayWidget extends StatelessWidget {
             width: widthInside,
             color: cardColor(),
             child: Column(
-              children: items
-                  .map(
-                    (e) {
-                      late Widget content;
-                      switch (e.runtimeType) {
-                        case String: content = Text(e);
-                          break;
-                        default: content = Text('${e.toJson()[idLabel]}');
-                      }
-
-                      return GestureDetector(
-                      onTap: () => onTapItem(e),
-                      child: Container(
-                        decoration: BoxDecoration(),
-                        padding: const EdgeInsets.all(15),
-                        child: content,
-                      ),
-                    );
-                    },
-                  )
-                  .toList(),
+              children: children,
             ),
           ),
         ),
