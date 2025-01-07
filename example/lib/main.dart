@@ -36,9 +36,14 @@ class ExamplePage extends StatelessWidget {
         text: 'Utils',
         leading: const Icon(Icons.people),
         actions: [
-          const IconWidget(
-            padding: EdgeInsets.only(right: 12),
-            iconData: Icons.search),
+          MenuOverlayWidget(
+            onTapItem: print,
+            isExpand: false,
+              items: const [
+                '1 opcion',
+                '2 opcion mas larga viendo tamaño'
+              ],
+            ),
         ]
       ),
       bottomNavigationBar: BottomNavigationBarWidget(
@@ -58,6 +63,13 @@ class ExamplePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            MenuOverlayWidget(
+              onTapItem: print,
+              items: const [
+                '1 opcion',
+                '2 opcion mas larga viendo tamaño'
+              ],
+            ),
             InputWidget(
               maxLength: 250,
               maxLines: 4,
