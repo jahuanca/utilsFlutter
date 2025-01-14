@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/default_extensions.dart';
+import 'package:utils/src/core/default_no_exports.dart';
 import 'package:utils/src/data/data_functions.dart';
 
 // ignore: must_be_immutable
@@ -18,8 +19,8 @@ class MenuOverlayWidget extends StatelessWidget {
     required this.onTapItem,
     this.isExpand = false,
     this.width,
-    this.idLabel = 'label',
-    this.idValue = 'id',
+    this.idLabel = defaultLabelValue,
+    this.idValue = defaultIdValue,
   });
 
   @override

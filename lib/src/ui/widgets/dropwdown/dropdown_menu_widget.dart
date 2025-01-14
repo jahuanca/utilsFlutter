@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utils/src/core/default_no_exports.dart';
 import 'package:utils/src/core/text_styles.dart';
 import 'package:utils/src/ui/utils/strings.dart';
 import 'package:utils/src/ui/widgets/utils.dart';
@@ -37,8 +38,8 @@ class DropdownMenuWidget extends StatelessWidget {
     this.iconData,
     this.iconEnabledColor,
     this.iconDisabledColor,
-    this.idLabel = 'name',
-    this.idValue = 'id',
+    this.idLabel = defaultLabelValue,
+    this.idValue = defaultIdValue,
   });
 
   @override
