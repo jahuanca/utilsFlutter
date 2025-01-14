@@ -37,8 +37,8 @@ class DropdownMenuWidget extends StatelessWidget {
     this.iconData,
     this.iconEnabledColor,
     this.iconDisabledColor,
-    this.idLabel = 'id',
-    this.idValue = 'name',
+    this.idLabel = 'name',
+    this.idValue = 'id',
   });
 
   @override
