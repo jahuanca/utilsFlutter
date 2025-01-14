@@ -51,6 +51,7 @@ class UserPreferences {
   }
 
   Future<void> clearAll() async => await _prefs?.clear();
+  
   Future<void> clearKey(String key) async => await _prefs?.remove(key);
 
 }
