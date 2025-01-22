@@ -3,6 +3,7 @@ import 'package:utils/src/core/colors.dart';
 import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/strings.dart';
 import 'package:utils/src/core/text_styles.dart';
+import 'package:utils/src/data/enum_auth.dart';
 
 class DataConfig {
   Color primaryColor;
@@ -28,6 +29,7 @@ class DataConfig {
   String? urlServer;
   String basicAuthUsername;
   String basicAuthPassword;
+  EnumAuth enumAuth;
 
   DataConfig({
     this.primaryColor =  primaryColorBase,
@@ -52,8 +54,8 @@ class DataConfig {
     this.inputBorder,
     this.hintStyle,
     this.labelStyle,
+    this.enumAuth = EnumAuth.none,
   }){
-    
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
     hintStyle ??= hintStyleBase();
   }
@@ -80,6 +82,7 @@ class DataConfig {
         basicAuthUsername: json["basicAuthUsername"],
         basicAuthPassword: json["basicAuthPassword"],
         labelStyle: json["labelStyle"],
+        enumAuth: json["enumAuth"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -105,5 +108,6 @@ class DataConfig {
         "basicAuthUsername": basicAuthUsername,
         "basicAuthPassword": basicAuthPassword,
         "labelStyle": labelStyle,
+        "enumAuth": enumAuth,
       };
 }

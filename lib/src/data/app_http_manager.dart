@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:http/http.dart' as https;
 import 'package:utils/src/core/constants.dart';
 import 'package:utils/src/data/app_exceptions.dart';
+import 'package:utils/src/data/enum_auth.dart';
 import 'package:utils/src/domain/http_manager.dart';
 import 'package:utils/utils.dart';
 
@@ -22,7 +23,9 @@ class AppHttpManager implements HttpManager {
       log('Api Get request url $url');
       log('Query: ${query.toString()}');
       final response = await https
-          .get(Uri.parse(_queryBuilder(path: url, query: query, replaceAllUrl: replaceAllUrl)),
+          .get(
+              Uri.parse(_queryBuilder(
+                  path: url, query: query, replaceAllUrl: replaceAllUrl)),
               headers: await _headerBuilder(headers))
           .timeout(timeout, onTimeout: () => throw TimeoutException());
       return _returnResponse(response);
@@ -42,8 +45,11 @@ class AppHttpManager implements HttpManager {
   }) async {
     try {
       log('Api Post request url $url, with $body');
-      final response = await https.post(Uri.parse(_queryBuilder(path: url, query: query, replaceAllUrl: replaceAllUrl)),
-          body: jsonEncode(body), headers: await _headerBuilder(headers));
+      final response = await https.post(
+          Uri.parse(_queryBuilder(
+              path: url, query: query, replaceAllUrl: replaceAllUrl)),
+          body: jsonEncode(body),
+          headers: await _headerBuilder(headers));
       return _returnResponse(response, showError);
     } on SocketException catch (_) {
       throw NetworkException();
@@ -61,8 +67,11 @@ class AppHttpManager implements HttpManager {
     try {
       log('Api Put request url $url, with $body');
       final response = await https
-          .put(Uri.parse(_queryBuilder(path: url, query: query, replaceAllUrl: replaceAllUrl)),
-              body: json.encode(body), headers: await _headerBuilder(headers))
+          .put(
+              Uri.parse(_queryBuilder(
+                  path: url, query: query, replaceAllUrl: replaceAllUrl)),
+              body: json.encode(body),
+              headers: await _headerBuilder(headers))
           .timeout(timeout, onTimeout: () => throw TimeoutException());
       return _returnResponse(response);
     } on SocketException catch (_) {
@@ -80,7 +89,9 @@ class AppHttpManager implements HttpManager {
     try {
       log('Api Delete request url $url');
       final response = await https
-          .delete(Uri.parse(_queryBuilder(path: url, query: query, replaceAllUrl: replaceAllUrl)),
+          .delete(
+              Uri.parse(_queryBuilder(
+                  path: url, query: query, replaceAllUrl: replaceAllUrl)),
               headers: await _headerBuilder(headers))
           .timeout(timeout, onTimeout: () => throw TimeoutException());
       return _returnResponse(response);
@@ -97,7 +108,22 @@ class AppHttpManager implements HttpManager {
     headers[HttpHeaders.contentTypeHeader] = 'application/json';
     headers[HttpHeaders.connectionHeader] = 'Keep-Alive';
 
-    _setBasicAuth(headers);
+    switch (authentication()) {
+      case EnumAuth.all:
+        _setBasicAuth(headers);
+        _setTokenHeader(headers);
+        break;
+      case EnumAuth.onlyBasicAuth:
+        _setBasicAuth(headers);
+        break;
+      case EnumAuth.onlyToken:
+        _setTokenHeader(headers);
+        break;
+      case EnumAuth.none:
+        break;
+      default:
+        break;
+    }
 
     if (headersNew?.isNotEmpty ?? false) {
       headersNew?.forEach((key, value) {
@@ -110,24 +136,25 @@ class AppHttpManager implements HttpManager {
   }
 
   void _setTokenHeader(Map<String, String> headers) async {
-    UserPreferences sharedPreferences = UserPreferences();
-    String? token = sharedPreferences.getString('TOKEN');
+    String? token = UserPreferences().getToken();
     if (token != null) {
       headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
     }
   }
 
   void _setBasicAuth(Map<String, String> headers) async {
-    String basicAuth = base64.encode(utf8.encode('${basicAuthUsername()}:${basicAuthPassword()}'));
+    String basicAuth = base64
+        .encode(utf8.encode('${basicAuthUsername()}:${basicAuthPassword()}'));
     headers[HttpHeaders.authorizationHeader] = 'Basic $basicAuth';
   }
 
   String _queryBuilder({
-    required String path, 
+    required String path,
     Map<String, dynamic>? query,
     bool replaceAllUrl = false,
-    }) {
-    final buffer = StringBuffer()..write( replaceAllUrl ? path : '${urlServer()}$path');
+  }) {
+    final buffer = StringBuffer()
+      ..write(replaceAllUrl ? path : '${urlServer()}$path');
     if (query != null) {
       if (query.isNotEmpty) {
         buffer.write('?');
@@ -150,21 +177,20 @@ class AppHttpManager implements HttpManager {
         log(responseJson);
       }
       return AppResponseHttp(
-        body: response.body, 
-        statusCode: response.statusCode, 
-        isSuccessful: true, 
-        headers: response.headers);
+          body: response.body,
+          statusCode: response.statusCode,
+          isSuccessful: true,
+          headers: response.headers);
     }
 
-    final errorResponse =
-        AppResponseHttp(
-        body: response.body, 
-        statusCode: response.statusCode, 
-        isSuccessful: false, 
+    final errorResponse = AppResponseHttp(
+        body: response.body,
+        statusCode: response.statusCode,
+        isSuccessful: false,
         headers: response.headers);
     if (showLog()) {
-        log(responseJson);
-      }
+      log(responseJson);
+    }
     switch (response.statusCode) {
       case 400:
         //throw BadRequestException();

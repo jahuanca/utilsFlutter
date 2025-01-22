@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
+const _token = 'TOKEN';
+
 class UserPreferences {
   static final UserPreferences _instancia = UserPreferences._internal();
 
@@ -24,6 +26,9 @@ class UserPreferences {
   Future<void> setString(String key, String value) async => await _prefs?.setString(key, value);
 
   String? getObjectString(String key) => _prefs?.getString(key);
+
+  String? getToken() => _prefs?.getString(_token);
+  void setToken(String value) async => await _prefs?.setString(_token, value);
 
   Future<void> setObjectString(String key, dynamic value) async{
     await _prefs?.setString(key, jsonEncode(value));

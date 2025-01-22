@@ -22,5 +22,6 @@ const String inputBorderString = 'inputBorder';
 
 const String showLogString = 'showLog';
 const String urlServerString = 'urlServer';
+const String authenticationString = 'authentication';
 const String basicAuthUsernameString = 'basicAuthUsername';
 const String basicAuthPasswordString = 'basicAuthPassword';

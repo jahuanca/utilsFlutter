@@ -6,6 +6,7 @@ import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/strings.dart';
 import 'package:utils/src/core/text_styles.dart';
+import 'package:utils/src/data/enum_auth.dart';
 
 //colors
 Color primaryColor() => GlobalConfiguration().get(primaryColorString) ?? primaryColorBase;
@@ -37,5 +38,6 @@ InputBorder inputBorder() => GlobalConfiguration().get(inputBorderString) ?? inp
 bool showLog()=> GlobalConfiguration().get(showLogString) ?? true;
 
 String urlServer() => GlobalConfiguration().get(urlServerString) ?? emptyString;
+EnumAuth authentication() => GlobalConfiguration().get(authenticationString) ?? EnumAuth.none;
 String basicAuthUsername() => GlobalConfiguration().get(basicAuthUsernameString) ?? emptyString;
 String basicAuthPassword() => GlobalConfiguration().get(basicAuthPasswordString) ?? emptyString;
