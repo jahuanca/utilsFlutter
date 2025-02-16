@@ -23,6 +23,7 @@ export 'src/ui/widgets/buttons/icon_button_widget.dart';
 export 'src/ui/widgets/app_bar/app_bar_widget.dart';
 export 'src/ui/widgets/images/image_action_widget.dart';
 export 'src/ui/widgets/items_list/item_list_image_data_widget.dart';
+export 'src/ui/widgets/utils/child_or_empty_widget.dart';
 export 'src/ui/widgets/tags/tag_widget.dart';
 export 'src/ui/widgets/loading/loading_widget.dart';
 export 'src/ui/utils/constants_ui.dart';
@@ -41,6 +42,7 @@ export 'src/data/app_http_manager.dart';
 export 'src/data/app_response_http.dart';
 export 'src/data/result_type.dart';
 export 'src/data/entities/error_entity.dart';
+export 'src/ui/widgets/utils/basic_positions.dart';
 
 import 'package:global_configuration/global_configuration.dart';
 import 'package:utils/src/data/data_config.dart';

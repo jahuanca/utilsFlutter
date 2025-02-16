@@ -5,7 +5,7 @@ import 'package:utils/utils.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String text;
-  final IconData? icon;
+  final IconData? iconData;
   final void Function()? onTap;
   final EdgeInsetsGeometry padding;
   final ButtonType buttonType;
@@ -13,10 +13,11 @@ class ButtonWidget extends StatelessWidget {
   final double elevation;
   final Color? shadowColor;
   final double fontSize;
+  final BasicPositions iconPosition;
 
   ButtonWidget({
     required this.text,
-    this.icon,
+    this.iconData,
     this.onTap,
     this.shadowColor,
     this.padding = noPadding,
@@ -24,6 +25,7 @@ class ButtonWidget extends StatelessWidget {
     this.buttonStyle = ButtonStyle.base,
     this.elevation = defaultDouble,
     this.fontSize = 20,
+    this.iconPosition = BasicPositions.left,
   });
 
   @override
@@ -31,6 +33,13 @@ class ButtonWidget extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     final selectedTypeButton = getTypeData(buttonType, buttonStyle);
+    final Widget iconOfContainer = ChildOrElseWidget(
+      condition: iconData != null,
+      child: Icon(
+        iconData,
+        color: selectedTypeButton.textAndIconColor,
+      ),
+    );
 
     return Padding(
       padding: padding,
@@ -47,14 +56,11 @@ class ButtonWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                if (icon != null)
+                if (iconData != null)
                   Expanded(
-                      child: Container(
-                        child: Icon(
-                          icon,
-                          color: selectedTypeButton.textAndIconColor,
-                        ),
-                      ),
+                      child: ChildOrElseWidget(
+                          condition: (iconPosition == BasicPositions.left),
+                          child: iconOfContainer),
                       flex: 1),
                 Expanded(
                     child: Container(
@@ -64,12 +70,13 @@ class ButtonWidget extends StatelessWidget {
                               fontSize: fontSize,
                               textColor: selectedTypeButton.textAndIconColor)),
                     ),
-                    flex: 2),
-                if (icon != null)
+                    flex: 3),
+                if (iconData != null)
                   Expanded(
-                    child: Container(),
-                    flex: 1,
-                  ),
+                      child: ChildOrElseWidget(
+                          condition: (iconPosition == BasicPositions.right),
+                          child: iconOfContainer),
+                      flex: 1),
               ],
             ),
           ),

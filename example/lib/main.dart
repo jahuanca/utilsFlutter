@@ -161,7 +161,7 @@ class ExamplePage extends StatelessWidget {
                 onTap: () => showDialogWidget(
                     message: 'Este es un mensaje 3', context: context),
                 text: 'Texto',
-                icon: Icons.abc_rounded,
+                iconData: Icons.abc_rounded,
                 padding: const EdgeInsets.all(8)),
             ButtonWidget(
               elevation: 10,
@@ -170,7 +170,7 @@ class ExamplePage extends StatelessWidget {
             ),
             ButtonWidget(
               text: 'Ghost',
-              icon: Icons.abc_rounded,
+              iconData: Icons.abc_rounded,
               buttonType: ButtonType.ghost,
               padding: const EdgeInsets.all(8),
             ),
