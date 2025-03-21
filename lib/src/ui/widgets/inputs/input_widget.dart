@@ -20,7 +20,7 @@ class InputWidget extends StatelessWidget {
   final void Function(String)? onChanged;
   final void Function()? onTap;
   final void Function()? onPressedIconOverlay;
-  final IconData? iconOverlay;
+  final Widget? iconOverlay;
   final EdgeInsetsGeometry padding;
   final InputBorder? inputBorderCurrent;
   final Icon? icon;
@@ -30,9 +30,9 @@ class InputWidget extends StatelessWidget {
   final FocusNode? focusNode;
   final bool showError;
   final Color? backgroundColor;
+  final Color? backgroundColorIconOverlay;
   final TextStyle? textStyleLabel;
   final List<TextInputFormatter>? inputFormatters;
-
 
   InputWidget({
     required this.hintText,
@@ -55,6 +55,7 @@ class InputWidget extends StatelessWidget {
     this.minLines = _minLinesDefault,
     this.maxLines = _maxLinesDefault,
     this.focusNode,
+    this.backgroundColorIconOverlay,
     this.showError = false,
     this.backgroundColor,
     this.textStyleLabel,
@@ -107,11 +108,10 @@ class InputWidget extends StatelessWidget {
                   Container(
                       alignment: Alignment.centerRight,
                       child: IconButton(
-                          onPressed: onPressedIconOverlay,
-                          icon: Icon(
-                            iconOverlay,
-                            color: infoColor(),
-                          )))
+                        color: backgroundColorIconOverlay,
+                        onPressed: onPressedIconOverlay,
+                        icon: iconOverlay!,
+                      )),
               ],
             ),
           ),
