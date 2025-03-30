@@ -33,6 +33,7 @@ class InputWidget extends StatelessWidget {
   final Color? backgroundColorIconOverlay;
   final TextStyle? textStyleLabel;
   final List<TextInputFormatter>? inputFormatters;
+  final bool isAlignLabel;
 
   InputWidget({
     required this.hintText,
@@ -60,6 +61,7 @@ class InputWidget extends StatelessWidget {
     this.backgroundColor,
     this.textStyleLabel,
     this.inputFormatters,
+    this.isAlignLabel = false,
   });
 
   @override
@@ -76,7 +78,12 @@ class InputWidget extends StatelessWidget {
       padding: padding,
       child: Column(
         children: [
-          labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
+          labelWidget(
+            size: size, 
+            label: label, 
+            textStyleLabel: textStyleLabel,
+            heigthPadding: isAlignLabel ? (heigthPadding * 2) : defaultDouble,
+          ),
           GestureDetector(
             onTap: onTap,
             child: Stack(
