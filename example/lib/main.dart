@@ -80,7 +80,7 @@ class ExamplePage extends StatelessWidget {
             InputWidget(
               label: 'Usuario:',
               icon: const Icon(Icons.abc),
-              iconOverlay: Icons.abc_outlined,
+              iconOverlay: const Icon(Icons.abc_outlined),
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               hintText: 'Usuario',
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:utils/src/core/text_styles.dart';
 import 'package:utils/src/ui/widgets/utils.dart';
 import 'package:utils/utils.dart';
@@ -7,6 +8,7 @@ import 'package:utils/utils.dart';
 const int _minLinesDefault = 1;
 const int _maxLinesDefault = 1;
 
+// ignore: must_be_immutable
 class InputWidget extends StatelessWidget {
   final String hintText;
   final bool enabled;
@@ -34,6 +36,7 @@ class InputWidget extends StatelessWidget {
   final TextStyle? textStyleLabel;
   final List<TextInputFormatter>? inputFormatters;
   final bool isAlignLabel;
+  final Widget Function(Widget)? wrapperFunction;
 
   InputWidget({
     required this.hintText,
@@ -62,6 +65,7 @@ class InputWidget extends StatelessWidget {
     this.textStyleLabel,
     this.inputFormatters,
     this.isAlignLabel = false,
+    this.wrapperFunction,
   });
 
   @override
@@ -74,7 +78,7 @@ class InputWidget extends StatelessWidget {
         : size.height * dimensionInput();
     final double heigthPadding = heightInput * 0.1;
 
-    return Padding(
+    Widget widget = Padding(
       padding: padding,
       child: Column(
         children: [
@@ -126,5 +130,11 @@ class InputWidget extends StatelessWidget {
         ],
       ),
     );
+
+    if(wrapperFunction == null){
+      return widget;
+    }else{
+      return wrapperFunction!(widget);
+    }
   }
 }
