@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:utils/src/core/text_styles.dart';
 import 'package:utils/src/ui/widgets/utils.dart';
 import 'package:utils/utils.dart';
@@ -36,7 +35,7 @@ class InputWidget extends StatelessWidget {
   final TextStyle? textStyleLabel;
   final List<TextInputFormatter>? inputFormatters;
   final bool isAlignLabel;
-  final Widget Function(Widget)? wrapperFunction;
+  final Widget Function(Widget)? wrapperWidget;
 
   InputWidget({
     required this.hintText,
@@ -65,7 +64,7 @@ class InputWidget extends StatelessWidget {
     this.textStyleLabel,
     this.inputFormatters,
     this.isAlignLabel = false,
-    this.wrapperFunction,
+    this.wrapperWidget,
   });
 
   @override
@@ -77,8 +76,9 @@ class InputWidget extends StatelessWidget {
         ? size.height * dimensionInput() * 5
         : size.height * dimensionInput();
     final double heigthPadding = heightInput * 0.1;
+    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
 
-    Widget widget = Padding(
+    Widget content = Padding(
       padding: padding,
       child: Column(
         children: [
@@ -131,10 +131,10 @@ class InputWidget extends StatelessWidget {
       ),
     );
 
-    if(wrapperFunction == null){
-      return widget;
+    if(wrapperSelected == null){
+      return content;
     }else{
-      return wrapperFunction!(widget);
+      return wrapperSelected(content);
     }
   }
 }

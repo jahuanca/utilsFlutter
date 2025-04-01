@@ -41,3 +41,6 @@ String urlServer() => GlobalConfiguration().get(urlServerString) ?? emptyString;
 EnumAuth authentication() => GlobalConfiguration().get(authenticationString) ?? EnumAuth.none;
 String basicAuthUsername() => GlobalConfiguration().get(basicAuthUsernameString) ?? emptyString;
 String basicAuthPassword() => GlobalConfiguration().get(basicAuthPasswordString) ?? emptyString;
+
+//functions
+Widget Function(Widget)? wrapperWidgetInputs()=> GlobalConfiguration().get(wrapperWidgetInputsString);

@@ -22,6 +22,8 @@ class DropdownMenuWidget extends StatelessWidget {
   final Color? iconDisabledColor;
   final String idLabel;
   final String idValue;
+  final bool isAlignLabel;
+  final Widget Function(Widget)? wrapperWidget;
 
   const DropdownMenuWidget({
     this.hintText = dropdownHintString,
@@ -40,6 +42,8 @@ class DropdownMenuWidget extends StatelessWidget {
     this.iconDisabledColor,
     this.idLabel = defaultLabelValue,
     this.idValue = defaultIdValue,
+    this.wrapperWidget,
+    this.isAlignLabel = false,
   });
 
   @override
@@ -48,12 +52,18 @@ class DropdownMenuWidget extends StatelessWidget {
     final double heightInput = size.height * dimensionInput();
     final inputBorderSelected = inputBorderCurrent ?? inputBorder();
     final double heigthPadding = heightInput * 0.1;
+    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
 
-    return Container(
+    Widget content = Container(
       padding: padding,
       child: Column(
         children: [
-          labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
+          labelWidget(
+            size: size, 
+            label: label, 
+            textStyleLabel: textStyleLabel,
+            heigthPadding: isAlignLabel ? (heigthPadding * 2) : defaultDouble,
+          ),
           Container(
             height: heightWidget(size: size),
             child: DropdownButtonFormField<dynamic>(
@@ -94,5 +104,11 @@ class DropdownMenuWidget extends StatelessWidget {
         ],
       ),
     );
+
+    if(wrapperSelected == null){
+      return content;
+    }else{
+      return wrapperSelected(content);
+    }
   }
 }

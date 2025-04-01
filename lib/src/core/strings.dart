@@ -25,3 +25,5 @@ const String urlServerString = 'urlServer';
 const String authenticationString = 'authentication';
 const String basicAuthUsernameString = 'basicAuthUsername';
 const String basicAuthPasswordString = 'basicAuthPassword';
+
+const String wrapperWidgetInputsString = 'wrapperWidgetInputs';

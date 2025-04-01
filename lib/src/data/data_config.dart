@@ -30,6 +30,7 @@ class DataConfig {
   String basicAuthUsername;
   String basicAuthPassword;
   EnumAuth enumAuth;
+  Widget Function(Widget)? wrapperWidgetInputs;
 
   DataConfig({
     this.primaryColor =  primaryColorBase,
@@ -55,6 +56,7 @@ class DataConfig {
     this.hintStyle,
     this.labelStyle,
     this.enumAuth = EnumAuth.none,
+    this.wrapperWidgetInputs,
   }){
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
     hintStyle ??= hintStyleBase();
@@ -83,6 +85,7 @@ class DataConfig {
         basicAuthPassword: json["basicAuthPassword"],
         labelStyle: json["labelStyle"],
         enumAuth: json["enumAuth"],
+        wrapperWidgetInputs: json["wrapperWidgetInputs"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -109,5 +112,6 @@ class DataConfig {
         "basicAuthPassword": basicAuthPassword,
         "labelStyle": labelStyle,
         "enumAuth": enumAuth,
+        "wrapperWidgetInputs": wrapperWidgetInputs,
       };
 }
