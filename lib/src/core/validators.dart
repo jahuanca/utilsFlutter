@@ -3,7 +3,7 @@ import 'package:utils/src/core/default_extensions.dart';
 class ValidateResult {
   String? error;
   bool hasError;
-  String? value;
+  dynamic value;
 
   ValidateResult({
     required this.error,
