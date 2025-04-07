@@ -20,6 +20,7 @@ extension EmptyDate on DateTime? {
 
 extension NullBool on bool?{
   bool orFalse() => this ?? false;
+  bool not([bool? value]) => (this == null) ? (value ?? false) : !(this!);
 }
 
 const String emptyString = '';
