@@ -16,6 +16,7 @@ enum RuleValidator {
   isRequired,
   isInt,
   isDouble,
+  isDatetime,
   minLength,
   maxLength,
   minValue,
@@ -43,6 +44,12 @@ String? validatorText(
 
         if (text is num) {
           if ([null, 0].contains(text) && value == true) {
+            return '$label es necesario';
+          }
+        }
+
+        if (text is DateTime) {
+          if ([null].contains(text) && value == true) {
             return '$label es necesario';
           }
         }
@@ -165,6 +172,26 @@ ValidateResult validateText(
             hasError: true,
             value: null,
           );
+        }
+        break;
+
+      case RuleValidator.isDatetime:
+        if (text is! DateTime) {
+          if (text is String) {
+            if (DateTime.tryParse(text) == null && value == true) {
+              return ValidateResult(
+                error: '$label debe ser una fecha',
+                hasError: true,
+                value: null,
+              );
+            }
+          } else {
+            return ValidateResult(
+                error: '$label debe ser una fecha',
+                hasError: true,
+                value: null,
+              );
+          }
         }
         break;
 
