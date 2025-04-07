@@ -23,86 +23,19 @@ enum RuleValidator {
   maxValue,
 }
 
-String? validatorText(
-    {required dynamic text,
-    required String label,
-    Map<RuleValidator, dynamic> rules = const {}}) {
-  String? error;
-  if (rules.isEmpty) return error;
-
-  for (var i = 0; i < rules.values.length; i++) {
-    RuleValidator rule = rules.keys.elementAt(i);
-
-    dynamic value = rules.values.elementAt(i);
-    switch (rule) {
-      case RuleValidator.isRequired:
-        if (text is String && value == true) {
-          if ([null, '', 'null'].contains(text)) {
-            return '$label es necesario';
-          }
-        }
-
-        if (text is num) {
-          if ([null, 0].contains(text) && value == true) {
-            return '$label es necesario';
-          }
-        }
-
-        if (text is DateTime) {
-          if ([null].contains(text) && value == true) {
-            return '$label es necesario';
-          }
-        }
-        break;
-
-      case RuleValidator.minLength:
-        if ([null].contains(text)) break;
-        if ((text as String).length < (value as int)) {
-          return 'Dimensión mínima: $value';
-        }
-        break;
-
-      case RuleValidator.maxLength:
-        if ((text as String).length > (value as int)) {
-          return 'Dimensión máxima: $value';
-        }
-        break;
-
-      case RuleValidator.isInt:
-        if (int.tryParse(text) == null && value == true) {
-          return '$label debe ser entero';
-        }
-        break;
-
-      case RuleValidator.isDouble:
-        if (double.tryParse(text) == null && value == true) {
-          return '$label debe ser decimal';
-        }
-        break;
-
-      case RuleValidator.minValue:
-        if (num.tryParse(text) != null && num.tryParse(text)! < value) {
-          return '$label no debe ser menor a $value';
-        }
-        break;
-
-      case RuleValidator.maxValue:
-        if (num.tryParse(text) != null && num.tryParse(text)! > value) {
-          return '$label no debe ser mayor a $value';
-        }
-        break;
-
-      default:
-        break;
-    }
-  }
-  return error;
+enum ToConverter {
+  toStr,
+  toInt,
+  toDouble,
+  toDatetime,
 }
 
-ValidateResult validateText(
-    {required dynamic text,
-    required String label,
-    Map<RuleValidator, dynamic> rules = const {}}) {
+ValidateResult validateText({
+  required dynamic text,
+  required String label,
+  Map<RuleValidator, dynamic> rules = const {},
+  ToConverter? toConvert,
+}) {
   if (rules.isEmpty) {
     return ValidateResult(error: null, hasError: false, value: text);
   }
@@ -113,6 +46,13 @@ ValidateResult validateText(
     dynamic value = rules.values.elementAt(i);
     switch (rule) {
       case RuleValidator.isRequired:
+        if (text == null) {
+          return ValidateResult(
+            error: '$label es necesario',
+            hasError: true,
+            value: null,
+          );
+        }
         if (text is String && value == true) {
           if ([null, emptyString, 'null'].contains(text)) {
             return ValidateResult(
@@ -125,6 +65,16 @@ ValidateResult validateText(
 
         if (text is num) {
           if ([null, 0].contains(text) && value == true) {
+            return ValidateResult(
+              error: '$label es necesario',
+              hasError: true,
+              value: null,
+            );
+          }
+        }
+
+        if (text is DateTime) {
+          if ([null].contains(text) && value == true) {
             return ValidateResult(
               error: '$label es necesario',
               hasError: true,
@@ -166,12 +116,22 @@ ValidateResult validateText(
         break;
 
       case RuleValidator.isDouble:
-        if (double.tryParse(text) == null && value == true) {
-          return ValidateResult(
-            error: '$label debe ser decimal',
-            hasError: true,
-            value: null,
-          );
+        if (text is! double) {
+          if (text is String) {
+            if (double.tryParse(text) == null && value == true) {
+              return ValidateResult(
+                error: '$label debe ser decimal',
+                hasError: true,
+                value: null,
+              );
+            }
+          } else {
+            return ValidateResult(
+              error: '$label debe ser una fecha',
+              hasError: true,
+              value: null,
+            );
+          }
         }
         break;
 
@@ -187,10 +147,10 @@ ValidateResult validateText(
             }
           } else {
             return ValidateResult(
-                error: '$label debe ser una fecha',
-                hasError: true,
-                value: null,
-              );
+              error: '$label debe ser una fecha',
+              hasError: true,
+              value: null,
+            );
           }
         }
         break;
@@ -218,6 +178,25 @@ ValidateResult validateText(
       default:
         break;
     }
+  }
+  if (toConvert != null) {
+    switch (toConvert) {
+      case ToConverter.toInt:
+        if (text is! int) text = int.tryParse(text);
+        break;
+      case ToConverter.toDouble:
+        if (text is! double) text = double.tryParse(text);
+        break;
+      case ToConverter.toStr:
+        if (text is! String) text = text.toString();
+        break;
+      case ToConverter.toDatetime:
+        if (text is! DateTime) text = DateTime.tryParse(text);
+        break;
+    }
+    if (text == null)
+      ValidateResult(
+          error: 'No se pudo convertir $label.', hasError: true, value: null);
   }
   return ValidateResult(error: null, hasError: false, value: text);
 }
