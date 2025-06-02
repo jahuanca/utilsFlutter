@@ -6,6 +6,7 @@ import 'package:http/http.dart' as https;
 import 'package:utils/src/core/constants.dart';
 import 'package:utils/src/data/app_exceptions.dart';
 import 'package:utils/src/data/enum_auth.dart';
+import 'package:utils/src/data/enum_error.dart';
 import 'package:utils/src/domain/http_manager.dart';
 import 'package:utils/utils.dart';
 
@@ -49,7 +50,9 @@ class AppHttpManager implements HttpManager {
           Uri.parse(_queryBuilder(
               path: url, query: query, replaceAllUrl: replaceAllUrl)),
           body: jsonEncode(body),
-          headers: await _headerBuilder(headers));
+          headers: await _headerBuilder(headers))
+          .timeout(timeout, onTimeout: () => throw TimeoutException())
+          ;
       return _returnResponse(response, showError);
     } on SocketException catch (_) {
       throw NetworkException();
@@ -177,33 +180,33 @@ class AppHttpManager implements HttpManager {
         log(responseJson);
       }
       return AppResponseHttp(
+          title: 'Petición exitosa',
+          detail: 'La petición ha sido resuelta con exito.',
           body: response.body,
           statusCode: response.statusCode,
           isSuccessful: true,
           headers: response.headers);
     }
 
-    final errorResponse = AppResponseHttp(
+    EnumError currentError = EnumError.values.firstWhere(
+      (e) => e.statusCode == response.statusCode,
+      orElse: () => EnumError.defaultError,
+    );
+
+    return AppResponseHttp(
         body: response.body,
         statusCode: response.statusCode,
         isSuccessful: false,
-        headers: response.headers);
-    if (showLog()) {
-      log(responseJson);
-    }
-    switch (response.statusCode) {
-      case 400:
-        //throw BadRequestException();
-        return errorResponse;
-      case 401:
-      case 403:
-        //throw UnauthorisedException();
-        return errorResponse;
-      case 500:
-        return errorResponse;
-      default:
-        return errorResponse;
-      //throw ServerException();
-    }
+        headers: response.headers,
+        title: currentError.title,
+        detail: currentError.detail);
   }
+
+  AppResponseHttp errorNetworkException(https.Response response) => AppResponseHttp(
+      body: '',
+      statusCode: 500,
+      isSuccessful: false,
+      headers: response.headers,
+      title: '',
+      detail: '');
 }

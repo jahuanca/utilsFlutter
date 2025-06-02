@@ -8,5 +8,5 @@ extension DateFormats on DateTime? {
       this == null ? null : DateFormat(formatDate, locale).format(this!);
 }
 
-const String onlyDateFormat = 'd/M/y';
+const String onlyDateFormat = 'dd/MM/y';
 const String locale = 'es';
