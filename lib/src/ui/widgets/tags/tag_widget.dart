@@ -12,10 +12,10 @@ class TagWidget extends StatelessWidget {
   final EdgeInsetsGeometry? paddingContent;
   final void Function()? onTap;
   final double sizeIcon;
+  final MainAxisAlignment alignmentOfContent;
   Color? backgroundColor;
   Color? borderColor;
   Color? textColorAndIcon;
-  MainAxisAlignment alignmentOfContent;
 
   TagWidget({
     super.key,

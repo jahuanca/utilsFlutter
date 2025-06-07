@@ -22,6 +22,8 @@ class ItemListImageDataWidget extends StatelessWidget {
   final Decoration? decorationAll;
   final double cardElevation;
   final void Function()? onTap;
+  final List<Widget> actions;
+  final MainAxisAlignment alignmentOfActions;
 
   const ItemListImageDataWidget({
     this.decorationAll,
@@ -39,6 +41,8 @@ class ItemListImageDataWidget extends StatelessWidget {
     this.detail,
     this.cardElevation = defaultDouble,
     this.onTap,
+    this.actions = const [], 
+    this.alignmentOfActions = MainAxisAlignment.start,
   });
 
   @override
@@ -89,7 +93,15 @@ class ItemListImageDataWidget extends StatelessWidget {
                           if (detail != null) Text(detail.orEmpty())
                         ],
                       ),
-                    )),
+                    )
+                  ),
+                if(actions.isNotEmpty)
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    mainAxisAlignment: alignmentOfActions,
+                    children: actions,
+                  )),
               ],
             ),
           ),

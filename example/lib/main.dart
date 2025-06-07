@@ -134,6 +134,11 @@ class ExamplePage extends StatelessWidget {
               decorationAll: BoxDecoration(
                   border: Border.all(color: primaryColor()),
                   borderRadius: BorderRadius.circular(borderRadius())),
+              actions: const [
+                IconButton(onPressed: null, icon: Icon(Icons.edit)),
+                IconButton(onPressed: null, icon: Icon(Icons.delete))
+              ],
+              alignmentOfActions: MainAxisAlignment.center,
               //shape: BoxShape.rectangle,
               //path: 'https://imgs.search.brave.com/TOSM-yLTsegMoH6QyZRJre73TnPam6v5YAUht-y_37Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni84MzIzLzgzMjMz/MTcucG5nP3NlbXQ9/YWlzX2h5YnJpZA',
             ),
