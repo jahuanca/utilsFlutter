@@ -15,6 +15,7 @@ class TagWidget extends StatelessWidget {
   Color? backgroundColor;
   Color? borderColor;
   Color? textColorAndIcon;
+  MainAxisAlignment alignmentOfContent;
 
   TagWidget({
     super.key,
@@ -27,6 +28,7 @@ class TagWidget extends StatelessWidget {
     this.paddingContent = const EdgeInsets.all(5.0),
     this.onTap,
     this.sizeIcon = 20,
+    this.alignmentOfContent = MainAxisAlignment.start,
   }){
     backgroundColor ??= primaryColor();
     borderColor ??= primaryColor();
@@ -45,6 +47,7 @@ class TagWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(borderRadius())),
           padding: paddingContent,
           child: Row(
+            mainAxisAlignment: alignmentOfContent,
             children: [
               if(icon != null)
               Icon(icon, color: textColorAndIcon, size: sizeIcon,),

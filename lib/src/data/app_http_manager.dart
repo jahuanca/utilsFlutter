@@ -52,7 +52,7 @@ class AppHttpManager implements HttpManager {
           headers: await _headerBuilder(headers))
           .timeout(timeout, onTimeout: () => throw TimeoutException())
           ;
-      return _returnResponse(response, showError);
+      return _returnResponse(response);
     } on SocketException catch (_) {
       throw NetworkException();
     }
@@ -169,10 +169,8 @@ class AppHttpManager implements HttpManager {
     return buffer.toString();
   }
 
-  AppResponseHttp _returnResponse(https.Response response,
-      [bool mostrarError = true]) {
-
-    AppResponseHttp appResponseHttp = AppResponseHttp(
+  AppResponseHttp _returnResponse(https.Response response) {
+    final appResponseHttp = AppResponseHttp(
           body: response.body,
           statusCode: response.statusCode,
           headers: response.headers);

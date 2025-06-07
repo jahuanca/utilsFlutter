@@ -115,6 +115,11 @@ class ExamplePage extends StatelessWidget {
               icon: Icons.abc,
               padding: const EdgeInsets.only(left: 10, top: 4),
             ),
+            TagWidget(
+              alignmentOfContent: MainAxisAlignment.center,
+              title: 'Tag sin icono y alineamiento',
+              padding: const EdgeInsets.only(left: 10, top: 4),
+            ),
             ItemListImageDataWidget(
               width: size.width,
               height: size.height * 0.2,
