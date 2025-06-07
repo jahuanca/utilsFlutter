@@ -1,16 +1,17 @@
 
 
-enum EnumError {
+enum EnumResponse {
 
-  badRequest(statusCode: 400, title: _badRequestTitle, detail: _badRequestDetail),
-  unautorized(statusCode: 401, title: _unautorizedTitle, detail: _unautorizedDetail),
-  notFound(statusCode: 404, title: _notFoundTitle, detail: _notFoundDetail),
-  internalServerError(statusCode: 500, title: _internalServerErrorTitle, detail: _internalServerErrorDetail),
+  okResponse(statusCode: 200, title: _okRequestTitle, detail: _okRequestDetail),
+  badResponse(statusCode: 400, title: _badRequestTitle, detail: _badRequestDetail),
+  unautorizedReponse(statusCode: 401, title: _unautorizedTitle, detail: _unautorizedDetail),
+  notFoundReponse(statusCode: 404, title: _notFoundTitle, detail: _notFoundDetail),
+  internalServerErrorReponse(statusCode: 500, title: _internalServerErrorTitle, detail: _internalServerErrorDetail),
 
-  defaultError(statusCode: 0, title: _badRequestTitle, detail: _badRequestDetail);
+  defaultErrorResponse(statusCode: 0, title: _badRequestTitle, detail: _badRequestDetail);
   
 
-  const EnumError({
+  const EnumResponse({
     required this.statusCode,
     required this.title,
     required this.detail,
@@ -21,6 +22,9 @@ enum EnumError {
   final String detail;
 
 }
+
+const String _okRequestTitle = 'Petición exitosa';
+const String _okRequestDetail = 'La petición ha sido resuelta con exito.';
 
 const String _badRequestTitle = 'Solicitud incorrecta';
 const String _badRequestDetail = 'El servidor no puede procesar una solicitud.';

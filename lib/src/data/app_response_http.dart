@@ -1,20 +1,28 @@
+import 'package:utils/src/data/enum_error.dart';
 
-class AppResponseHttp{
-
+class AppResponseHttp {
   String body;
   int statusCode;
-  bool isSuccessful;
   Map<String, String> headers;
-  String title;
-  String detail;
 
   AppResponseHttp({
-    required this.body, 
-    required this.statusCode, 
-    required this.isSuccessful,
+    required this.body,
+    required this.statusCode,
     required this.headers,
-    required this.title,
-    required this.detail,
-    });
+  });
 
+  bool get isSuccessful => (statusCode >= 200 && statusCode <= 299);
+
+  String get title => _currentResponse.title;
+  String get detail => _currentResponse.detail;
+
+  EnumResponse get _currentResponse {
+    if (isSuccessful) {
+      return EnumResponse.okResponse;
+    }
+    return EnumResponse.values.firstWhere(
+      (e) => e.statusCode == statusCode,
+      orElse: () => EnumResponse.defaultErrorResponse,
+    );
+  }
 }

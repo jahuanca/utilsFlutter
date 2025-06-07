@@ -6,7 +6,6 @@ import 'package:http/http.dart' as https;
 import 'package:utils/src/core/constants.dart';
 import 'package:utils/src/data/app_exceptions.dart';
 import 'package:utils/src/data/enum_auth.dart';
-import 'package:utils/src/data/enum_error.dart';
 import 'package:utils/src/domain/http_manager.dart';
 import 'package:utils/utils.dart';
 
@@ -172,41 +171,27 @@ class AppHttpManager implements HttpManager {
 
   AppResponseHttp _returnResponse(https.Response response,
       [bool mostrarError = true]) {
-    final responseJson = response.body;
 
-    if (response.statusCode >= 200 && response.statusCode <= 299) {
-      log('Api response success with:');
-      if (showLog()) {
-        log(responseJson);
-      }
-      return AppResponseHttp(
-          title: 'Petición exitosa',
-          detail: 'La petición ha sido resuelta con exito.',
+    AppResponseHttp appResponseHttp = AppResponseHttp(
           body: response.body,
           statusCode: response.statusCode,
-          isSuccessful: true,
           headers: response.headers);
+    _logResponse(appResponseHttp);
+    return appResponseHttp;
+  }
+
+  void _logResponse(AppResponseHttp appResponseHttp) {
+    bool isSuccessful = appResponseHttp.isSuccessful;
+    int statusCode = appResponseHttp.statusCode;
+    
+    log('Api response ${isSuccessful ? 'Succes' : 'Error'} $statusCode with:');
+    if (showLog()) {
+      log(appResponseHttp.body);
     }
-
-    EnumError currentError = EnumError.values.firstWhere(
-      (e) => e.statusCode == response.statusCode,
-      orElse: () => EnumError.defaultError,
-    );
-
-    return AppResponseHttp(
-        body: response.body,
-        statusCode: response.statusCode,
-        isSuccessful: false,
-        headers: response.headers,
-        title: currentError.title,
-        detail: currentError.detail);
   }
 
   AppResponseHttp errorNetworkException(https.Response response) => AppResponseHttp(
-      body: '',
+      body: emptyString,
       statusCode: 500,
-      isSuccessful: false,
-      headers: response.headers,
-      title: '',
-      detail: '');
+      headers: response.headers);
 }
