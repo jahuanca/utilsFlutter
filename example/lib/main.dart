@@ -33,19 +33,15 @@ class ExamplePage extends StatelessWidget {
 
     return Scaffold(
       appBar: appBarWidget(
-        text: 'Utils',
-        leading: const Icon(Icons.people),
-        actions: [
-          MenuOverlayWidget(
-            onTapItem: print,
-            isExpand: false,
-              items: const [
-                '1 opcion',
-                '2 opcion mas larga viendo tamaño'
-              ],
+          text: 'Utils',
+          leading: const Icon(Icons.people),
+          actions: [
+            MenuOverlayWidget(
+              onTapItem: print,
+              isExpand: false,
+              items: const ['1 opcion', '2 opcion mas larga viendo tamaño'],
             ),
-        ]
-      ),
+          ]),
       bottomNavigationBar: BottomNavigationBarWidget(
           indexSelectedItem: 3,
           onTapItem: print,
@@ -65,10 +61,7 @@ class ExamplePage extends StatelessWidget {
           children: [
             MenuOverlayWidget(
               onTapItem: print,
-              items: const [
-                '1 opcion',
-                '2 opcion mas larga viendo tamaño'
-              ],
+              items: const ['1 opcion', '2 opcion mas larga viendo tamaño'],
             ),
             InputWidget(
               maxLength: 250,
@@ -85,10 +78,7 @@ class ExamplePage extends StatelessWidget {
               hintText: 'Usuario',
             ),
             const DropdownMenuWidget(
-              items: [
-                '1 opcion',
-                '2 opcion'
-              ],
+              items: ['1 opcion', '2 opcion'],
               onChanged: print,
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
               label: 'Opciones:',
@@ -134,18 +124,30 @@ class ExamplePage extends StatelessWidget {
               decorationAll: BoxDecoration(
                   border: Border.all(color: primaryColor()),
                   borderRadius: BorderRadius.circular(borderRadius())),
-              actions: const [
+              /* actions: const [
                 IconButton(onPressed: null, icon: Icon(Icons.edit)),
                 IconButton(onPressed: null, icon: Icon(Icons.delete))
+              ],*/
+              actions: [
+                IconButtonWidget(
+                  onPressed: null,
+                  iconData: Icons.edit,
+                  shape: BoxShape.circle,
+                  backgroundColor: infoColor(),
+                ),
+                IconButtonWidget(
+                  onPressed: null,
+                  iconData: Icons.edit,
+                  shape: BoxShape.circle,
+                  backgroundColor: infoColor(),
+                ),
               ],
               alignmentOfActions: MainAxisAlignment.center,
               //shape: BoxShape.rectangle,
               //path: 'https://imgs.search.brave.com/TOSM-yLTsegMoH6QyZRJre73TnPam6v5YAUht-y_37Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni84MzIzLzgzMjMz/MTcucG5nP3NlbXQ9/YWlzX2h5YnJpZA',
             ),
             InputWidget(
-              inputFormatters: [
-                inputFormatterPhoneNumber
-              ],
+              inputFormatters: [inputFormatterPhoneNumber],
               icon: const Icon(
                 Icons.map,
                 color: Colors.black,

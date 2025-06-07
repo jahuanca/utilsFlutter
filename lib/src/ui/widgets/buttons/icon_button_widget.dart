@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utils/src/core/constants.dart';
 import 'package:utils/utils.dart';
 
 class IconButtonWidget extends StatelessWidget {
@@ -28,21 +29,20 @@ class IconButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final bool isCircle = (shape == BoxShape.circle);
+
+    final border = _getBorder;
 
     return Padding(
       padding: padding,
       child: Container(
-        width: width,
-        height: height,
+        width: width ?? circleAvatarHeight,
+        height: height ?? circleAvatarWidth,
         decoration: BoxDecoration(
             color: backgroundColor ?? primaryColor(),
             shape: shape,
             borderRadius: isCircle ? null : borderRadius,
-            border: Border.all(
-              color: borderColor ?? primaryColor(),
-            )),
+            border: border),
         child: IconButton(
             onPressed: onPressed,
             icon: Icon(
@@ -50,6 +50,13 @@ class IconButtonWidget extends StatelessWidget {
               color: iconColor ?? secondaryColor(),
             )),
       ),
+    );
+  }
+
+  Border? get _getBorder {
+    if(borderColor == null) return null;
+    return Border.all(
+      color: borderColor!,
     );
   }
 }
