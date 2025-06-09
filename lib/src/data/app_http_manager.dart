@@ -37,7 +37,7 @@ class AppHttpManager implements HttpManager {
   @override
   Future<AppResponseHttp> post({
     required String url,
-    required dynamic body,
+    required Map<String, dynamic> body,
     Map<String, dynamic>? query,
     Map<String, String>? headers,
     bool showError = true,
@@ -61,7 +61,7 @@ class AppHttpManager implements HttpManager {
   @override
   Future<AppResponseHttp> put({
     required String url,
-    required Map body,
+    required Map<String, dynamic> body,
     Map<String, dynamic>? query,
     Map<String, String>? headers,
     bool replaceAllUrl = false,

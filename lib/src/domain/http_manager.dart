@@ -11,14 +11,14 @@ abstract class HttpManager {
 
   Future<AppResponseHttp> post({
     required String url,
-    required Map body,
+    required Map<String, dynamic> body,
     Map<String, dynamic>? query,
     Map<String, String>? headers,
   });
 
   Future<AppResponseHttp> put({
     required String url,
-    required Map body,
+    required Map<String, dynamic> body,
     Map<String, dynamic>? query,
     Map<String, String>? headers,
   });
