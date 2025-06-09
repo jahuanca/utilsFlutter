@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/default_extensions.dart';
 
-Future<bool?> showAlertWidget({
+Future<bool> showAlertWidget({
   required BuildContext context,
   required String message,
   String? title = 'Alerta',
@@ -19,5 +19,5 @@ Future<bool?> showAlertWidget({
               onPressed: () => Navigator.of(context).pop(true),
               child: Text(okText.orEmpty())),
         ],
-      ));
+      )).then((value) => value.orFalse(),);
 }
