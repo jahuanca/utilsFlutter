@@ -1,4 +1,4 @@
-import 'package:utils/src/core/default_extensions.dart';
+import 'default_extensions.dart';
 
 class ValidateResult {
   String? error;
@@ -199,4 +199,8 @@ ValidateResult validateText({
           error: 'No se pudo convertir $label.', hasError: true, value: null);
   }
   return ValidateResult(error: null, hasError: false, value: text);
+}
+
+ValidateResult? findErrorInValidations(List<ValidateResult?> validations) {
+  return validations.firstWhere((e) => e!.hasError.orFalse(), orElse: () => null,);
 }
