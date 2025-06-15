@@ -21,8 +21,6 @@ extension EmptyDate on DateTime? {
 extension NullBool on bool?{
 
   /// En caso de que el booleano sea nulo retorna false
-  ///
-  /// @return El valor o si es nulo falso.
   bool orFalse() => this ?? false;
 
   bool not([bool? value]) => (this == null) ? (value ?? false) : !(this!);

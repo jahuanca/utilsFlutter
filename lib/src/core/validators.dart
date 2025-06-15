@@ -1,6 +1,9 @@
 import 'default_extensions.dart';
 
+/// Estructura que retorna el metodo [validateText]
+
 class ValidateResult {
+  /// `error` contiene un mensaje de la [RuleValidator] que no fue cumplida.
   String? error;
   bool hasError;
   dynamic value;
