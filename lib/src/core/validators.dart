@@ -3,14 +3,18 @@ import 'default_extensions.dart';
 /// Estructura que retorna el metodo [validateText]
 
 class ValidateResult {
-  /// `error` contiene un mensaje de la [RuleValidator] que no fue cumplida.
-  String? error;
+  /// `hasError` devuelve true o false en caso exista un error
   bool hasError;
+
+  /// `error` contiene el mensaje de la [RuleValidator] que no fue cumplida.
+  String? error;
+
+  /// `value` en caso de no existir un error contiene el valor.
   dynamic value;
 
   ValidateResult({
-    required this.error,
     required this.hasError,
+    required this.error,
     required this.value,
   });
 }
@@ -159,25 +163,34 @@ ValidateResult validateText({
         break;
 
       case RuleValidator.minValue:
-        if (num.tryParse(text) != null && num.tryParse(text)! < value) {
-          return ValidateResult(
-            error: '$label no debe ser menor a $value',
-            hasError: true,
-            value: null,
-          );
+        final errorToReturn = ValidateResult(
+          error: '$label no debe ser menor a $value',
+          hasError: true,
+          value: null,
+        );
+        if (value is num) {
+          if (text < value) return errorToReturn;
+        } else {
+          if (num.tryParse(text) != null && num.tryParse(text)! < value) {
+            return errorToReturn;
+          }
         }
         break;
 
       case RuleValidator.maxValue:
-        if (num.tryParse(text) != null && num.tryParse(text)! > value) {
-          return ValidateResult(
-            error: '$label no debe ser mayor a $value',
-            hasError: true,
-            value: null,
-          );
+        final errorToReturn = ValidateResult(
+          error: '$label no debe ser mayor a $value',
+          hasError: true,
+          value: null,
+        );
+        if (value is num) {
+          if (text > value) return errorToReturn;
+        } else {
+          if (num.tryParse(text) != null && num.tryParse(text)! > value) {
+            return errorToReturn;
+          }
         }
         break;
-
       default:
         break;
     }
@@ -197,13 +210,17 @@ ValidateResult validateText({
         if (text is! DateTime) text = DateTime.tryParse(text);
         break;
     }
-    if (text == null)
+    if (text == null) {
       ValidateResult(
           error: 'No se pudo convertir $label.', hasError: true, value: null);
+    }
   }
   return ValidateResult(error: null, hasError: false, value: text);
 }
 
 ValidateResult? findErrorInValidations(List<ValidateResult?> validations) {
-  return validations.firstWhere((e) => e!.hasError.orFalse(), orElse: () => null,);
+  return validations.firstWhere(
+    (e) => e!.hasError.orFalse(),
+    orElse: () => null,
+  );
 }
