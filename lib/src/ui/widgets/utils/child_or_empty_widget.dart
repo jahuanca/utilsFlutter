@@ -7,8 +7,8 @@ import 'package:flutter/widgets.dart';
 
 class ChildOrElseWidget extends StatelessWidget {
 
-  final Widget child;
   final bool condition;
+  final Widget child;
   final Widget elseWidget;
 
   const ChildOrElseWidget({

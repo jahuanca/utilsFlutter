@@ -28,6 +28,7 @@ export 'src/ui/widgets/items_list/item_list_image_data_widget.dart';
 export 'src/ui/widgets/utils/child_or_empty_widget.dart';
 export 'src/ui/widgets/tags/tag_widget.dart';
 export 'src/ui/widgets/loading/loading_widget.dart';
+export 'src/ui/widgets/empty/empty_widget.dart';
 export 'src/ui/utils/constants_ui.dart';
 export 'src/ui/utils/input_formatters.dart';
 
