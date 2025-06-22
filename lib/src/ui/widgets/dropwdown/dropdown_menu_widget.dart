@@ -26,8 +26,9 @@ class DropdownMenuWidget extends StatelessWidget {
   final Widget Function(Widget)? wrapperWidget;
   final TextEditingController? controller;
   final double? menuHeight;
+  final FocusNode focusNode = FocusNode();
 
-  const DropdownMenuWidget({
+  DropdownMenuWidget({
     this.hintText = dropdownHintString,
     this.padding,
     this.label,
@@ -75,55 +76,58 @@ class DropdownMenuWidget extends StatelessWidget {
             textStyleLabel: textStyleLabel,
             heigthPadding: isAlignLabel ? (heigthPadding * 2) : defaultDouble,
           ),
-          Container(
-            height: heightWidget(size: size),
-            child: DropdownMenu<dynamic>(
-              leadingIcon: iconData == null ? null : Icon(iconData),
-              //style: primaryTextStyleBase(),
-              inputDecorationTheme: InputDecorationTheme(
-                contentPadding: inputDecoration.contentPadding,
-                // filled: inputDecoration.filled.orFalse(),
-                counterStyle: inputDecoration.counterStyle,
-                hintStyle: inputDecoration.hintStyle,
-                enabledBorder: inputDecoration.enabledBorder,
-                border: inputDecoration.border,
-                focusedBorder: inputDecoration.focusedBorder,
-                
-              ),
-              menuHeight: menuHeight ?? (size.height * 0.5),
-              //filterCallback: (entries, filter) => ,
-              controller: controller,
-              initialSelection: initialValue,
-              width: size.width,
-              enableFilter: true,
-              hintText: hintText,
-              onSelected: onChanged,
-              requestFocusOnTap: true,
-              dropdownMenuEntries: items == null
-                  ? []
-                  : items!.map(
-                      (e) {
-                        switch (e.runtimeType) {
-                          case String:
-                            return DropdownMenuEntry(
-                              value: e,
-                              label: e,
-                            );
-
-                          default:
-                            if (e is Map) {
+          TapRegion(
+            onTapOutside: (event) => focusNode.unfocus(),
+            child: Container(
+              height: heightWidget(size: size),
+              child: DropdownMenu<dynamic>(
+                leadingIcon: iconData == null ? null : Icon(iconData),
+                //style: primaryTextStyleBase(),
+                inputDecorationTheme: InputDecorationTheme(
+                  contentPadding: inputDecoration.contentPadding,
+                  // filled: inputDecoration.filled.orFalse(),
+                  counterStyle: inputDecoration.counterStyle,
+                  hintStyle: inputDecoration.hintStyle,
+                  enabledBorder: inputDecoration.enabledBorder,
+                  border: inputDecoration.border,
+                  focusedBorder: inputDecoration.focusedBorder,
+                  
+                ),
+                menuHeight: menuHeight ?? (size.height * 0.5),
+                //filterCallback: (entries, filter) => ,
+                controller: controller,
+                initialSelection: initialValue,
+                width: size.width,
+                enableFilter: true,
+                hintText: hintText,
+                onSelected: onChanged,
+                requestFocusOnTap: true,
+                dropdownMenuEntries: items == null
+                    ? []
+                    : items!.map(
+                        (e) {
+                          switch (e.runtimeType) {
+                            case String:
                               return DropdownMenuEntry(
-                                value: e[idValue],
-                                label: e[idLabel],
+                                value: e,
+                                label: e,
                               );
-                            }
-                            return DropdownMenuEntry(
-                              value: e.toJson()[idValue],
-                              label: e.toJson()[idLabel],
-                            );
-                        }
-                      },
-                    ).toList(),
+            
+                            default:
+                              if (e is Map) {
+                                return DropdownMenuEntry(
+                                  value: e[idValue],
+                                  label: e[idLabel],
+                                );
+                              }
+                              return DropdownMenuEntry(
+                                value: e.toJson()[idValue],
+                                label: e.toJson()[idLabel],
+                              );
+                          }
+                        },
+                      ).toList(),
+              ),
             ),
           ),
           if (showError) errorContainerWidget(error: error),

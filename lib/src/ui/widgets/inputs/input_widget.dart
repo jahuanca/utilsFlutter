@@ -7,6 +7,7 @@ import 'package:utils/utils.dart';
 const int _minLinesDefault = 1;
 const int _maxLinesDefault = 1;
 
+
 // ignore: must_be_immutable
 class InputWidget extends StatelessWidget {
   final String hintText;
@@ -28,7 +29,7 @@ class InputWidget extends StatelessWidget {
   final bool isDense;
   final int minLines;
   final int maxLines;
-  final FocusNode? focusNode;
+  FocusNode? focusNode;
   final bool showError;
   final Color? backgroundColor;
   final Color? backgroundColorIconOverlay;
@@ -78,6 +79,8 @@ class InputWidget extends StatelessWidget {
     final double heigthPadding = heightInput * 0.1;
     final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
 
+    focusNode ??= FocusNode();
+
     Widget content = Padding(
       padding: padding,
       child: Column(
@@ -88,42 +91,45 @@ class InputWidget extends StatelessWidget {
             textStyleLabel: textStyleLabel,
             heigthPadding: isAlignLabel ? (heigthPadding * 2) : defaultDouble,
           ),
-          GestureDetector(
-            onTap: onTap,
-            child: Stack(
-              children: [
-                TextFormField(
-                  inputFormatters: inputFormatters,
-                  focusNode: focusNode,
-                  style: primaryTextStyleBase(),
-                  enabled: enabled,
-                  initialValue: initialValue,
-                  maxLength: maxLength,
-                  keyboardType: textInputType,
-                  minLines: minLines,
-                  maxLines: maxLines,
-                  decoration: inputDecorationWidget(
-                    hintText: hintText,
-                    isDense: isDense,
-                    prefixIcon: icon,
-                    error: error,
-                    inputBorderSelected: inputBorderSelected,
-                    heigthPadding: heigthPadding,
-                    backgroundColor: backgroundColor,
+          TapRegion(
+            onTapOutside: (event) => focusNode?.unfocus(),
+            child: GestureDetector(
+              onTap: onTap,
+              child: Stack(
+                children: [
+                  TextFormField(
+                    inputFormatters: inputFormatters,
+                    focusNode: focusNode,
+                    style: primaryTextStyleBase(),
+                    enabled: enabled,
+                    initialValue: initialValue,
+                    maxLength: maxLength,
+                    keyboardType: textInputType,
+                    minLines: minLines,
+                    maxLines: maxLines,
+                    decoration: inputDecorationWidget(
+                      hintText: hintText,
+                      isDense: isDense,
+                      prefixIcon: icon,
+                      error: error,
+                      inputBorderSelected: inputBorderSelected,
+                      heigthPadding: heigthPadding,
+                      backgroundColor: backgroundColor,
+                    ),
+                    controller: textEditingController,
+                    onChanged: onChanged,
+                    textAlign: TextAlign.left,
                   ),
-                  controller: textEditingController,
-                  onChanged: onChanged,
-                  textAlign: TextAlign.left,
-                ),
-                if (iconOverlay != null)
-                  Container(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        color: backgroundColorIconOverlay,
-                        onPressed: onPressedIconOverlay,
-                        icon: iconOverlay!,
-                      )),
-              ],
+                  if (iconOverlay != null)
+                    Container(
+                        alignment: Alignment.centerRight,
+                        child: IconButton(
+                          color: backgroundColorIconOverlay,
+                          onPressed: onPressedIconOverlay,
+                          icon: iconOverlay!,
+                        )),
+                ],
+              ),
             ),
           ),
           if (showError) errorContainerWidget(error: error),
