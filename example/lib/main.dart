@@ -31,6 +31,11 @@ class ExamplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
+    DateTime initiaDate = DateTime.now().subtract(
+      const Duration(days: 450)
+    );
+    String result = initiaDate.timeFromDate();
+
     return Scaffold(
       appBar: appBarWidget(
           text: 'Utils',
@@ -59,6 +64,7 @@ class ExamplePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Text(result),
             MenuOverlayWidget(
               onTapItem: print,
               items: const ['1 opcion', '2 opcion mas larga viendo tamaño'],
