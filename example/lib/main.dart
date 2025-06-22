@@ -83,7 +83,7 @@ class ExamplePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               hintText: 'Usuario',
             ),
-            const DropdownMenuWidget(
+            const DropdownWidget(
               items: ['1 opcion', '2 opcion'],
               onChanged: print,
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
