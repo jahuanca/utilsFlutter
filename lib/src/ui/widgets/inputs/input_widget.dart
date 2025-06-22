@@ -29,7 +29,7 @@ class InputWidget extends StatelessWidget {
   final bool isDense;
   final int minLines;
   final int maxLines;
-  FocusNode? focusNode;
+  final FocusNode? focusNode;
   final bool showError;
   final Color? backgroundColor;
   final Color? backgroundColorIconOverlay;
@@ -78,8 +78,6 @@ class InputWidget extends StatelessWidget {
         : size.height * dimensionInput();
     final double heigthPadding = heightInput * 0.1;
     final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
-
-    focusNode ??= FocusNode();
 
     Widget content = Padding(
       padding: padding,

@@ -26,7 +26,7 @@ class DropdownMenuWidget extends StatelessWidget {
   final Widget Function(Widget)? wrapperWidget;
   final TextEditingController? controller;
   final double? menuHeight;
-  final FocusNode focusNode = FocusNode();
+  final FocusNode? focusNode;
 
   DropdownMenuWidget({
     this.hintText = dropdownHintString,
@@ -50,6 +50,7 @@ class DropdownMenuWidget extends StatelessWidget {
     this.isAlignLabel = false,
     this.controller,
     this.menuHeight,
+    this.focusNode,
   });
 
   @override
@@ -77,10 +78,20 @@ class DropdownMenuWidget extends StatelessWidget {
             heigthPadding: isAlignLabel ? (heigthPadding * 2) : defaultDouble,
           ),
           TapRegion(
-            onTapOutside: (event) => focusNode.unfocus(),
+            onTapOutside: (event) => focusNode?.unfocus(),
             child: Container(
               height: heightWidget(size: size),
               child: DropdownMenu<dynamic>(
+                focusNode: focusNode,
+                searchCallback: (entries, query) {
+                  if (query.isEmpty) {
+                    return null;
+                  }
+                  final int index = entries.indexWhere(
+                    (entry) => entry.label.toLowerCase().contains(query),
+                  );
+                  return index != -1 ? index : null;
+                },
                 leadingIcon: iconData == null ? null : Icon(iconData),
                 //style: primaryTextStyleBase(),
                 inputDecorationTheme: InputDecorationTheme(
@@ -91,7 +102,6 @@ class DropdownMenuWidget extends StatelessWidget {
                   enabledBorder: inputDecoration.enabledBorder,
                   border: inputDecoration.border,
                   focusedBorder: inputDecoration.focusedBorder,
-                  
                 ),
                 menuHeight: menuHeight ?? (size.height * 0.5),
                 //filterCallback: (entries, filter) => ,
@@ -112,7 +122,7 @@ class DropdownMenuWidget extends StatelessWidget {
                                 value: e,
                                 label: e,
                               );
-            
+
                             default:
                               if (e is Map) {
                                 return DropdownMenuEntry(
