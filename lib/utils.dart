@@ -16,6 +16,7 @@ export 'src/core/internationalizations.dart';
 
 export 'src/ui/widgets/inputs/input_widget.dart';
 export 'src/ui/widgets/dropwdown/dropdown_widget.dart';
+export 'src/ui/widgets/dropwdown/dropdown_menu_widget.dart';
 export 'src/ui/widgets/overlay/menu_overlay_widget.dart';
 export 'src/ui/widgets/inputs/password_input_widget.dart';
 export 'src/ui/widgets/check_box/check_box_widget.dart';

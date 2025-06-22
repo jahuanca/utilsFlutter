@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/default_no_exports.dart';
-import 'package:utils/src/core/text_styles.dart';
 import 'package:utils/src/ui/utils/strings.dart';
 import 'package:utils/src/ui/widgets/utils.dart';
 import 'package:utils/utils.dart';
@@ -16,6 +15,7 @@ class DropdownMenuWidget extends StatelessWidget {
   final void Function(dynamic)? onChanged;
   final dynamic value;
   final List<dynamic>? items;
+  final dynamic initialValue;
   final String hintText;
   final IconData? iconData;
   final Color? iconEnabledColor;
@@ -24,6 +24,8 @@ class DropdownMenuWidget extends StatelessWidget {
   final String idValue;
   final bool isAlignLabel;
   final Widget Function(Widget)? wrapperWidget;
+  final TextEditingController? controller;
+  final double? menuHeight;
 
   const DropdownMenuWidget({
     this.hintText = dropdownHintString,
@@ -37,6 +39,7 @@ class DropdownMenuWidget extends StatelessWidget {
     this.onChanged,
     this.value,
     this.items,
+    this.initialValue,
     this.iconData,
     this.iconEnabledColor,
     this.iconDisabledColor,
@@ -44,60 +47,83 @@ class DropdownMenuWidget extends StatelessWidget {
     this.idValue = defaultIdValue,
     this.wrapperWidget,
     this.isAlignLabel = false,
+    this.controller,
+    this.menuHeight,
   });
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final double heightInput = size.height * dimensionInput();
-    final inputBorderSelected = inputBorderCurrent ?? inputBorder();
+    final InputBorder inputBorderSelected = inputBorderCurrent ?? inputBorder();
     final double heigthPadding = heightInput * 0.1;
-    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
+    final Widget Function(Widget)? wrapperSelected =
+        wrapperWidgetInputs() ?? wrapperWidget;
+    final InputDecoration inputDecoration = inputDecorationWidget(
+      error: error,
+      inputBorderSelected: inputBorderSelected,
+      heigthPadding: heigthPadding,
+    );
 
     Widget content = Container(
       padding: padding,
       child: Column(
         children: [
           labelWidget(
-            size: size, 
-            label: label, 
+            size: size,
+            label: label,
             textStyleLabel: textStyleLabel,
             heigthPadding: isAlignLabel ? (heigthPadding * 2) : defaultDouble,
           ),
           Container(
             height: heightWidget(size: size),
-            child: DropdownButtonFormField<dynamic>(
-              icon: iconData == null ? null : Icon(iconData),
-              iconEnabledColor: iconEnabledColor,
-              iconDisabledColor: iconDisabledColor,
-              decoration: inputDecorationWidget(
-                error: error,
-                inputBorderSelected: inputBorderSelected,
-                heigthPadding: heigthPadding,
+            child: DropdownMenu<dynamic>(
+              leadingIcon: iconData == null ? null : Icon(iconData),
+              //style: primaryTextStyleBase(),
+              inputDecorationTheme: InputDecorationTheme(
+                contentPadding: inputDecoration.contentPadding,
+                // filled: inputDecoration.filled.orFalse(),
+                counterStyle: inputDecoration.counterStyle,
+                hintStyle: inputDecoration.hintStyle,
+                enabledBorder: inputDecoration.enabledBorder,
+                border: inputDecoration.border,
+                focusedBorder: inputDecoration.focusedBorder,
+                
               ),
-              hint: Text(hintText),
-              isExpanded: true,
-              style: primaryTextStyleBase(),
-              items: items == null
+              menuHeight: menuHeight ?? (size.height * 0.5),
+              //filterCallback: (entries, filter) => ,
+              controller: controller,
+              initialSelection: initialValue,
+              width: size.width,
+              enableFilter: true,
+              hintText: hintText,
+              onSelected: onChanged,
+              requestFocusOnTap: true,
+              dropdownMenuEntries: items == null
                   ? []
-                  : items?.map(
+                  : items!.map(
                       (e) {
                         switch (e.runtimeType) {
                           case String:
-                            return DropdownMenuItem(
+                            return DropdownMenuEntry(
                               value: e,
-                              child: Text(e),
+                              label: e,
                             );
+
                           default:
-                            return DropdownMenuItem(
+                            if (e is Map) {
+                              return DropdownMenuEntry(
+                                value: e[idValue],
+                                label: e[idLabel],
+                              );
+                            }
+                            return DropdownMenuEntry(
                               value: e.toJson()[idValue],
-                              child: Text('${e.toJson()[idLabel]}'),
+                              label: e.toJson()[idLabel],
                             );
                         }
                       },
                     ).toList(),
-              value: value,
-              onChanged: onChanged,
             ),
           ),
           if (showError) errorContainerWidget(error: error),
@@ -105,10 +131,15 @@ class DropdownMenuWidget extends StatelessWidget {
       ),
     );
 
-    if(wrapperSelected == null){
+    if (wrapperSelected == null) {
       return content;
-    }else{
+    } else {
       return wrapperSelected(content);
     }
   }
 }
+
+
+//  TODO: pasar todos los estilos e iconos personalizados, 
+//  retirar variables que no aplican
+//  renombrar variables en uso

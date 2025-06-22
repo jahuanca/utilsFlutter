@@ -65,6 +65,67 @@ class ExamplePage extends StatelessWidget {
         child: Column(
           children: [
             Text(result),
+            const DropdownMenuWidget(
+              items: [
+                {
+                  'name': 'Jose',
+                  'id': 1,
+                },
+                {
+                  'name': 'Antonio',
+                  'id': 2,
+                },
+                {
+                  'name': 'Ancajima',
+                  'id': 3,
+                },
+                {
+                  'name': 'Huanca',
+                  'id': 4,
+                },
+                {
+                  'name': 'Lopez',
+                  'id': 5,
+                },
+                {
+                  'name': 'Nashla',
+                  'id': 6,
+                },
+                {
+                  'name': 'Juan',
+                  'id': 7,
+                },
+                {
+                  'name': 'Felipe',
+                  'id': 8,
+                },
+                {
+                  'name': 'Susana',
+                  'id': 9,
+                },
+                {
+                  'name': 'Esther',
+                  'id': 10,
+                },
+                {
+                  'name': 'Susana',
+                  'id': 9,
+                },
+                {
+                  'name': 'Esther',
+                  'id': 10,
+                },
+                {
+                  'name': 'Susana',
+                  'id': 9,
+                },
+                {
+                  'name': 'Esther',
+                  'id': 10,
+                },
+              ],
+              onChanged: print,
+            ),
             MenuOverlayWidget(
               onTapItem: print,
               items: const ['1 opcion', '2 opcion mas larga viendo tamaño'],
