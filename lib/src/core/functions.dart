@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:utils/src/core/default_extensions.dart';
 
 Map<T, List<S>> groupBy<S, T>(
@@ -8,6 +9,10 @@ Map<T, List<S>> groupBy<S, T>(
   }
   return map;
 }
+
+Future<void> copyToClipboard(String data) => Clipboard.setData(
+  ClipboardData(text: data)
+);
 
 String differenceTime({
   required DateTime? from,
