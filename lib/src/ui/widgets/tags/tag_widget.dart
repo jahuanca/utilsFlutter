@@ -31,7 +31,7 @@ class TagWidget extends StatelessWidget {
     this.alignmentOfContent = MainAxisAlignment.start,
   }){
     backgroundColor ??= primaryColor();
-    borderColor ??= primaryColor();
+    borderColor ??= backgroundColor;
     textColorAndIcon ??= primaryTextColor();
   }
 
@@ -44,6 +44,7 @@ class TagWidget extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               color: backgroundColor,
+              border: Border.all(color: borderColor!),
               borderRadius: BorderRadius.circular(borderRadius())),
           padding: paddingContent,
           child: Row(
