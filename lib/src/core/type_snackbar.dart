@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/colors.dart';
+import 'package:utils/src/core/durations.dart';
 
 enum TypeSnackbar {
   
@@ -28,7 +29,7 @@ enum TypeSnackbar {
     required this.title,
     required this.backgroundColor,
     required this.colorText,
-    this.duration = const Duration(milliseconds: 1000),
+    this.duration = oneSecondDuration,
   });
 
   final String title;

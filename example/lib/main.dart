@@ -65,8 +65,8 @@ class ExamplePage extends StatelessWidget {
         child: Column(
           children: [
             Text(result),
-            const DropdownMenuWidget(
-              items: [
+            DropdownMenuWidget(
+              items: const [
                 {
                   'name': 'Jose',
                   'id': 1,

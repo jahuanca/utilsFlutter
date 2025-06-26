@@ -1,4 +1,6 @@
 /// Duracion de 1 día.
+const Duration oneSecondDuration = Duration(seconds: 1);
+/// Duracion de 1 día.
 const Duration oneDayDuration = Duration(days: 1);
 
 /// Duración de una semana.
