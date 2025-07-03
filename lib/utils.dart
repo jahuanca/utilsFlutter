@@ -10,6 +10,8 @@ export 'src/core/hero_tags.dart';
 export 'src/core/default_extensions.dart';
 export 'src/core/durations.dart';
 export 'src/core/extensions.dart';
+export 'src/core/extensions/datetime_extensions.dart';
+export 'src/core/date_functions.dart';
 export 'src/core/functions.dart';
 export 'src/core/format_dates.dart';
 export 'src/core/internationalizations.dart';

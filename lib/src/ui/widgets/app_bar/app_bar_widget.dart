@@ -5,7 +5,7 @@ import 'package:utils/src/data/data_functions.dart';
 
 AppBar appBarWidget({
   required String text, 
-  bool hasArrowBack = false, 
+  bool hasArrowBack = true, 
   bool centerTitle = true,
   double? elevation = 1,
   TextStyle? titleTextStyle,

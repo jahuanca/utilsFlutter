@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
+import 'package:utils/src/core/date_functions.dart';
 import 'package:utils/src/core/default_extensions.dart';
-import 'package:utils/src/core/functions.dart';
 
 extension DateFormats on DateTime? {
   String? formatDMMYYY() =>
