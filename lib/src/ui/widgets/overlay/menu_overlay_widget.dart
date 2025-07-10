@@ -12,6 +12,8 @@ class MenuOverlayWidget extends StatelessWidget {
   final double? width;
   final String? idLabel;
   final String? idValue;
+  final IconData iconData;
+  final EdgeInsetsGeometry? padding;
 
   MenuOverlayWidget({
     super.key,
@@ -21,15 +23,20 @@ class MenuOverlayWidget extends StatelessWidget {
     this.width,
     this.idLabel = defaultLabelValue,
     this.idValue = defaultIdValue,
+    this.iconData = Icons.arrow_drop_down,
+    this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TapRegion(
-        onTapInside: (event) => showOverlay(context, event),
-        onTapOutside: (event) =>
-            Future.delayed(Duration(milliseconds: 100), () => {dismiss()}),
-        child: Icon(Icons.arrow_drop_down));
+    return Container(
+      padding: padding,
+      child: TapRegion(
+          onTapInside: (event) => showOverlay(context, event),
+          onTapOutside: (event) =>
+              Future.delayed(Duration(milliseconds: 100), () => {dismiss()}),
+          child: Icon(iconData)),
+    );
   }
 
   void showOverlay(BuildContext context, PointerDownEvent event) {
@@ -50,9 +57,7 @@ class MenuOverlayWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: Container(
-                child: (e.runtimeType) == String
-                    ? Text(e)
-                    : Text('${e.toJson()[idLabel]}'),
+                child: _returnTextOfType(e),
               ),
             ),
           ),
@@ -87,5 +92,20 @@ class MenuOverlayWidget extends StatelessWidget {
       overlayEntry?.remove();
       overlayEntry = null;
     }
+  }
+
+  Widget _returnTextOfType(dynamic e) {
+
+    switch (e.runtimeType) {
+      case String:
+        return Text(e);
+        
+      default:
+        if(e is Map){
+          return Text('${e[idLabel]}');
+        }
+        return Text('${e.toJson()[idLabel]}');
+    }
+    
   }
 }
