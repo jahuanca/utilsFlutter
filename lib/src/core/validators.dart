@@ -220,7 +220,7 @@ ValidateResult validateText({
 
 ValidateResult? findErrorInValidations(List<ValidateResult?> validations) {
   return validations.firstWhere(
-    (e) => e!.hasError.orFalse(),
+    (e) => e?.hasError ?? false,
     orElse: () => null,
   );
 }

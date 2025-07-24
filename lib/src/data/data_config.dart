@@ -29,7 +29,7 @@ class DataConfig {
   String? urlServer;
   String basicAuthUsername;
   String basicAuthPassword;
-  EnumAuth enumAuth;
+  EnumAuth authentication;
   Widget Function(Widget)? wrapperWidgetInputs;
 
   DataConfig({
@@ -55,7 +55,7 @@ class DataConfig {
     this.inputBorder,
     this.hintStyle,
     this.labelStyle,
-    this.enumAuth = EnumAuth.none,
+    this.authentication = EnumAuth.none,
     this.wrapperWidgetInputs,
   }){
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
@@ -84,7 +84,7 @@ class DataConfig {
         basicAuthUsername: json["basicAuthUsername"],
         basicAuthPassword: json["basicAuthPassword"],
         labelStyle: json["labelStyle"],
-        enumAuth: json["enumAuth"],
+        authentication: json["authentication"],
         wrapperWidgetInputs: json["wrapperWidgetInputs"],
       );
 
@@ -111,7 +111,7 @@ class DataConfig {
         "basicAuthUsername": basicAuthUsername,
         "basicAuthPassword": basicAuthPassword,
         "labelStyle": labelStyle,
-        "enumAuth": enumAuth,
+        "authentication": authentication,
         "wrapperWidgetInputs": wrapperWidgetInputs,
       };
 }

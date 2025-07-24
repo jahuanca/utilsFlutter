@@ -35,7 +35,7 @@ class PasswordInputWidget extends StatelessWidget {
     this.enabled = true,
     this.maxLength = _defaultMaxLength,
     this.textInputType = TextInputType.visiblePassword,
-    this.isObscure = false,
+    this.isObscure = true,
     this.initialValue,
     this.textEditingController,
     this.isTextArea = false,
@@ -71,7 +71,7 @@ class PasswordInputWidget extends StatelessWidget {
                       initialValue: initialValue,
                       maxLength: maxLength,
                       keyboardType: textInputType,
-                      obscureText: true,
+                      obscureText: isObscure,
                       minLines: 1,
                       maxLines: 1,
                       decoration: inputDecorationWidget(

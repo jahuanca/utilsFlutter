@@ -28,7 +28,7 @@ class UserPreferences {
   String? getObjectString(String key) => _prefs?.getString(key);
 
   String? getToken() => _prefs?.getString(_token);
-  void setToken(String value) async => await _prefs?.setString(_token, value);
+  Future<void> setToken(String value) async => await _prefs?.setString(_token, value);
 
   Future<void> setObjectString(String key, dynamic value) async{
     await _prefs?.setString(key, jsonEncode(value));

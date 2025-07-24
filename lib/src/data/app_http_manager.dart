@@ -110,7 +110,9 @@ class AppHttpManager implements HttpManager {
     headers[HttpHeaders.contentTypeHeader] = 'application/json';
     headers[HttpHeaders.connectionHeader] = 'Keep-Alive';
 
-    switch (authentication()) {
+    EnumAuth auth = authentication();
+
+    switch (auth) {
       case EnumAuth.all:
         _setBasicAuth(headers);
         _setTokenHeader(headers);
@@ -140,7 +142,7 @@ class AppHttpManager implements HttpManager {
   void _setTokenHeader(Map<String, String> headers) async {
     String? token = UserPreferences().getToken();
     if (token != null) {
-      headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
+      headers[HttpHeaders.authorizationHeader] = token;
     }
   }
 

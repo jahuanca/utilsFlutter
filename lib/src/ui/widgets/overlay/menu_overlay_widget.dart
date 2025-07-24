@@ -53,7 +53,7 @@ class MenuOverlayWidget extends StatelessWidget {
     final List<Widget> children = items
         .map(
           (e) => GestureDetector(
-            behavior: HitTestBehavior.opaque,
+            // behavior: HitTestBehavior.opaque,
             onTap: () => onTapItem(e),
             child: Padding(
               padding: const EdgeInsets.all(15),
