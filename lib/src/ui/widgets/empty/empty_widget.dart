@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utils/utils.dart';
 import 'package:utils/src/ui/utils/strings.dart';
 
 class EmptyWidget extends StatelessWidget {
@@ -9,15 +10,17 @@ class EmptyWidget extends StatelessWidget {
   final IconData iconData;
   final double iconSize;
   final Color? iconColor;
+  final bool showIcon;
 
   EmptyWidget({
     super.key,
-    this.title,
-    this.description,
+    this.title = titleOfEmptyWidgetString,
+    this.description = descriptionOfEmptyWidgetString,
     this.padding,
     this.iconData = Icons.hourglass_empty,
     this.iconSize = 60,
     this.iconColor,
+    this.showIcon = true,
   });
 
   @override
@@ -38,11 +41,15 @@ class EmptyWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          if (showIcon)
           Icon(iconData, size: iconSize, color: iconColor,),
           SizedBox(height: 5,),
-          Text(title ?? titleOfEmptyWidgetString, style: titleStyle,),
+          if (title != null)
+          Text(title.orEmpty(), style: titleStyle,),
+          if (title != null)
           SizedBox(height: 10,),
-          Text(description ?? descriptionOfEmptyWidgetString, textAlign: TextAlign.center,),
+          if (description != null)
+          Text(description.orEmpty(), textAlign: TextAlign.center,),
         ],
       ),
     );
