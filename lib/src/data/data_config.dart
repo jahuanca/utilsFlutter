@@ -16,6 +16,7 @@ class DataConfig {
   Color infoColor;
   Color dangerColor;
   Color successColor;
+  Color disabledColor;
 
   double borderRadius;
   double dimensionInput;
@@ -40,6 +41,7 @@ class DataConfig {
     this.successColor = successColorBase,
     this.dangerColor = dangerColorBase,
     this.primaryTextColor = primaryTextColorBase,
+    this.disabledColor = disabledColorBase,
     this.hintColor = hintColorBase,
     this.backgroundPageColor = backgroundPageColorBase,
 
@@ -68,6 +70,7 @@ class DataConfig {
         cardColor: json["cardColor"],
         infoColor: json["infoColor"],
         dangerColor: json["dangerColor"],
+        disabledColor: json["disabledColor"],
         hintColor: json["hintColor"],
         primaryTextColor: json["primaryTextColor"],
         backgroundPageColor: json["backgroundPageColor"],
@@ -93,6 +96,7 @@ class DataConfig {
         "secondaryColor": secondaryColor,
         "cardColor": cardColor,
         "dangerColor": dangerColor,
+        "disabledColor": disabledColor,
         "hintColor": hintColor,
         "infoColor": infoColor,
         "successColor": successColor,

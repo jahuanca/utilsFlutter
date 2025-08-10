@@ -8,8 +8,8 @@ class ButtonWidget extends StatelessWidget {
   final IconData? iconData;
   final void Function()? onTap;
   final EdgeInsetsGeometry padding;
-  final ButtonType buttonType;
-  final ButtonStyle buttonStyle;
+  final ButtonTypeWidget buttonType;
+  final ButtonStyleWidget buttonStyle;
   final double elevation;
   final Color? shadowColor;
   final double fontSize;
@@ -21,8 +21,8 @@ class ButtonWidget extends StatelessWidget {
     this.onTap,
     this.shadowColor,
     this.padding = noPadding,
-    this.buttonType = ButtonType.base,
-    this.buttonStyle = ButtonStyle.base,
+    this.buttonType = ButtonTypeWidget.base,
+    this.buttonStyle = ButtonStyleWidget.base,
     this.elevation = defaultDouble,
     this.fontSize = 20,
     this.iconPosition = BasicPositions.left,
@@ -86,7 +86,7 @@ class ButtonWidget extends StatelessWidget {
   }
 
   final baseType = ButtonTypeData(
-    type: ButtonType.base,
+    type: ButtonTypeWidget.base,
     decoration: BoxDecoration(
         color: cardColor(),
         border: Border.all(
@@ -97,7 +97,7 @@ class ButtonWidget extends StatelessWidget {
   );
 
   final ghost = ButtonTypeData(
-    type: ButtonType.ghost,
+    type: ButtonTypeWidget.ghost,
     decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border.all(
@@ -108,7 +108,7 @@ class ButtonWidget extends StatelessWidget {
   );
 
   final link = ButtonTypeData(
-    type: ButtonType.link,
+    type: ButtonTypeWidget.link,
     decoration: BoxDecoration(
       color: Colors.transparent,
     ),

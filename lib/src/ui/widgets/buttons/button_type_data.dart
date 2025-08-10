@@ -10,21 +10,21 @@ class ButtonTypeData {
     required this.textAndIconColor,
   });
 
-  final ButtonType type;
+  final ButtonTypeWidget type;
   BoxDecoration decoration;
   Color textAndIconColor;
 }
 
 ButtonTypeData getTypeData(
-  ButtonType type,
-  ButtonStyle style,
+  ButtonTypeWidget type,
+  ButtonStyleWidget style,
 ) {
   ButtonStyleData styleData = getButtonStyleData(style);
 
   switch (type) {      
-    case ButtonType.ghost:
+    case ButtonTypeWidget.ghost:
       return ButtonTypeData(
-        type: ButtonType.ghost,
+        type: ButtonTypeWidget.ghost,
         decoration: BoxDecoration(
             color: Colors.transparent,
             border: Border.all(
@@ -33,9 +33,9 @@ ButtonTypeData getTypeData(
             borderRadius: BorderRadius.circular(borderRadius())),
         textAndIconColor: styleData.backgroundColor,
       );
-    case ButtonType.link:
+    case ButtonTypeWidget.link:
       return ButtonTypeData(
-        type: ButtonType.link,
+        type: ButtonTypeWidget.link,
         decoration: BoxDecoration(
           color: Colors.transparent,
         ),
@@ -43,7 +43,7 @@ ButtonTypeData getTypeData(
       );
     default:
       return ButtonTypeData(
-        type: ButtonType.base,
+        type: ButtonTypeWidget.base,
         decoration: BoxDecoration(
             color: styleData.backgroundColor,
             border: Border.all(
@@ -56,6 +56,6 @@ ButtonTypeData getTypeData(
 }
 
 ButtonTypeData findButtonTypeData(List<ButtonTypeData> allTypes,
-    ButtonType type, ButtonTypeData defaultType) {
+    ButtonTypeWidget type, ButtonTypeData defaultType) {
   return allTypes.firstWhere((e) => e.type == type, orElse: () => defaultType);
 }

@@ -10,48 +10,54 @@ class ButtonStyleData {
     required this.colorForBorder,
   });
 
-  ButtonStyle style;
+  ButtonStyleWidget style;
   Color backgroundColor;
   Color colorForTextAndIcon;
   Color colorForBorder;
 }
 
-ButtonStyleData getButtonStyleData(ButtonStyle style){
+ButtonStyleData getButtonStyleData(ButtonStyleWidget style){
   switch(style){
-    case ButtonStyle.success:
+    case ButtonStyleWidget.success:
       return ButtonStyleData(
         style: style, 
         backgroundColor: successColor(), 
         colorForTextAndIcon: Colors.white,
         colorForBorder: successColor(),
       );
-    case ButtonStyle.info:
+    case ButtonStyleWidget.info:
       return ButtonStyleData(
         style: style, 
         backgroundColor: infoColor(),
         colorForTextAndIcon: Colors.white,
         colorForBorder: infoColor(),
         );
-    case ButtonStyle.alert:
+    case ButtonStyleWidget.alert:
       return ButtonStyleData(
         style: style, 
         backgroundColor: alertColor(),
         colorForTextAndIcon: Colors.white,
         colorForBorder: successColor(),
         );
-    case ButtonStyle.danger:
+    case ButtonStyleWidget.danger:
       return ButtonStyleData(
         style: style, 
         backgroundColor: dangerColor(),
         colorForTextAndIcon: Colors.white,
         colorForBorder: dangerColor(),
         );
-    case ButtonStyle.dark:
+    case ButtonStyleWidget.dark:
       return ButtonStyleData(
         style: style, 
         backgroundColor: darkColor(), 
         colorForTextAndIcon: Colors.white, 
         colorForBorder: darkColor());
+    case ButtonStyleWidget.disabled:
+      return ButtonStyleData(
+        style: style, 
+        backgroundColor: disabledColor(), 
+        colorForTextAndIcon: Colors.white, 
+        colorForBorder: disabledColor());
     default:
       return ButtonStyleData(
         style: style, 
@@ -64,6 +70,6 @@ ButtonStyleData getButtonStyleData(ButtonStyle style){
 
 ButtonStyleData findButtonStyleData(
   List<ButtonStyleData> allStyles,
-  ButtonStyle style, 
+  ButtonStyleWidget style, 
   ButtonStyleData defaultStyle
 ) => allStyles.firstWhere((e) => e.style == style, orElse: () => defaultStyle);
