@@ -39,6 +39,7 @@ export 'src/ui/widgets/icons/icon_widget.dart';
 export 'src/ui/widgets/images/image_action_widget.dart';
 export 'src/ui/widgets/inputs/input_widget.dart';
 export 'src/ui/widgets/inputs/password_input_widget.dart';
+export 'src/ui/widgets/inputs/search_input_widget.dart';
 export 'src/ui/widgets/items_list/item_list_image_data_widget.dart';
 export 'src/ui/widgets/loading/loading_widget.dart';
 export 'src/ui/widgets/overlay/menu_overlay_widget.dart';
