@@ -32,5 +32,4 @@ const int firstElementPosition = 0;
 const int defaultInt = 0;
 const double defaultDouble = 0.0;
 
-
-final DateTime defaultDate = DateTime.now();
+DateTime get defaultDate => DateTime.now();
