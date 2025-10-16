@@ -2,9 +2,9 @@ import 'package:flutter/material.dart' hide ButtonStyle;
 import 'package:utils/utils.dart';
 
 void main() async {
-  loadConfig(DataConfig(
-    primaryColor: Colors.greenAccent,
-  ));
+  loadConfig(
+    DataConfig(primaryColor: Colors.greenAccent)
+  );
   runApp(const MyApp());
 }
 
