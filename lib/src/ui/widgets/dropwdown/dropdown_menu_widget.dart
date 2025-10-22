@@ -13,7 +13,6 @@ class DropdownMenuWidget extends StatelessWidget {
   final InputBorder? inputBorderCurrent;
   final bool showError;
   final void Function(dynamic)? onChanged;
-  final dynamic value;
   final List<dynamic>? items;
   final dynamic initialValue;
   final String hintText;
@@ -38,7 +37,6 @@ class DropdownMenuWidget extends StatelessWidget {
     this.inputBorderCurrent,
     this.showError = false,
     this.onChanged,
-    this.value,
     this.items,
     this.initialValue,
     this.iconData,
@@ -82,18 +80,18 @@ class DropdownMenuWidget extends StatelessWidget {
             child: Container(
               height: heightWidget(size: size),
               child: DropdownMenu<dynamic>(
+
                 focusNode: focusNode,
                 searchCallback: (entries, query) {
                   if (query.isEmpty) {
                     return null;
                   }
                   final int index = entries.indexWhere(
-                    (entry) => entry.label.toLowerCase().contains(query),
+                    (entry) => entry.label.toLowerCase().contains(query.toLowerCase()),
                   );
                   return index != -1 ? index : null;
                 },
                 leadingIcon: iconData == null ? null : Icon(iconData),
-                //style: primaryTextStyleBase(),
                 inputDecorationTheme: InputDecorationTheme(
                   contentPadding: inputDecoration.contentPadding,
                   // filled: inputDecoration.filled.orFalse(),
