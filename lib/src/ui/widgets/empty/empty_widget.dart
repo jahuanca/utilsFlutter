@@ -15,7 +15,7 @@ class EmptyWidget extends StatelessWidget {
   EmptyWidget({
     super.key,
     this.title = titleOfEmptyWidgetString,
-    this.description = descriptionOfEmptyWidgetString,
+    this.description,
     this.padding,
     this.iconData = Icons.hourglass_empty,
     this.iconSize = 60,

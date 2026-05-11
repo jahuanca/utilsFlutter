@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/colors.dart';
+import 'package:utils/src/core/constants.dart';
 import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/strings.dart';
 import 'package:utils/src/core/text_styles.dart';
@@ -32,6 +33,7 @@ class DataConfig {
   String basicAuthPassword;
   EnumAuth authentication;
   Widget Function(Widget)? wrapperWidgetInputs;
+  int? valueOfTimeOut;
 
   DataConfig({
     this.primaryColor =  primaryColorBase,
@@ -59,6 +61,7 @@ class DataConfig {
     this.labelStyle,
     this.authentication = EnumAuth.none,
     this.wrapperWidgetInputs,
+    this.valueOfTimeOut = defaultTimeOut,
   }){
     titleTextAppBarStyle ??= titleTextAppBarStyleBase();
     hintStyle ??= hintStyleBase();
@@ -89,6 +92,7 @@ class DataConfig {
         labelStyle: json["labelStyle"],
         authentication: json["authentication"],
         wrapperWidgetInputs: json["wrapperWidgetInputs"],
+        valueOfTimeOut: json["valueOfTimeOut"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -117,5 +121,6 @@ class DataConfig {
         "labelStyle": labelStyle,
         "authentication": authentication,
         "wrapperWidgetInputs": wrapperWidgetInputs,
+        'valueOfTimeOut': valueOfTimeOut,
       };
 }

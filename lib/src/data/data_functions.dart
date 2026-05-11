@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:utils/src/core/colors.dart';
+import 'package:utils/src/core/constants.dart';
 import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/strings.dart';
@@ -45,3 +46,6 @@ String basicAuthPassword() => GlobalConfiguration().get(basicAuthPasswordString)
 
 //functions
 Widget Function(Widget)? wrapperWidgetInputs()=> GlobalConfiguration().get(wrapperWidgetInputsString);
+
+//int
+int timeOfValue() => GlobalConfiguration().get(timeOfValueString) ?? defaultTimeOut;

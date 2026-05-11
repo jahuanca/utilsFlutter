@@ -3,13 +3,9 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:http/http.dart' as https;
-import 'package:utils/src/core/constants.dart';
 import 'package:utils/src/data/app_exceptions.dart';
-import 'package:utils/src/data/enum_auth.dart';
 import 'package:utils/src/domain/http_manager.dart';
 import 'package:utils/utils.dart';
-
-const timeout = Duration(seconds: timeOutValue);
 
 class AppHttpManager implements HttpManager {
   @override
@@ -27,7 +23,8 @@ class AppHttpManager implements HttpManager {
               Uri.parse(_queryBuilder(
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               headers: await _headerBuilder(headers))
-          .timeout(timeout, onTimeout: () => throw TimeoutException());
+          .timeout(Duration(seconds: timeOfValue()),
+              onTimeout: () => throw TimeoutException());
       return _returnResponse(response);
     } on SocketException catch (_) {
       throw NetworkException();
@@ -45,13 +42,14 @@ class AppHttpManager implements HttpManager {
   }) async {
     try {
       log('Api Post request url $url, with $body');
-      final response = await https.post(
-          Uri.parse(_queryBuilder(
-              path: url, query: query, replaceAllUrl: replaceAllUrl)),
-          body: jsonEncode(body),
-          headers: await _headerBuilder(headers))
-          .timeout(timeout, onTimeout: () => throw TimeoutException())
-          ;
+      final response = await https
+          .post(
+              Uri.parse(_queryBuilder(
+                  path: url, query: query, replaceAllUrl: replaceAllUrl)),
+              body: jsonEncode(body),
+              headers: await _headerBuilder(headers))
+          .timeout(Duration(seconds: timeOfValue()),
+              onTimeout: () => throw TimeoutException());
       return _returnResponse(response);
     } on SocketException catch (_) {
       throw NetworkException();
@@ -74,7 +72,8 @@ class AppHttpManager implements HttpManager {
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               body: json.encode(body),
               headers: await _headerBuilder(headers))
-          .timeout(timeout, onTimeout: () => throw TimeoutException());
+          .timeout(Duration(seconds: timeOfValue()),
+              onTimeout: () => throw TimeoutException());
       return _returnResponse(response);
     } on SocketException catch (_) {
       throw NetworkException();
@@ -95,7 +94,8 @@ class AppHttpManager implements HttpManager {
               Uri.parse(_queryBuilder(
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               headers: await _headerBuilder(headers))
-          .timeout(timeout, onTimeout: () => throw TimeoutException());
+          .timeout(Duration(seconds: timeOfValue()),
+              onTimeout: () => throw TimeoutException());
       return _returnResponse(response);
     } on SocketException catch (_) {
       throw NetworkException();
@@ -124,8 +124,6 @@ class AppHttpManager implements HttpManager {
         _setTokenHeader(headers);
         break;
       case EnumAuth.none:
-        break;
-      default:
         break;
     }
 
@@ -173,9 +171,9 @@ class AppHttpManager implements HttpManager {
 
   AppResponseHttp _returnResponse(https.Response response) {
     final appResponseHttp = AppResponseHttp(
-          body: response.body,
-          statusCode: response.statusCode,
-          headers: response.headers);
+        body: response.body,
+        statusCode: response.statusCode,
+        headers: response.headers);
     _logResponse(appResponseHttp);
     return appResponseHttp;
   }
@@ -183,15 +181,14 @@ class AppHttpManager implements HttpManager {
   void _logResponse(AppResponseHttp appResponseHttp) {
     bool isSuccessful = appResponseHttp.isSuccessful;
     int statusCode = appResponseHttp.statusCode;
-    
+
     log('Api response ${isSuccessful ? 'Succes' : 'Error'} $statusCode with:');
     if (showLog()) {
       log(appResponseHttp.body);
     }
   }
 
-  AppResponseHttp errorNetworkException(https.Response response) => AppResponseHttp(
-      body: emptyString,
-      statusCode: 500,
-      headers: response.headers);
+  AppResponseHttp errorNetworkException(https.Response response) =>
+      AppResponseHttp(
+          body: emptyString, statusCode: 500, headers: response.headers);
 }

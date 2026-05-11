@@ -17,6 +17,7 @@ export 'src/core/validators.dart';
 export 'src/data/app_http_manager.dart';
 export 'src/data/app_response_http.dart';
 export 'src/data/data_config.dart';
+export 'src/data/app_exceptions.dart';
 export 'src/data/data_functions.dart';
 export 'src/data/entities/error_entity.dart';
 export 'src/data/enum_auth.dart';

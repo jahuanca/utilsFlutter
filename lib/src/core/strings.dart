@@ -28,3 +28,5 @@ const String basicAuthUsernameString = 'basicAuthUsername';
 const String basicAuthPasswordString = 'basicAuthPassword';
 
 const String wrapperWidgetInputsString = 'wrapperWidgetInputs';
+
+const String timeOfValueString = 'timeOfValue';

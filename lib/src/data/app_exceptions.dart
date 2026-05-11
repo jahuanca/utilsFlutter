@@ -1,23 +1,27 @@
-class ConnectionExceptions implements Exception {}
+class ConnectionExceptions implements Exception {
+  String message;
+
+  ConnectionExceptions({this.message = 'No se obtuvo respuesta del servidor.'});
+}
 
 class TimeoutException extends ConnectionExceptions {
-  TimeoutException() : super();
+  TimeoutException({message}) : super();
 }
 
 class NetworkException extends ConnectionExceptions {
-  NetworkException() : super();
+  NetworkException({message}) : super();
 }
 
 class BadRequestException extends ConnectionExceptions {
-  BadRequestException() : super();
+  BadRequestException({message}) : super();
 }
 
 class UnauthorisedException extends ConnectionExceptions {
-  UnauthorisedException() : super();
+  UnauthorisedException({message}) : super();
 }
 
 class ServerException extends ConnectionExceptions {
-  ServerException() : super();
+  ServerException({message}) : super();
 }
 
 class AppExceptions implements Exception {}
