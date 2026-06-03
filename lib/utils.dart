@@ -21,7 +21,7 @@ export 'src/data/app_exceptions.dart';
 export 'src/data/data_functions.dart';
 export 'src/data/entities/error_entity.dart';
 export 'src/data/enum_auth.dart';
-export 'src/data/result_type.dart';
+export 'src/data/result.dart';
 export 'src/data/user_preferences.dart';
 export 'src/ui/utils/constants_ui.dart';
 export 'src/ui/utils/input_formatters.dart';

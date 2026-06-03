@@ -191,8 +191,6 @@ ValidateResult validateText({
           }
         }
         break;
-      default:
-        break;
     }
   }
   if (toConvert != null) {
