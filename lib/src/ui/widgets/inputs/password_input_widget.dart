@@ -25,6 +25,7 @@ class PasswordInputWidget extends StatelessWidget {
   final Icon? icon;
   final TextStyle? textStyleLabel;
   final bool showError;
+  final Widget Function(Widget)? wrapperWidget;
 
   PasswordInputWidget({
     required this.hintText,
@@ -46,6 +47,7 @@ class PasswordInputWidget extends StatelessWidget {
     this.padding = noPadding,
     this.textStyleLabel,
     this.showError = false,
+    this.wrapperWidget,
   });
 
   @override
@@ -55,8 +57,9 @@ class PasswordInputWidget extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final double heightInput = isTextArea ? size.height * dimensionInput()  * 1.5 : size.height * dimensionInput();
     final double heigthPadding = heightInput * 0.1;
+    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
 
-    return Padding(
+    Widget content = Padding(
       padding: padding,
       child: Column(
         children: [
@@ -102,5 +105,11 @@ class PasswordInputWidget extends StatelessWidget {
         ],
       ),
     );
+
+    if (wrapperSelected == null) {
+      return content;
+    } else {
+      return wrapperSelected(content);
+    }
   }
 }
