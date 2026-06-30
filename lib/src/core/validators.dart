@@ -1,23 +1,7 @@
+import 'package:utils/src/core/validation_result.dart';
+
 import 'default_extensions.dart';
 
-/// Estructura que retorna el metodo [validateText]
-
-class ValidateResult {
-  /// `hasError` devuelve true o false en caso exista un error
-  bool hasError;
-
-  /// `error` contiene el mensaje de la [RuleValidator] que no fue cumplida.
-  String? error;
-
-  /// `value` en caso de no existir un error contiene el valor.
-  dynamic value;
-
-  ValidateResult({
-    required this.hasError,
-    required this.error,
-    required this.value,
-  });
-}
 
 enum RuleValidator {
   isRequired,
@@ -35,6 +19,7 @@ enum ToConverter {
   toInt,
   toDouble,
   toDatetime,
+  toBool,
 }
 
 ValidateResult validateText({
@@ -206,6 +191,9 @@ ValidateResult validateText({
         break;
       case ToConverter.toDatetime:
         if (text is! DateTime) text = DateTime.tryParse(text);
+        break;
+      case ToConverter.toBool:
+        if (text is! bool) text = bool.tryParse(text);
         break;
     }
     if (text == null) {

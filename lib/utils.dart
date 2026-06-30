@@ -14,6 +14,7 @@ export 'src/core/internationalizations.dart';
 export 'src/core/storage_type.dart';
 export 'src/core/type_snackbar.dart';
 export 'src/core/validators.dart';
+export 'src/core/validation_result.dart ';
 export 'src/data/app_http_manager.dart';
 export 'src/data/app_response_http.dart';
 export 'src/data/data_config.dart';
