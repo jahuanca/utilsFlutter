@@ -15,6 +15,8 @@ class CheckBoxWidget extends StatelessWidget {
   final TextStyle? textStyleLabel;
   final String? error;
   final bool showError;
+  final Widget Function(Widget)? wrapperWidget;
+  final Decoration? decorationCurrent;
 
   const CheckBoxWidget({
     required this.title,
@@ -28,20 +30,24 @@ class CheckBoxWidget extends StatelessWidget {
     this.textStyleLabel,
     this.showError = false,
     this.error,
+    this.wrapperWidget,
+    this.decorationCurrent,
   });
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    // final decorationSelected = decorationCurrent ?? boxDecorationWidget(error: error, backgroundColor: backgroundColor);
+    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
 
-    return Container(
+    final content = Container(
       padding: padding,
       child: Column(
         children: [
           labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
           Container(
             height: heightWidget(size: size),
-            decoration: boxDecorationWidget(error: error, backgroundColor: backgroundColor),
+            decoration: decorationCurrent,
             child: Row(
               children: [
                 Expanded(
@@ -65,5 +71,11 @@ class CheckBoxWidget extends StatelessWidget {
         ],
       ),
     );
+
+    if(wrapperSelected == null){
+      return content;
+    }else{
+      return wrapperSelected(content);
+    }
   }
 }
