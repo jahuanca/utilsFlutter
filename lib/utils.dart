@@ -50,6 +50,8 @@ export 'src/ui/widgets/snackbar/show_snackbar_widget.dart';
 export 'src/ui/widgets/tags/tag_widget.dart';
 export 'src/ui/widgets/utils/basic_positions.dart';
 export 'src/ui/widgets/utils/child_or_empty_widget.dart';
+export 'src/ui/widgets/text/rich_text_item.dart';
+export 'src/ui/widgets/text/rich_text_widget.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:utils/src/data/data_config.dart';
 
