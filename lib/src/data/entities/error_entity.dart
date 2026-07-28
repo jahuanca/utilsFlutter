@@ -4,7 +4,7 @@ const _titleKey = 'title';
 const _errorMessageKey = 'errorMessage';
 
 class ErrorEntity{
-  int statusCode;
+  int? statusCode;
   String title;
   String errorMessage;
 

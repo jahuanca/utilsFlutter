@@ -1,3 +1,15 @@
+import 'package:utils/src/data/entities/error_entity.dart';
+
+final ErrorEntity timeOutErrorEntity = ErrorEntity(
+    statusCode: null,
+    title: 'Tiempo excedido',
+    errorMessage: 'La petición ha excedido el límite de tiempo asignado.');
+
+final ErrorEntity networkErrorEntity = ErrorEntity(
+    statusCode: null,
+    title: 'Tiempo excedido',
+    errorMessage: 'La petición ha excedido el límite de tiempo asignado.');
+
 class ConnectionExceptions implements Exception {
   String message;
 

@@ -1,19 +1,21 @@
-sealed class Result<T,U> {
+import 'package:utils/src/data/entities/error_entity.dart';
+
+sealed class Result<T> {
   const Result();
 
   factory Result.success(T value) => Success(value);
 
-  factory Result.error(U error) => Error(error);
+  factory Result.error(ErrorEntity error) => Error(error);
 }
 
-final class Success<T,U> extends Result<T,U> {
+final class Success<T> extends Result<T> {
   const Success(this.value);
 
   final T value;
 }
 
-final class Error<T,U> extends Result<T,U> {
+final class Error<U> extends Result<U> {
   const Error(this.error);
 
-  final U error;
+  final ErrorEntity error;
 }

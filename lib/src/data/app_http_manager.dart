@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:http/http.dart' as https;
-import 'package:utils/src/data/app_exceptions.dart';
 import 'package:utils/src/domain/http_manager.dart';
 import 'package:utils/utils.dart';
 
 class AppHttpManager implements HttpManager {
+  
   @override
-  Future<AppResponseHttp> get({
+  Future<Result<AppResponseHttp>> get({
     required String url,
     Map<String, dynamic>? query,
     Map<String, String>? headers,
@@ -23,16 +23,17 @@ class AppHttpManager implements HttpManager {
               Uri.parse(_queryBuilder(
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               headers: await _headerBuilder(headers))
-          .timeout(Duration(seconds: timeOfValue()),
-              onTimeout: () => throw TimeoutException());
+          .timeout(Duration(seconds: timeOfValue()));
       return _returnResponse(response);
-    } on SocketException catch (_) {
-      throw NetworkException();
+    } on TimeoutException catch (_) {
+      return Result.error(timeOutErrorEntity);
+    } catch (_) {
+      return Result.error(networkErrorEntity);
     }
   }
 
   @override
-  Future<AppResponseHttp> post({
+  Future<Result<AppResponseHttp>> post({
     required String url,
     required Map<String, dynamic> body,
     Map<String, dynamic>? query,
@@ -48,16 +49,17 @@ class AppHttpManager implements HttpManager {
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               body: jsonEncode(body),
               headers: await _headerBuilder(headers))
-          .timeout(Duration(seconds: timeOfValue()),
-              onTimeout: () => throw TimeoutException());
+          .timeout(Duration(seconds: timeOfValue()));
       return _returnResponse(response);
-    } on SocketException catch (_) {
-      throw NetworkException();
+    } on TimeoutException catch (_) {
+      return Result.error(timeOutErrorEntity);
+    } catch (_) {
+      return Result.error(networkErrorEntity);
     }
   }
 
   @override
-  Future<AppResponseHttp> put({
+  Future<Result<AppResponseHttp>> put({
     required String url,
     required Map<String, dynamic> body,
     Map<String, dynamic>? query,
@@ -72,16 +74,17 @@ class AppHttpManager implements HttpManager {
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               body: json.encode(body),
               headers: await _headerBuilder(headers))
-          .timeout(Duration(seconds: timeOfValue()),
-              onTimeout: () => throw TimeoutException());
+          .timeout(Duration(seconds: timeOfValue()));
       return _returnResponse(response);
-    } on SocketException catch (_) {
-      throw NetworkException();
+    } on TimeoutException catch (_) {
+      return Result.error(timeOutErrorEntity);
+    } catch (_) {
+      return Result.error(networkErrorEntity);
     }
   }
 
   @override
-  Future<AppResponseHttp> delete({
+  Future<Result<AppResponseHttp>> delete({
     required String url,
     Map<String, dynamic>? query,
     Map<String, String>? headers,
@@ -94,11 +97,12 @@ class AppHttpManager implements HttpManager {
               Uri.parse(_queryBuilder(
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               headers: await _headerBuilder(headers))
-          .timeout(Duration(seconds: timeOfValue()),
-              onTimeout: () => throw TimeoutException());
+          .timeout(Duration(seconds: timeOfValue()));
       return _returnResponse(response);
-    } on SocketException catch (_) {
-      throw NetworkException();
+    } on TimeoutException catch (_) {
+      return Result.error(timeOutErrorEntity);
+    } catch (_) {
+      return Result.error(networkErrorEntity);
     }
   }
 
@@ -169,13 +173,13 @@ class AppHttpManager implements HttpManager {
     return buffer.toString();
   }
 
-  AppResponseHttp _returnResponse(https.Response response) {
+  Result<AppResponseHttp> _returnResponse(https.Response response) {
     final appResponseHttp = AppResponseHttp(
         body: response.body,
         statusCode: response.statusCode,
         headers: response.headers);
     _logResponse(appResponseHttp);
-    return appResponseHttp;
+    return Result.success(appResponseHttp);
   }
 
   void _logResponse(AppResponseHttp appResponseHttp) {
@@ -187,8 +191,4 @@ class AppHttpManager implements HttpManager {
       log(appResponseHttp.body);
     }
   }
-
-  AppResponseHttp errorNetworkException(https.Response response) =>
-      AppResponseHttp(
-          body: emptyString, statusCode: 500, headers: response.headers);
 }
