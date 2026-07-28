@@ -7,7 +7,7 @@ import 'package:utils/src/domain/http_manager.dart';
 import 'package:utils/utils.dart';
 
 class AppHttpManager implements HttpManager {
-  
+
   @override
   Future<Result<AppResponseHttp>> get({
     required String url,
@@ -25,8 +25,6 @@ class AppHttpManager implements HttpManager {
               headers: await _headerBuilder(headers))
           .timeout(Duration(seconds: timeOfValue()));
       return _returnResponse(response);
-    } on TimeoutException catch (_) {
-      return Result.error(timeOutErrorEntity);
     } catch (_) {
       return Result.error(networkErrorEntity);
     }
@@ -51,8 +49,6 @@ class AppHttpManager implements HttpManager {
               headers: await _headerBuilder(headers))
           .timeout(Duration(seconds: timeOfValue()));
       return _returnResponse(response);
-    } on TimeoutException catch (_) {
-      return Result.error(timeOutErrorEntity);
     } catch (_) {
       return Result.error(networkErrorEntity);
     }
@@ -76,8 +72,6 @@ class AppHttpManager implements HttpManager {
               headers: await _headerBuilder(headers))
           .timeout(Duration(seconds: timeOfValue()));
       return _returnResponse(response);
-    } on TimeoutException catch (_) {
-      return Result.error(timeOutErrorEntity);
     } catch (_) {
       return Result.error(networkErrorEntity);
     }
@@ -99,8 +93,6 @@ class AppHttpManager implements HttpManager {
               headers: await _headerBuilder(headers))
           .timeout(Duration(seconds: timeOfValue()));
       return _returnResponse(response);
-    } on TimeoutException catch (_) {
-      return Result.error(timeOutErrorEntity);
     } catch (_) {
       return Result.error(networkErrorEntity);
     }
