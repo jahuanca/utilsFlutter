@@ -22,7 +22,7 @@ enum ToConverter {
   toBool,
 }
 
-ValidateResult validateText({
+ValidateResult<T> validateText<T>({
   required dynamic text,
   required String label,
   Map<RuleValidator, dynamic> rules = const {},
@@ -148,7 +148,7 @@ ValidateResult validateText({
         break;
 
       case RuleValidator.minValue:
-        final errorToReturn = ValidateResult(
+        final errorToReturn = ValidateResult<T>(
           error: '$label no debe ser menor a $value',
           hasError: true,
           value: null,
@@ -163,7 +163,7 @@ ValidateResult validateText({
         break;
 
       case RuleValidator.maxValue:
-        final errorToReturn = ValidateResult(
+        final errorToReturn = ValidateResult<T>(
           error: '$label no debe ser mayor a $value',
           hasError: true,
           value: null,

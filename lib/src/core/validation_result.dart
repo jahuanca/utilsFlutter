@@ -13,12 +13,13 @@ class ValidateResult<T> {
 
   ValidateResult({
     this.hasError = true,
-    this.error = 'Este campo aún no ha sido validado',
+    this.error = 'Este campo aún no ha sido validado.',
     required this.value,
   });
 
   factory ValidateResult.toInit(T value) => ValidateResult(
     hasError: false,
+    error: 'Valor inicializado.',
     value: value,
   );
 }
