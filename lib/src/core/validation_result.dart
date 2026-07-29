@@ -17,7 +17,7 @@ class ValidateResult<T> {
     required this.value,
   });
 
-  factory ValidateResult.toInit(T value) => ValidateResult(
+  factory ValidateResult.toInit(T? value) => ValidateResult(
     hasError: false,
     error: 'Valor inicializado.',
     value: value,
