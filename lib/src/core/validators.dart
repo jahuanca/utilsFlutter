@@ -29,7 +29,7 @@ ValidateResult<T> validateText<T>({
   ToConverter? toConvert,
 }) {
   if (rules.isEmpty) {
-    return ValidateResult(error: null, hasError: false, value: text);
+    return ValidateResult(error: null, hasError: false, value: text, label: label,);
   }
 
   for (var i = 0; i < rules.values.length; i++) {
@@ -43,6 +43,7 @@ ValidateResult<T> validateText<T>({
             error: '$label es necesario',
             hasError: true,
             value: null,
+            label: label,
           );
         }
         if (text is String && value == true) {
@@ -51,6 +52,7 @@ ValidateResult<T> validateText<T>({
               error: '$label es necesario',
               hasError: true,
               value: null,
+              label: label,
             );
           }
         }
@@ -61,6 +63,7 @@ ValidateResult<T> validateText<T>({
               error: '$label es necesario',
               hasError: true,
               value: null,
+              label: label,
             );
           }
         }
@@ -71,6 +74,7 @@ ValidateResult<T> validateText<T>({
               error: '$label es necesario',
               hasError: true,
               value: null,
+              label: label,
             );
           }
         }
@@ -83,6 +87,7 @@ ValidateResult<T> validateText<T>({
             error: 'Dimensión mínima: $value',
             hasError: true,
             value: null,
+            label: label,
           );
         }
         break;
@@ -93,6 +98,7 @@ ValidateResult<T> validateText<T>({
             error: 'Dimensión máxima: $value',
             hasError: true,
             value: null,
+            label: label,
           );
         }
         break;
@@ -103,6 +109,7 @@ ValidateResult<T> validateText<T>({
             error: '$label debe ser entero',
             hasError: true,
             value: null,
+            label: label,
           );
         }
         break;
@@ -115,6 +122,7 @@ ValidateResult<T> validateText<T>({
                 error: '$label debe ser decimal',
                 hasError: true,
                 value: null,
+                label: label,
               );
             }
           } else {
@@ -122,6 +130,7 @@ ValidateResult<T> validateText<T>({
               error: '$label debe ser una fecha',
               hasError: true,
               value: null,
+              label: label,
             );
           }
         }
@@ -135,6 +144,7 @@ ValidateResult<T> validateText<T>({
                 error: '$label debe ser una fecha',
                 hasError: true,
                 value: null,
+                label: label,
               );
             }
           } else {
@@ -142,6 +152,7 @@ ValidateResult<T> validateText<T>({
               error: '$label debe ser una fecha',
               hasError: true,
               value: null,
+              label: label,
             );
           }
         }
@@ -152,6 +163,7 @@ ValidateResult<T> validateText<T>({
           error: '$label no debe ser menor a $value',
           hasError: true,
           value: null,
+          label: label,
         );
         if (value is num) {
           if (text < value) return errorToReturn;
@@ -167,6 +179,7 @@ ValidateResult<T> validateText<T>({
           error: '$label no debe ser mayor a $value',
           hasError: true,
           value: null,
+          label: label,
         );
         if (value is num) {
           if (text > value) return errorToReturn;
@@ -198,15 +211,16 @@ ValidateResult<T> validateText<T>({
     }
     if (text == null) {
       ValidateResult(
-          error: 'No se pudo convertir $label.', hasError: true, value: null);
+          error: 'No se pudo convertir $label.', hasError: true, value: null, label: label,);
     }
   }
-  return ValidateResult(error: null, hasError: false, value: text);
+  return ValidateResult(error: null, hasError: false, value: text, label: label,);
 }
 
 ValidateResult? findErrorInValidations(List<ValidateResult?> validations) {
+  
   return validations.firstWhere(
-    (e) => e?.hasError ?? false,
+    (e) => (e == null) || (e.value == null) ||  (e.hasError),
     orElse: () => null,
   );
 }

@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as https;
 import 'package:utils/src/domain/http_manager.dart';
 import 'package:utils/utils.dart';
 
 class AppHttpManager implements HttpManager {
-
   @override
   Future<Result<AppResponseHttp>> get({
     required String url,
@@ -16,8 +16,9 @@ class AppHttpManager implements HttpManager {
     bool replaceAllUrl = false,
   }) async {
     try {
-      log('Api Get request url $url');
-      log('Query: ${query.toString()}');
+      if (kDebugMode) {
+        debugPrint('UTILS-url: Api Get request url $url, Query: ${query.toString()}');
+      }
       final response = await https
           .get(
               Uri.parse(_queryBuilder(
@@ -40,7 +41,9 @@ class AppHttpManager implements HttpManager {
     bool replaceAllUrl = false,
   }) async {
     try {
-      log('Api Post request url $url, with $body');
+      if (kDebugMode) {
+        debugPrint('UTILS-url: Api Post request url $url, with $body');
+      }
       final response = await https
           .post(
               Uri.parse(_queryBuilder(
@@ -63,7 +66,9 @@ class AppHttpManager implements HttpManager {
     bool replaceAllUrl = false,
   }) async {
     try {
-      log('Api Put request url $url, with $body');
+      if (kDebugMode) {
+        debugPrint('UTILS-url: Api Put request url $url, with $body');
+      }
       final response = await https
           .put(
               Uri.parse(_queryBuilder(
@@ -85,7 +90,9 @@ class AppHttpManager implements HttpManager {
     bool replaceAllUrl = false,
   }) async {
     try {
-      log('Api Delete request url $url');
+      if (kDebugMode) {
+        debugPrint('UTILS-url: Api Delete request url $url');
+      }
       final response = await https
           .delete(
               Uri.parse(_queryBuilder(
@@ -128,8 +135,9 @@ class AppHttpManager implements HttpManager {
         headers[key] = value;
       });
     }
-    log('Headers');
-    log(headers.toString());
+    if (kDebugMode) {
+      debugPrint('UTILS-headers: Headers, ${headers.toString()}');
+    }
     return headers;
   }
 
@@ -161,7 +169,6 @@ class AppHttpManager implements HttpManager {
         if (value != null) buffer.write('$key=$value&');
       });
     }
-    log(buffer.toString());
     return buffer.toString();
   }
 
@@ -178,9 +185,11 @@ class AppHttpManager implements HttpManager {
     bool isSuccessful = appResponseHttp.isSuccessful;
     int statusCode = appResponseHttp.statusCode;
 
-    log('Api response ${isSuccessful ? 'Succes' : 'Error'} $statusCode with:');
-    if (showLog()) {
-      log(appResponseHttp.body);
+    if (kDebugMode) {
+      debugPrint('UTILS-message: Api response ${isSuccessful ? 'Succes' : 'Error'} $statusCode with:');
+      if (showLog()) {
+        log('UTILS-body: ${appResponseHttp.body}');
+      }
     }
   }
 }
