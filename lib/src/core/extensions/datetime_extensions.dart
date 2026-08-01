@@ -1,12 +1,10 @@
-
 import 'package:utils/src/core/default_extensions.dart';
 
 extension CalculateTime on DateTime? {
   DateTime lastDateOfTheWeek() {
-    
     return firstDateOfTheWeek()
-      .finalOfDay()
-      .add(const Duration(days: DateTime.daysPerWeek - 1));
+        .finalOfDay()
+        .add(const Duration(days: DateTime.daysPerWeek - 1));
   }
 
   DateTime firstDateOfTheWeek() {
@@ -19,9 +17,13 @@ extension CalculateTime on DateTime? {
     return DateTime(dateTime.year, dateTime.month, dateTime.day, 0, 0, 0);
   }
 
-  DateTime finalOfDay(){
+  DateTime finalOfDay() {
     DateTime dateTime = orNow();
     return DateTime(dateTime.year, dateTime.month, dateTime.day, 23, 59, 59);
   }
 
+  String toServer() {
+    DateTime dateTime = orNow();
+    return dateTime.toUtc().toIso8601String();
+  }
 }
