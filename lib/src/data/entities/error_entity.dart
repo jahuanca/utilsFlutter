@@ -1,9 +1,8 @@
-
 const _statusCodeKey = 'statusCode';
 const _titleKey = 'title';
 const _errorMessageKey = 'errorMessage';
 
-class ErrorEntity{
+class ErrorEntity {
   int? statusCode;
   String title;
   String errorMessage;
@@ -15,14 +14,14 @@ class ErrorEntity{
   });
 
   Map<String, dynamic> toJson() => {
-    _statusCodeKey: statusCode,
-    _titleKey: title,
-    _errorMessageKey: errorMessage,
-  };
+        _statusCodeKey: statusCode,
+        _titleKey: title,
+        _errorMessageKey: errorMessage,
+      };
 
   factory ErrorEntity.fromJson(Map<String, dynamic> json) => ErrorEntity(
-    statusCode: json[_statusCodeKey], 
-    title: json[_titleKey], 
-    errorMessage: json[_errorMessageKey],
-  );
+        statusCode: json[_statusCodeKey],
+        title: json[_titleKey],
+        errorMessage: json[_errorMessageKey],
+      );
 }

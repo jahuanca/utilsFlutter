@@ -96,7 +96,7 @@ class DropdownWidget extends StatelessWidget {
                         }
                       },
                     ).toList(),
-              value: value,
+              initialValue: value,
               onChanged: onChanged,
             ),
           ),

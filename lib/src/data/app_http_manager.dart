@@ -17,7 +17,8 @@ class AppHttpManager implements HttpManager {
   }) async {
     try {
       if (kDebugMode) {
-        debugPrint('UTILS-url: Api Get request url $url, Query: ${query.toString()}');
+        debugPrint(
+            'UTILS-url: Api Get request url $url, Query: ${query.toString()}');
       }
       final response = await https
           .get(
@@ -178,7 +179,18 @@ class AppHttpManager implements HttpManager {
         statusCode: response.statusCode,
         headers: response.headers);
     _logResponse(appResponseHttp);
-    return Result.success(appResponseHttp);
+    if (appResponseHttp.isSuccessful) {
+      return Result.success(appResponseHttp);
+    } else {
+      final data = jsonDecode(response.body);
+      String? title = data['title'];
+      String? message = data['message'];
+      ErrorEntity error = ErrorEntity(
+          statusCode: appResponseHttp.statusCode,
+          title: title ?? appResponseHttp.title,
+          errorMessage: message ?? appResponseHttp.detail);
+      return Result.error(error);
+    }
   }
 
   void _logResponse(AppResponseHttp appResponseHttp) {
@@ -186,7 +198,8 @@ class AppHttpManager implements HttpManager {
     int statusCode = appResponseHttp.statusCode;
 
     if (kDebugMode) {
-      debugPrint('UTILS-message: Api response ${isSuccessful ? 'Succes' : 'Error'} $statusCode with:');
+      debugPrint(
+          'UTILS-message: Api response ${isSuccessful ? 'Succes' : 'Error'} $statusCode with:');
       if (showLog()) {
         log('UTILS-body: ${appResponseHttp.body}');
       }

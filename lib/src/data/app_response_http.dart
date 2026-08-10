@@ -20,6 +20,7 @@ class AppResponseHttp {
     if (isSuccessful) {
       return EnumResponse.okResponse;
     }
+
     return EnumResponse.values.firstWhere(
       (e) => e.statusCode == statusCode,
       orElse: () => EnumResponse.defaultErrorResponse,
