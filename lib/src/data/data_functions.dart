@@ -7,16 +7,18 @@ import 'package:utils/src/core/dimens.dart';
 import 'package:utils/src/core/input_borders.dart';
 import 'package:utils/src/core/strings.dart';
 import 'package:utils/src/core/text_styles.dart';
-import 'package:utils/src/data/enum_auth.dart';
+import 'package:utils/utils.dart';
 
 //colors
-Color primaryColor() => GlobalConfiguration().get(primaryColorString) ?? primaryColorBase;
-Color secondaryColor() => GlobalConfiguration().get(secondaryColorString) ?? secondColorBase;
-Color cardColor() => GlobalConfiguration().get(cardColorString) ?? cardColorBase;
-Color successColor() => GlobalConfiguration().get(successColorString) ?? successColorBase;
-Color infoColor() => GlobalConfiguration().get(infoColorString) ?? infoColorBase;
-Color alertColor() => GlobalConfiguration().get(alertColorString) ?? alertColorBase;
-Color dangerColor() => GlobalConfiguration().get(dangerColorString) ?? dangerColorBase;
+final theme = config.themeConfig;
+
+Color primaryColor() => theme!.colors!.primaryColor;
+Color secondaryColor() => theme!.colors!.secondaryColor;
+Color cardColor() => theme!.colors!.cardColor;
+Color successColor() => theme!.colors!.successColor;
+Color infoColor() => theme!.colors!.infoColor;
+Color alertColor() => theme!.colors!.alertColor;
+Color dangerColor() => theme!.colors!.dangerColor;
 Color darkColor() => GlobalConfiguration().get(darkColorString) ?? darkColorBase;
 Color disabledColor() => GlobalConfiguration().get(disabledColorString) ?? disabledColorBase;
 Color primaryTextColor() => GlobalConfiguration().get( primaryTextColorString) ?? primaryTextColorBase;
@@ -37,15 +39,15 @@ TextStyle? labelStyle() => GlobalConfiguration().get(labelStyleString);
 InputBorder inputBorder() => GlobalConfiguration().get(inputBorderString) ?? inputBorderBase();
 
 //bools
-bool showLog()=> GlobalConfiguration().get(showLogString) ?? true;
+bool showLog()=> config.networkConfig?.showLog ?? true;
 
-String urlServer() => GlobalConfiguration().get(urlServerString) ?? emptyString;
-EnumAuth authentication() => GlobalConfiguration().get(authenticationString) ?? EnumAuth.none;
-String basicAuthUsername() => GlobalConfiguration().get(basicAuthUsernameString) ?? emptyString;
-String basicAuthPassword() => GlobalConfiguration().get(basicAuthPasswordString) ?? emptyString;
+String urlServer() => config.networkConfig?.urlServer ?? emptyString;
+EnumAuth authentication() => config.networkConfig?.authentication ?? EnumAuth.none;
+String basicAuthUsername() => config.networkConfig?.basicAuthUsername ?? emptyString;
+String basicAuthPassword() => config.networkConfig?.basicAuthPassword ?? emptyString;
 
 //functions
 Widget Function(Widget)? wrapperWidgetInputs()=> GlobalConfiguration().get(wrapperWidgetInputsString);
 
 //int
-int timeOfValue() => GlobalConfiguration().get(timeOfValueString) ?? defaultTimeOut;
+int timeOfValue() => config.networkConfig?.valueOfTimeOut ?? defaultTimeOut;

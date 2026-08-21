@@ -17,7 +17,6 @@ export 'src/core/validators.dart';
 export 'src/core/validation_result.dart';
 export 'src/data/app_http_manager.dart';
 export 'src/data/app_response_http.dart';
-export 'src/data/data_config.dart';
 export 'src/data/app_exceptions.dart';
 export 'src/data/data_functions.dart';
 export 'src/data/entities/error_entity.dart';
@@ -52,8 +51,12 @@ export 'src/ui/widgets/utils/basic_positions.dart';
 export 'src/ui/widgets/utils/child_or_empty_widget.dart';
 export 'src/ui/widgets/text/rich_text_item.dart';
 export 'src/ui/widgets/text/rich_text_widget.dart';
+export 'src/data/config/utils_config.dart';
+export 'src/data/config/data_config.dart';
+export 'src/data/config/network_config.dart';
+export 'src/data/config/theme_config.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:utils/src/data/data_config.dart';
+import 'package:utils/src/data/config/data_config.dart';
 
 void loadConfig(DataConfig data) => GlobalConfiguration().loadFromMap(data.toJson());
 

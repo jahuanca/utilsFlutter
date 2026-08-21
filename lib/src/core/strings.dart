@@ -1,4 +1,3 @@
-const String emptyString = '';
 const String primaryColorString = 'primaryColor';
 const String secondaryColorString = 'secondaryColor';
 const String cardColorString = 'cardColor';
