@@ -286,8 +286,8 @@ class ExamplePage extends StatelessWidget {
             const IconButtonWidget(
               iconData: Icons.access_alarm,
             ),
-            const ImageActionWidget(
-              padding: EdgeInsets.symmetric(vertical: 25),
+            ImageActionWidget(
+              padding: const EdgeInsets.symmetric(vertical: 25),
               height: 150,
               width: 150,
               iconData: Icons.abc_outlined,
