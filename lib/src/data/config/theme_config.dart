@@ -87,4 +87,3 @@ class TextStyleConfig {
     hintStyle ??= hintStyleBase();
   }
 }
-

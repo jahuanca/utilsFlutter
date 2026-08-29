@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:utils/src/core/ui_component.dart';
 import 'package:utils/utils.dart';
+
+/// Preview:
+/// ![ImageActionWidget](https://cdn-icons-png.flaticon.com/512/3135/3135715.png)
+@UiComponent(
+  description: 'Image Action Widget',
+  preview: 'assets/previews/test.png',
+)
 
 class ImageActionWidget extends StatelessWidget {
   final double height;

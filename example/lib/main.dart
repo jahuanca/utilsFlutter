@@ -3,7 +3,13 @@ import 'package:utils/utils.dart';
 
 void main() async {
   loadConfig(
-    DataConfig(primaryColor: Colors.greenAccent)
+    DataConfig(
+      themeConfig: ThemeConfig(
+        colors: ColorsApp(
+          primaryColor: Colors.greenAccent,
+        )
+      )
+    )
   );
   runApp(const MyApp());
 }
