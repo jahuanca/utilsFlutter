@@ -40,7 +40,7 @@ class CheckBoxWidget extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     // final decorationSelected = decorationCurrent ?? boxDecorationWidget(error: error, backgroundColor: backgroundColor);
     final TextStyle? textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
-    final Widget Function(Widget)? wrapperSelected = config.wrapperWidgetInputs ?? wrapperWidget;
+    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
 
     final content = Container(
       padding: padding,

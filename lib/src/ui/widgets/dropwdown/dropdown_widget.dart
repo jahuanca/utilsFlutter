@@ -50,10 +50,10 @@ class DropdownWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final double heightInput = size.height * dimensionInput();
-    final inputBorderSelected = inputBorderCurrent ?? inputBorder();
+    final InputBorder inputBorderSelected = inputBorderCurrent ?? inputBorder();
     final textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
     final double heigthPadding = heightInput * 0.1;
-    final Widget Function(Widget)? wrapperSelected = config.wrapperWidgetInputs ?? wrapperWidget;
+    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
 
     Widget content = Container(
       padding: padding,

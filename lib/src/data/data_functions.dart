@@ -32,11 +32,11 @@ double dimensionButton() => GlobalConfiguration().get(dimensionButtonString) ?? 
 
 //styles
 TextStyle titleTextAppBarStyle() => GlobalConfiguration().get(titleTextAppBarStyleString) ?? TextStyle();
-TextStyle hintStyle() => GlobalConfiguration().get(hintStyleString) ?? hintStyleBase();
-TextStyle? labelStyle() => GlobalConfiguration().get(labelStyleString);
+TextStyle hintStyle() => config.themeConfig?.textStyles?.hintStyle ?? hintStyleBase();
+TextStyle? labelStyle() => config.themeConfig?.textStyles?.labelStyle;
 
 //inputBorders
-InputBorder inputBorder() => GlobalConfiguration().get(inputBorderString) ?? inputBorderBase();
+InputBorder inputBorder() => config.inputBorder ?? inputBorderBase();
 
 //bools
 bool showLog()=> config.networkConfig?.showLog ?? true;
@@ -47,7 +47,7 @@ String basicAuthUsername() => config.networkConfig?.basicAuthUsername ?? emptySt
 String basicAuthPassword() => config.networkConfig?.basicAuthPassword ?? emptyString;
 
 //functions
-Widget Function(Widget)? wrapperWidgetInputs()=> GlobalConfiguration().get(wrapperWidgetInputsString);
+Widget Function(Widget)? wrapperWidgetInputs()=> config.wrapperWidgetInputs;
 
 //int
 int timeOfValue() => config.networkConfig?.valueOfTimeOut ?? defaultTimeOut;

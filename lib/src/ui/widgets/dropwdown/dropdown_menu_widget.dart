@@ -58,7 +58,7 @@ class DropdownMenuWidget extends StatelessWidget {
     final InputBorder inputBorderSelected = inputBorderCurrent ?? inputBorder();
     final double heigthPadding = heightInput * 0.1;
     final TextStyle? textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
-    final Widget Function(Widget)? wrapperSelected = config.wrapperWidgetInputs ?? wrapperWidget;
+    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
 
     final InputDecoration inputDecoration = inputDecorationWidget(
       error: error,
