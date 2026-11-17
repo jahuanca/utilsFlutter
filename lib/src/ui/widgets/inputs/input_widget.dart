@@ -77,6 +77,8 @@ class InputWidget extends StatelessWidget {
         ? size.height * dimensionInput() * 5
         : size.height * dimensionInput();
     final double heigthPadding = heightInput * 0.1;
+    final TextStyle? textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
+
     final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
 
     Widget content = Padding(
@@ -86,7 +88,7 @@ class InputWidget extends StatelessWidget {
           labelWidget(
             size: size, 
             label: label, 
-            textStyleLabel: textStyleLabel,
+            textStyleLabel: textStyleLabelSelected,
             heigthPadding: isAlignLabel ? (heigthPadding * 2) : defaultDouble,
           ),
           TapRegion(
