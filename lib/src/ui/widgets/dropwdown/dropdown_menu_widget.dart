@@ -57,8 +57,9 @@ class DropdownMenuWidget extends StatelessWidget {
     final double heightInput = size.height * dimensionInput();
     final InputBorder inputBorderSelected = inputBorderCurrent ?? inputBorder();
     final double heigthPadding = heightInput * 0.1;
-    final Widget Function(Widget)? wrapperSelected =
-        wrapperWidgetInputs() ?? wrapperWidget;
+    final TextStyle? textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
+    final Widget Function(Widget)? wrapperSelected = config.wrapperWidgetInputs ?? wrapperWidget;
+
     final InputDecoration inputDecoration = inputDecorationWidget(
       error: error,
       inputBorderSelected: inputBorderSelected,
@@ -72,7 +73,7 @@ class DropdownMenuWidget extends StatelessWidget {
           labelWidget(
             size: size,
             label: label,
-            textStyleLabel: textStyleLabel,
+            textStyleLabel: textStyleLabelSelected,
             heigthPadding: isAlignLabel ? (heigthPadding * 2) : defaultDouble,
           ),
           TapRegion(

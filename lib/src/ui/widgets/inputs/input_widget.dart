@@ -79,7 +79,7 @@ class InputWidget extends StatelessWidget {
     final double heigthPadding = heightInput * 0.1;
     final TextStyle? textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
 
-    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
+    final Widget Function(Widget)? wrapperSelected = config.wrapperWidgetInputs ?? wrapperWidget;
 
     Widget content = Padding(
       padding: padding,

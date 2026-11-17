@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/default_extensions.dart';
+import 'package:utils/src/data/config/utils_config.dart';
 import 'package:utils/src/data/data_functions.dart';
 import 'package:utils/src/ui/widgets/utils.dart';
 
@@ -38,13 +39,14 @@ class CheckBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     // final decorationSelected = decorationCurrent ?? boxDecorationWidget(error: error, backgroundColor: backgroundColor);
-    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
+    final TextStyle? textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
+    final Widget Function(Widget)? wrapperSelected = config.wrapperWidgetInputs ?? wrapperWidget;
 
     final content = Container(
       padding: padding,
       child: Column(
         children: [
-          labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
+          labelWidget(size: size, label: label, textStyleLabel: textStyleLabelSelected),
           Container(
             height: heightWidget(size: size),
             decoration: decorationCurrent,

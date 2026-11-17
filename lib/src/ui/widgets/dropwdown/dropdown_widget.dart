@@ -53,7 +53,7 @@ class DropdownWidget extends StatelessWidget {
     final inputBorderSelected = inputBorderCurrent ?? inputBorder();
     final textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
     final double heigthPadding = heightInput * 0.1;
-    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
+    final Widget Function(Widget)? wrapperSelected = config.wrapperWidgetInputs ?? wrapperWidget;
 
     Widget content = Container(
       padding: padding,

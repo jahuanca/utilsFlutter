@@ -57,13 +57,14 @@ class PasswordInputWidget extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final double heightInput = isTextArea ? size.height * dimensionInput()  * 1.5 : size.height * dimensionInput();
     final double heigthPadding = heightInput * 0.1;
-    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
+    final TextStyle? textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
+    final Widget Function(Widget)? wrapperSelected = config.wrapperWidgetInputs ?? wrapperWidget;
 
     Widget content = Padding(
       padding: padding,
       child: Column(
         children: [
-          labelWidget(size: size, label: label, textStyleLabel: textStyleLabel),
+          labelWidget(size: size, label: label, textStyleLabel: textStyleLabelSelected),
           GestureDetector(
             onTap: onTap,
             child: Stack(
