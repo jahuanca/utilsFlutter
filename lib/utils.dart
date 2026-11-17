@@ -56,5 +56,5 @@ export 'src/data/config/utils_config.dart';
 export 'src/data/config/data_config.dart';
 export 'src/data/config/network_config.dart';
 export 'src/data/config/theme_config.dart';
-export 'src/ui/widgets/utils.dart';
+export 'src/ui/widgets/text/label_widget.dart';
 // TODO: Export any libraries intended for clients of this package.
