@@ -14,10 +14,10 @@ Widget labelWidget({
         : Container(
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.only(left: heigthPadding),
-            height: size.height * dimensionInput() * 0.6,
+            height: size.height * dimensionInput * 0.6,
             child: Text(
               label.orEmpty(),
-              style: textStyleLabel ?? labelStyle(),
+              style: textStyleLabel ?? labelStyle,
             ),
           );
 
@@ -28,7 +28,7 @@ Widget errorContainerWidget({
       alignment: Alignment.centerLeft,
       child: Text(
         error.orEmpty(),
-        style: TextStyle(color: dangerColor()),
+        style: TextStyle(color: dangerColor),
       ),
     );
 
@@ -37,10 +37,10 @@ BoxDecoration boxDecorationWidget({
   required Color? backgroundColor,
 }) =>
     BoxDecoration(
-        color: backgroundColor ?? cardColor(),
+        color: backgroundColor ?? cardColor,
         border:
-            Border.all(color: error == null ? primaryColor() : dangerColor()),
-        borderRadius: BorderRadius.circular(borderRadius()));
+            Border.all(color: error == null ? primaryColor : dangerColor),
+        borderRadius: BorderRadius.circular(borderRadius));
 
 InputDecoration inputDecorationWidget({
   required String? error,
@@ -60,17 +60,17 @@ InputDecoration inputDecorationWidget({
       disabledBorder: error == null ? inputBorderSelected : inputBorderError(),
       focusedBorder: error == null ? inputBorderSelected : inputBorderError(),
       filled: true,
-      fillColor: backgroundColor ?? cardColor(),
+      fillColor: backgroundColor ?? cardColor,
       contentPadding: isTextArea
           ? contentPaddingTextArea
           : EdgeInsets.symmetric(vertical: heigthPadding, horizontal: 25),
       counterText: emptyString,
       counterStyle: TextStyle(fontSize: defaultDouble),
       hintText: hintText,
-      hintStyle: hintStyle(),
+      hintStyle: hintStyle,
     );
 
 double heightWidget({
   required Size size,
 }) =>
-    size.height * dimensionInput() * 0.59;
+    size.height * dimensionInput * 0.59;

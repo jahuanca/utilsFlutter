@@ -44,13 +44,13 @@ class ButtonWidget extends StatelessWidget {
     return Padding(
       padding: padding,
       child: Material(
-        borderRadius: BorderRadius.circular(borderRadius()),
+        borderRadius: BorderRadius.circular(borderRadius),
         elevation: elevation,
         shadowColor: shadowColor,
         child: GestureDetector(
           onTap: onTap,
           child: Container(
-            height: size.height * dimensionButton(),
+            height: size.height * dimensionButton,
             width: size.width,
             decoration: selectedTypeButton.decoration,
             child: Row(
@@ -88,11 +88,11 @@ class ButtonWidget extends StatelessWidget {
   final baseType = ButtonTypeData(
     type: ButtonTypeWidget.base,
     decoration: BoxDecoration(
-        color: cardColor(),
+        color: cardColor,
         border: Border.all(
-          color: primaryColor(),
+          color: primaryColor,
         ),
-        borderRadius: BorderRadius.circular(borderRadius())),
+        borderRadius: BorderRadius.circular(borderRadius)),
     textAndIconColor: Colors.white,
   );
 
@@ -101,10 +101,10 @@ class ButtonWidget extends StatelessWidget {
     decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border.all(
-          color: primaryColor(),
+          color: primaryColor,
         ),
-        borderRadius: BorderRadius.circular(borderRadius())),
-    textAndIconColor: primaryColor(),
+        borderRadius: BorderRadius.circular(borderRadius)),
+    textAndIconColor: primaryColor,
   );
 
   final link = ButtonTypeData(
@@ -112,6 +112,6 @@ class ButtonWidget extends StatelessWidget {
     decoration: BoxDecoration(
       color: Colors.transparent,
     ),
-    textAndIconColor: primaryColor(),
+    textAndIconColor: primaryColor,
   );
 }

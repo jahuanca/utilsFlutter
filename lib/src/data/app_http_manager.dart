@@ -25,7 +25,7 @@ class AppHttpManager implements HttpManager {
               Uri.parse(_queryBuilder(
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               headers: await _headerBuilder(headers))
-          .timeout(Duration(seconds: timeOfValue()));
+          .timeout(Duration(seconds: timeOfValue));
       return _returnResponse(response);
     } catch (_) {
       return Result.error(networkErrorEntity);
@@ -51,7 +51,7 @@ class AppHttpManager implements HttpManager {
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               body: jsonEncode(body),
               headers: await _headerBuilder(headers))
-          .timeout(Duration(seconds: timeOfValue()));
+          .timeout(Duration(seconds: timeOfValue));
       return _returnResponse(response);
     } catch (_) {
       return Result.error(networkErrorEntity);
@@ -76,7 +76,7 @@ class AppHttpManager implements HttpManager {
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               body: json.encode(body),
               headers: await _headerBuilder(headers))
-          .timeout(Duration(seconds: timeOfValue()));
+          .timeout(Duration(seconds: timeOfValue));
       return _returnResponse(response);
     } catch (_) {
       return Result.error(networkErrorEntity);
@@ -99,7 +99,7 @@ class AppHttpManager implements HttpManager {
               Uri.parse(_queryBuilder(
                   path: url, query: query, replaceAllUrl: replaceAllUrl)),
               headers: await _headerBuilder(headers))
-          .timeout(Duration(seconds: timeOfValue()));
+          .timeout(Duration(seconds: timeOfValue));
       return _returnResponse(response);
     } catch (_) {
       return Result.error(networkErrorEntity);
@@ -114,7 +114,7 @@ class AppHttpManager implements HttpManager {
     headers[HttpHeaders.contentTypeHeader] = 'application/json';
     headers[HttpHeaders.connectionHeader] = 'Keep-Alive';
 
-    EnumAuth auth = authentication();
+    EnumAuth auth = authentication;
 
     switch (auth) {
       case EnumAuth.all:
@@ -151,7 +151,7 @@ class AppHttpManager implements HttpManager {
 
   void _setBasicAuth(Map<String, String> headers) async {
     String basicAuth = base64
-        .encode(utf8.encode('${basicAuthUsername()}:${basicAuthPassword()}'));
+        .encode(utf8.encode('$basicAuthUsername:$basicAuthPassword'));
     headers[HttpHeaders.authorizationHeader] = 'Basic $basicAuth';
   }
 
@@ -161,7 +161,7 @@ class AppHttpManager implements HttpManager {
     bool replaceAllUrl = false,
   }) {
     final buffer = StringBuffer()
-      ..write(replaceAllUrl ? path : '${urlServer()}$path');
+      ..write(replaceAllUrl ? path : '$urlServer$path');
     if (query != null) {
       if (query.isNotEmpty) {
         buffer.write('?');
@@ -200,7 +200,7 @@ class AppHttpManager implements HttpManager {
     if (kDebugMode) {
       debugPrint(
           'UTILS-message: Api response ${isSuccessful ? 'Succes' : 'Error'} $statusCode with:');
-      if (showLog()) {
+      if (showLog) {
         log('UTILS-body: ${appResponseHttp.body}');
       }
     }

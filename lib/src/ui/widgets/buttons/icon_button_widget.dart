@@ -39,7 +39,7 @@ class IconButtonWidget extends StatelessWidget {
         width: width ?? circleAvatarHeight,
         height: height ?? circleAvatarWidth,
         decoration: BoxDecoration(
-            color: backgroundColor ?? primaryColor(),
+            color: backgroundColor ?? primaryColor,
             shape: shape,
             borderRadius: isCircle ? null : borderRadius,
             border: border),
@@ -47,7 +47,7 @@ class IconButtonWidget extends StatelessWidget {
             onPressed: onPressed,
             icon: Icon(
               iconData,
-              color: iconColor ?? secondaryColor(),
+              color: iconColor ?? secondaryColor,
             )),
       ),
     );

@@ -52,13 +52,13 @@ class PasswordInputWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final InputBorder inputBorderSelected = inputBorderCurrent ?? inputBorder();
+    final InputBorder inputBorderSelected = inputBorderCurrent ?? inputBorder;
 
     final Size size = MediaQuery.of(context).size;
-    final double heightInput = isTextArea ? size.height * dimensionInput()  * 1.5 : size.height * dimensionInput();
+    final double heightInput = isTextArea ? size.height * dimensionInput  * 1.5 : size.height * dimensionInput;
     final double heigthPadding = heightInput * 0.1;
     final TextStyle? textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
-    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
+    final Widget Function(Widget)? wrapperSelected = wrapperWidget ?? wrapperWidgetInputs;
 
     Widget content = Padding(
       padding: padding,
@@ -95,7 +95,7 @@ class PasswordInputWidget extends StatelessWidget {
                           onPressed: onPressedIconOverlay,
                           icon: Icon(
                             iconOverlay,
-                            color: infoColor(),
+                            color: infoColor,
                           )
                         )
                       )

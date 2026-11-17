@@ -32,6 +32,7 @@ class ColorsApp {
   final Color alertColor;
   final Color successColor;
   final Color disabledColor;
+  final Color darkColor;
 
   ColorsApp({
     this.primaryColor = primaryColorBase,
@@ -45,6 +46,7 @@ class ColorsApp {
     this.disabledColor = disabledColorBase,
     this.hintColor = hintColorBase,
     this.backgroundPageColor = backgroundPageColorBase,
+    this.darkColor = darkColorBase,
   });
 
 }

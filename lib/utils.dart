@@ -56,9 +56,5 @@ export 'src/data/config/utils_config.dart';
 export 'src/data/config/data_config.dart';
 export 'src/data/config/network_config.dart';
 export 'src/data/config/theme_config.dart';
-import 'package:global_configuration/global_configuration.dart';
-import 'package:utils/src/data/config/data_config.dart';
-
-void loadConfig(DataConfig data) => GlobalConfiguration().loadFromMap(data.toJson());
-
+export 'src/ui/widgets/utils.dart';
 // TODO: Export any libraries intended for clients of this package.

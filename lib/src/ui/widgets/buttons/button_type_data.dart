@@ -30,7 +30,7 @@ ButtonTypeData getTypeData(
             border: Border.all(
               color: styleData.backgroundColor,
             ),
-            borderRadius: BorderRadius.circular(borderRadius())),
+            borderRadius: BorderRadius.circular(borderRadius)),
         textAndIconColor: styleData.backgroundColor,
       );
     case ButtonTypeWidget.link:
@@ -49,7 +49,7 @@ ButtonTypeData getTypeData(
             border: Border.all(
               color: styleData.colorForBorder,
             ),
-            borderRadius: BorderRadius.circular(borderRadius())),
+            borderRadius: BorderRadius.circular(borderRadius)),
         textAndIconColor: styleData.colorForTextAndIcon,
       );
   }

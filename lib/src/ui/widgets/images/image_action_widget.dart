@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:utils/src/core/ui_component.dart';
-import 'package:utils/src/ui/widgets/images/source_image.dart';
 import 'package:utils/utils.dart';
 
 /// Preview:
@@ -55,7 +54,7 @@ class ImageActionWidget extends StatelessWidget {
             condition: (label != null),
             child: Text(
               label.orEmpty(),
-              style: labelStyle(),
+              style: labelStyle,
             ),
           ),
           SizedBox(
@@ -76,8 +75,8 @@ class ImageActionWidget extends StatelessWidget {
                           ? Alignment.bottomCenter
                           : Alignment.bottomRight,
                       child: CircleAvatar(
-                        backgroundColor: iconBackground ?? primaryColor(),
-                        child: Icon(color: iconColor ?? cardColor(), Icons.add),
+                        backgroundColor: iconBackground ?? primaryColor,
+                        child: Icon(color: iconColor ?? cardColor, Icons.add),
                       ),
                     ),
                   ),

@@ -40,7 +40,7 @@ class CheckBoxWidget extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     // final decorationSelected = decorationCurrent ?? boxDecorationWidget(error: error, backgroundColor: backgroundColor);
     final TextStyle? textStyleLabelSelected = textStyleLabel ?? config.themeConfig?.textStyles?.labelStyle;
-    final Widget Function(Widget)? wrapperSelected = wrapperWidgetInputs() ?? wrapperWidget;
+    final Widget Function(Widget)? wrapperSelected = wrapperWidget ?? wrapperWidgetInputs;
 
     final content = Container(
       padding: padding,
@@ -55,7 +55,7 @@ class CheckBoxWidget extends StatelessWidget {
                 Expanded(
                     flex: 1,
                     child: Checkbox(
-                        activeColor: checkBoxColor ?? primaryColor(),
+                        activeColor: checkBoxColor ?? primaryColor,
                         value: isChecked,
                         onChanged: onChanged)),
                 Expanded(

@@ -42,7 +42,7 @@ class SearchInputWidget extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: hintText,
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(borderRadius())),
+                      borderRadius: BorderRadius.circular(borderRadius)),
                   prefixIcon: Icon(prefixIcon),
                   suffixIcon: ChildOrElseWidget(
                     condition: isSearching,

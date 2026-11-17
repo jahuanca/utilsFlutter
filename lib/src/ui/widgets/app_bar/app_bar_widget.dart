@@ -16,9 +16,9 @@ AppBar appBarWidget({
   Color? colorIconTheme,
   }){
   return AppBar(
-    shadowColor: shadowColor ?? cardColor(),
+    shadowColor: shadowColor ?? cardColor,
     elevation: elevation,
-    backgroundColor: backgroundColor ?? cardColor(),
+    backgroundColor: backgroundColor ?? cardColor,
     automaticallyImplyLeading: hasArrowBack,
     leading: leading,
     iconTheme: IconThemeData(

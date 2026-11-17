@@ -21,49 +21,49 @@ ButtonStyleData getButtonStyleData(ButtonStyleWidget style){
     case ButtonStyleWidget.success:
       return ButtonStyleData(
         style: style, 
-        backgroundColor: successColor(), 
+        backgroundColor: successColor, 
         colorForTextAndIcon: Colors.white,
-        colorForBorder: successColor(),
+        colorForBorder: successColor,
       );
     case ButtonStyleWidget.info:
       return ButtonStyleData(
         style: style, 
-        backgroundColor: infoColor(),
+        backgroundColor: infoColor,
         colorForTextAndIcon: Colors.white,
-        colorForBorder: infoColor(),
+        colorForBorder: infoColor,
         );
     case ButtonStyleWidget.alert:
       return ButtonStyleData(
         style: style, 
-        backgroundColor: alertColor(),
+        backgroundColor: alertColor,
         colorForTextAndIcon: Colors.white,
-        colorForBorder: successColor(),
+        colorForBorder: successColor,
         );
     case ButtonStyleWidget.danger:
       return ButtonStyleData(
         style: style, 
-        backgroundColor: dangerColor(),
+        backgroundColor: dangerColor,
         colorForTextAndIcon: Colors.white,
-        colorForBorder: dangerColor(),
+        colorForBorder: dangerColor,
         );
     case ButtonStyleWidget.dark:
       return ButtonStyleData(
         style: style, 
-        backgroundColor: darkColor(), 
+        backgroundColor: darkColor, 
         colorForTextAndIcon: Colors.white, 
-        colorForBorder: darkColor());
+        colorForBorder: darkColor);
     case ButtonStyleWidget.disabled:
       return ButtonStyleData(
         style: style, 
-        backgroundColor: disabledColor(), 
+        backgroundColor: disabledColor, 
         colorForTextAndIcon: Colors.white, 
-        colorForBorder: disabledColor());
+        colorForBorder: disabledColor);
     default:
       return ButtonStyleData(
         style: style, 
-        backgroundColor: primaryColor(),
+        backgroundColor: primaryColor,
         colorForTextAndIcon: Colors.white,
-        colorForBorder: primaryColor(),
+        colorForBorder: primaryColor,
         );
   }
 }

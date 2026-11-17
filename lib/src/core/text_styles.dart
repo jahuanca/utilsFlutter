@@ -4,7 +4,7 @@ import 'package:utils/src/data/data_functions.dart';
 
 TextStyle primaryTextStyleBase(){
   return TextStyle(
-    color: primaryTextColor(),
+    color: primaryTextColor,
     fontSize: 15,
     fontWeight: FontWeight.w400,
   );
@@ -12,7 +12,7 @@ TextStyle primaryTextStyleBase(){
 
 TextStyle hintStyleBase() {
   return TextStyle(
-      color: hintColor(),
+      color: hintColor,
       fontSize: 15,
       fontWeight: FontWeight.w400);
 }
@@ -23,12 +23,12 @@ TextStyle hintLoginStyle() {
 }
 
 TextStyle botonStyle({Color? textColor, required double fontSize}) {
-  return TextStyle(color: textColor ?? cardColor(), fontSize: fontSize, fontWeight: FontWeight.bold);
+  return TextStyle(color: textColor ?? cardColor, fontSize: fontSize, fontWeight: FontWeight.bold);
 }
 
 TextStyle titleTextAppBarStyleBase(){
   return TextStyle(
-    color: primaryTextColor(),
+    color: primaryTextColor,
     fontSize: 16,
     fontWeight: FontWeight.w500
   );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart' hide ButtonStyle;
 import 'package:utils/utils.dart';
 
 void main() async {
-  loadConfig(
+  UtilConfig.configure(
     DataConfig(
       themeConfig: ThemeConfig(
         colors: ColorsApp(
@@ -195,8 +195,8 @@ class ExamplePage extends StatelessWidget {
               paddingAll:
                   const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               decorationAll: BoxDecoration(
-                  border: Border.all(color: primaryColor()),
-                  borderRadius: BorderRadius.circular(borderRadius())),
+                  border: Border.all(color: primaryColor),
+                  borderRadius: BorderRadius.circular(borderRadius)),
               /* actions: const [
                 IconButton(onPressed: null, icon: Icon(Icons.edit)),
                 IconButton(onPressed: null, icon: Icon(Icons.delete))
@@ -206,13 +206,13 @@ class ExamplePage extends StatelessWidget {
                   onPressed: null,
                   iconData: Icons.edit,
                   shape: BoxShape.circle,
-                  backgroundColor: infoColor(),
+                  backgroundColor: infoColor,
                 ),
                 IconButtonWidget(
                   onPressed: null,
                   iconData: Icons.edit,
                   shape: BoxShape.circle,
-                  backgroundColor: infoColor(),
+                  backgroundColor: infoColor,
                 ),
               ],
               alignmentOfActions: MainAxisAlignment.center,
@@ -226,8 +226,8 @@ class ExamplePage extends StatelessWidget {
                 color: Colors.black,
               ),
               inputBorderCurrent: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(borderRadius()),
-                  borderSide: BorderSide(width: 1, color: cardColor())),
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  borderSide: BorderSide(width: 1, color: cardColor)),
               hintText: 'Hint de texto',
               padding: const EdgeInsets.all(8),
             ),
@@ -237,8 +237,8 @@ class ExamplePage extends StatelessWidget {
                 color: Colors.black,
               ),
               inputBorderCurrent: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(borderRadius()),
-                  borderSide: BorderSide(width: 1, color: cardColor())),
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  borderSide: BorderSide(width: 1, color: cardColor)),
               hintText: 'Hint de texto',
               padding: const EdgeInsets.all(8),
             ),

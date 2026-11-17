@@ -30,9 +30,9 @@ class TagWidget extends StatelessWidget {
     this.sizeIcon = 20,
     this.alignmentOfContent = MainAxisAlignment.start,
   }){
-    backgroundColor ??= primaryColor();
+    backgroundColor ??= primaryColor;
     borderColor ??= backgroundColor;
-    textColorAndIcon ??= primaryTextColor();
+    textColorAndIcon ??= primaryTextColor;
   }
 
   @override
@@ -45,7 +45,7 @@ class TagWidget extends StatelessWidget {
           decoration: BoxDecoration(
               color: backgroundColor,
               border: Border.all(color: borderColor!),
-              borderRadius: BorderRadius.circular(borderRadius())),
+              borderRadius: BorderRadius.circular(borderRadius)),
           padding: paddingContent,
           child: Row(
             mainAxisAlignment: alignmentOfContent,

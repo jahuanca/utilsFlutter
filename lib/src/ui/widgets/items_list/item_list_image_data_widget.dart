@@ -59,7 +59,7 @@ class ItemListImageDataWidget extends StatelessWidget {
       padding: paddingAll,
       child: Material(
         elevation: cardElevation,
-        borderRadius: cardElevation != defaultDouble ? BorderRadius.circular(borderRadius()) : null,
+        borderRadius: cardElevation != defaultDouble ? BorderRadius.circular(borderRadius) : null,
         child: GestureDetector(
           onTap: onTap,
           child: Container(

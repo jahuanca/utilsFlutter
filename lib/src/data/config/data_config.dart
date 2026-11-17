@@ -15,7 +15,7 @@ class DataConfig {
     this.networkConfig,
     this.themeConfig,
   }) {
-    themeConfig ??= ThemeConfig();
+    // themeConfig ??= ThemeConfig();
   }
 
   factory DataConfig.fromJson(Map<String, dynamic> json) => DataConfig(

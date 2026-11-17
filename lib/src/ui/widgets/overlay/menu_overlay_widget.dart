@@ -74,7 +74,7 @@ class MenuOverlayWidget extends StatelessWidget {
           elevation: 10,
           child: Container(
             width: widthInside,
-            color: cardColor(),
+            color: cardColor,
             child: Column(
               children: children,
             ),
