@@ -29,4 +29,10 @@ abstract class HttpManager {
     Map<String, dynamic>? query,
     Map<String, String>? headers,
   });
+
+  Future<Result<AppResponseHttp>> sendFile({
+    required String url,
+    required String path,
+    String fieldName = 'image',
+  });
 }

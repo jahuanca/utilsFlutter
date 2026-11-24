@@ -193,6 +193,56 @@ class AppHttpManager implements HttpManager {
     }
   }
 
+  @override
+  Future<Result<AppResponseHttp>> sendFile({
+    required String url,
+    required String path,
+    String fieldName = 'image',
+  }) async {
+    try {
+      final request = https.MultipartRequest('POST', Uri.parse('$urlServer$url'))
+        ..headers.addAll(_headersForFile())
+        ..files.add(await https.MultipartFile.fromPath(
+          fieldName,
+          path,
+          contentType: _imageContentType(path),
+        ));
+      final https.StreamedResponse streamed =
+          await request.send().timeout(Duration(seconds: timeOfValue));
+      final https.Response response = await https.Response.fromStream(streamed);
+      final AppResponseHttp appResponse = AppResponseHttp(
+        body: response.body,
+        statusCode: response.statusCode,
+        headers: response.headers,
+      );
+      return Result.success(appResponse);
+    } catch (_) {
+      return Result.error(networkErrorEntity);
+    }
+  }
+
+  Map<String, String> _headersForFile() {
+    final Map<String, String> headers = {HttpHeaders.acceptHeader: 'application/json'};
+    final String? token = UserPreferences().getToken();
+    if (authentication == EnumAuth.onlyBasicAuth || authentication == EnumAuth.all) {
+      final String basic =
+          base64.encode(utf8.encode('$basicAuthUsername:$basicAuthPassword'));
+      headers[HttpHeaders.authorizationHeader] = 'Basic $basic';
+    }
+    if ((authentication == EnumAuth.onlyToken || authentication == EnumAuth.all) &&
+        token != null) {
+      headers[HttpHeaders.authorizationHeader] = token;
+    }
+    return headers;
+  }
+
+  https.MediaType _imageContentType(String path) {
+    final String lower = path.toLowerCase();
+    if (lower.endsWith('.png')) return https.MediaType('image', 'png');
+    if (lower.endsWith('.webp')) return https.MediaType('image', 'webp');
+    return https.MediaType('image', 'jpeg');
+  }
+
   void _logResponse(AppResponseHttp appResponseHttp) {
     bool isSuccessful = appResponseHttp.isSuccessful;
     int statusCode = appResponseHttp.statusCode;
